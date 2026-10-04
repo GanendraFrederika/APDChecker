@@ -1,0 +1,5 @@
+# Library Python untuk Proyek APD Checker
+opencv-python>=4.8.0
+ultralytics>=8.0.0
+pyserial>=3.5
+numpy
