@@ -1,0 +1,20 @@
+{
+  "read_only": true,
+  "changes_applied": false,
+  "serial": "2be53eb6debe9106",
+  "backup_sha256": "26ba959165389d384b4fa1e62a4283adb7a68f4d88e399e661483d942c993f47",
+  "requested_duration_seconds": 120,
+  "cutoff_c": 70.0,
+  "stopped_reason": "adb.exe: device '2be53eb6debe9106' not found",
+  "disk_note": "Empty disk counters are NOT proof of no I/O; raw MTD/flash may not expose block statistics.",
+  "summary": {
+    "samples": 8,
+    "temperature_min_c": 42.227,
+    "temperature_max_c": 44.009,
+    "temperature_mean_c": 43.34075,
+    "cpu_busy_mean_percent": 21.757057018689093,
+    "thermal_safety_verified": false,
+    "measured_camera_fps": null,
+    "measured_inference_fps": null
+  }
+}

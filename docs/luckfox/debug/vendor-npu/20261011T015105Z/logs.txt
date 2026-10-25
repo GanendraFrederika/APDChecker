@@ -1,0 +1,852 @@
+APD_GUARD_START seconds=300 cutoff_raw=78000
+[rkipc.c][main]:rkipc_ini_path_ is /tmp/apd-vendor-npu.ini, rkipc_iq_file_path_ is /oem/usr/share/iqfiles, rkipc_log_level is 3
+[param.c][rk_param_init]:rk_param_init
+[param.c][rk_param_init]:g_ini_path_ is /tmp/apd-vendor-npu.ini
+[param.c][rk_param_dump]:section_num is 55
+[param.c][rk_param_dump]:section_name is audio.0
+[param.c][rk_param_dump]:audio.0:enable = 0
+[param.c][rk_param_dump]:audio.0:card_name = hw:0,0
+[param.c][rk_param_dump]:audio.0:encode_type = G711A
+[param.c][rk_param_dump]:audio.0:format = S16
+[param.c][rk_param_dump]:audio.0:sample_rate = 8000
+[param.c][rk_param_dump]:audio.0:channels = 2
+[param.c][rk_param_dump]:audio.0:frame_size = 1152
+[param.c][rk_param_dump]:audio.0:bit_rate = 16000
+[param.c][rk_param_dump]:audio.0:input = mic_in
+[param.c][rk_param_dump]:audio.0:volume = 50
+[param.c][rk_param_dump]:audio.0:enable_aed = 0
+[param.c][rk_param_dump]:audio.0:enable_bcd = 0
+[param.c][rk_param_dump]:audio.0:enable_vqe = 0
+[param.c][rk_param_dump]:audio.0:vqe_cfg = /oem/usr/share/vqefiles/config_aivqe.json
+[param.c][rk_param_dump]:audio.0:rt_audio_period_size = 1024
+[param.c][rk_param_dump]:section_name is video.source
+[param.c][rk_param_dump]:video.source:enable_aiq = 1
+[param.c][rk_param_dump]:video.source:enable_vo = 0
+[param.c][rk_param_dump]:video.source:vo_dev_id = 3
+[param.c][rk_param_dump]:video.source:enable_ivs = 0
+[param.c][rk_param_dump]:video.source:enable_jpeg = 0
+[param.c][rk_param_dump]:video.source:enable_venc_0 = 1
+[param.c][rk_param_dump]:video.source:enable_venc_1 = 0
+[param.c][rk_param_dump]:video.source:enable_venc_2 = 0
+[param.c][rk_param_dump]:video.source:enable_npu = 1
+[param.c][rk_param_dump]:video.source:npu_fps = 3
+[param.c][rk_param_dump]:video.source:enable_wrap = 1
+[param.c][rk_param_dump]:video.source:buffer_line = 324
+[param.c][rk_param_dump]:video.source:enable_rtsp = 1
+[param.c][rk_param_dump]:video.source:enable_rtmp = 0
+[param.c][rk_param_dump]:video.source:rotation = 0
+[param.c][rk_param_dump]:section_name is video.0
+[param.c][rk_param_dump]:video.0:buffer_size = 1492992
+[param.c][rk_param_dump]:video.0:buffer_count = 4
+[param.c][rk_param_dump]:video.0:enable_refer_buffer_share = 1
+[param.c][rk_param_dump]:video.0:stream_type = mainStream
+[param.c][rk_param_dump]:video.0:video_type = videoStream
+[param.c][rk_param_dump]:video.0:max_width = 2304
+[param.c][rk_param_dump]:video.0:max_height = 1296
+[param.c][rk_param_dump]:video.0:width = 2304
+[param.c][rk_param_dump]:video.0:height = 1296
+[param.c][rk_param_dump]:video.0:rc_mode = CBR
+[param.c][rk_param_dump]:video.0:rc_quality = high
+[param.c][rk_param_dump]:video.0:src_frame_rate_den = 1
+[param.c][rk_param_dump]:video.0:src_frame_rate_num = 10
+[param.c][rk_param_dump]:video.0:dst_frame_rate_den = 1
+[param.c][rk_param_dump]:video.0:dst_frame_rate_num = 10
+[param.c][rk_param_dump]:video.0:target_rate = 0
+[param.c][rk_param_dump]:video.0:mid_rate = 1024
+[param.c][rk_param_dump]:video.0:max_rate = 2048
+[param.c][rk_param_dump]:video.0:min_rate = 0
+[param.c][rk_param_dump]:video.0:output_data_type = H.265
+[param.c][rk_param_dump]:video.0:smart = close
+[param.c][rk_param_dump]:video.0:h264_profile = high
+[param.c][rk_param_dump]:video.0:gop = 20
+[param.c][rk_param_dump]:video.0:smartp_viridrlen = 25
+[param.c][rk_param_dump]:video.0:gop_mode = normalP
+[param.c][rk_param_dump]:video.0:stream_smooth = 50
+[param.c][rk_param_dump]:video.0:enable_motion_deblur = 1
+[param.c][rk_param_dump]:video.0:enable_motion_static_switch = 0
+[param.c][rk_param_dump]:video.0:frame_min_i_qp = 26
+[param.c][rk_param_dump]:video.0:frame_min_qp = 28
+[param.c][rk_param_dump]:video.0:frame_max_i_qp = 51
+[param.c][rk_param_dump]:video.0:frame_max_qp = 51
+[param.c][rk_param_dump]:video.0:scalinglist = 0
+[param.c][rk_param_dump]:section_name is video.1
+[param.c][rk_param_dump]:video.1:input_buffer_count = 1
+[param.c][rk_param_dump]:video.1:buffer_size = 202752
+[param.c][rk_param_dump]:video.1:buffer_count = 4
+[param.c][rk_param_dump]:video.1:enable_refer_buffer_share = 1
+[param.c][rk_param_dump]:video.1:stream_type = subStream
+[param.c][rk_param_dump]:video.1:video_type = compositeStream
+[param.c][rk_param_dump]:video.1:max_width = 704
+[param.c][rk_param_dump]:video.1:max_height = 576
+[param.c][rk_param_dump]:video.1:width = 704
+[param.c][rk_param_dump]:video.1:height = 576
+[param.c][rk_param_dump]:video.1:rc_mode = CBR
+[param.c][rk_param_dump]:video.1:rc_quality = high
+[param.c][rk_param_dump]:video.1:src_frame_rate_den = 1
+[param.c][rk_param_dump]:video.1:src_frame_rate_num = 30
+[param.c][rk_param_dump]:video.1:dst_frame_rate_den = 1
+[param.c][rk_param_dump]:video.1:dst_frame_rate_num = 30
+[param.c][rk_param_dump]:video.1:target_rate = 0
+[param.c][rk_param_dump]:video.1:mid_rate = 256
+[param.c][rk_param_dump]:video.1:max_rate = 512
+[param.c][rk_param_dump]:video.1:min_rate = 0
+[param.c][rk_param_dump]:video.1:output_data_type = H.265
+[param.c][rk_param_dump]:video.1:smart = close
+[param.c][rk_param_dump]:video.1:h264_profile = high
+[param.c][rk_param_dump]:video.1:gop = 50
+[param.c][rk_param_dump]:video.1:smartp_viridrlen = 25
+[param.c][rk_param_dump]:video.1:gop_mode = normalP
+[param.c][rk_param_dump]:video.1:stream_smooth = 50
+[param.c][rk_param_dump]:video.1:enable_motion_deblur = 1
+[param.c][rk_param_dump]:video.1:enable_motion_static_switch = 0
+[param.c][rk_param_dump]:video.1:frame_min_i_qp = 26
+[param.c][rk_param_dump]:video.1:frame_min_qp = 28
+[param.c][rk_param_dump]:video.1:frame_max_i_qp = 51
+[param.c][rk_param_dump]:video.1:frame_max_qp = 51
+[param.c][rk_param_dump]:video.1:scalinglist = 0
+[param.c][rk_param_dump]:section_name is video.2
+[param.c][rk_param_dump]:video.2:max_width = 576
+[param.c][rk_param_dump]:video.2:max_height = 324
+[param.c][rk_param_dump]:video.2:width = 576
+[param.c][rk_param_dump]:video.2:height = 324
+[param.c][rk_param_dump]:section_name is ivs
+[param.c][rk_param_dump]:ivs:smear = 0
+[param.c][rk_param_dump]:ivs:weightp = 0
+[param.c][rk_param_dump]:ivs:md = 1
+[param.c][rk_param_dump]:ivs:od = 1
+[param.c][rk_param_dump]:ivs:md_sensibility = 3
+[param.c][rk_param_dump]:section_name is video.jpeg
+[param.c][rk_param_dump]:video.jpeg:width = 2304
+[param.c][rk_param_dump]:video.jpeg:height = 1296
+[param.c][rk_param_dump]:video.jpeg:jpeg_buffer_size = 1048576
+[param.c][rk_param_dump]:video.jpeg:jpeg_qfactor = 70
+[param.c][rk_param_dump]:video.jpeg:enable_cycle_snapshot = 0
+[param.c][rk_param_dump]:video.jpeg:snapshot_interval_ms = 1000
+[param.c][rk_param_dump]:section_name is isp
+[param.c][rk_param_dump]:isp:scenario = normal
+[param.c][rk_param_dump]:isp:init_form_ini = 1
+[param.c][rk_param_dump]:isp:normal_scene = day
+[param.c][rk_param_dump]:isp:custom1_scene = night
+[param.c][rk_param_dump]:isp:ircut_open_gpio = 58
+[param.c][rk_param_dump]:isp:ircut_close_gpio = 57
+[param.c][rk_param_dump]:section_name is isp.0.adjustment
+[param.c][rk_param_dump]:isp.0.adjustment:contrast = 50
+[param.c][rk_param_dump]:isp.0.adjustment:brightness = 50
+[param.c][rk_param_dump]:isp.0.adjustment:saturation = 50
+[param.c][rk_param_dump]:isp.0.adjustment:sharpness = 50
+[param.c][rk_param_dump]:isp.0.adjustment:fps = 10
+[param.c][rk_param_dump]:isp.0.adjustment:hue = 50
+[param.c][rk_param_dump]:section_name is isp.0.exposure
+[param.c][rk_param_dump]:isp.0.exposure:iris_type = auto
+[param.c][rk_param_dump]:isp.0.exposure:exposure_mode = auto
+[param.c][rk_param_dump]:isp.0.exposure:gain_mode = auto
+[param.c][rk_param_dump]:isp.0.exposure:auto_iris_level = 5
+[param.c][rk_param_dump]:isp.0.exposure:auto_exposure_enabled = 1
+[param.c][rk_param_dump]:isp.0.exposure:audo_gain_enabled = 1
+[param.c][rk_param_dump]:isp.0.exposure:exposure_time = 1/6
+[param.c][rk_param_dump]:isp.0.exposure:exposure_gain = 1
+[param.c][rk_param_dump]:section_name is isp.0.night_to_day
+[param.c][rk_param_dump]:isp.0.night_to_day:night_to_day = day
+[param.c][rk_param_dump]:isp.0.night_to_day:night_to_day_filter_level = 5
+[param.c][rk_param_dump]:isp.0.night_to_day:night_to_day_filter_time = 5
+[param.c][rk_param_dump]:isp.0.night_to_day:dawn_time = 07:00:00
+[param.c][rk_param_dump]:isp.0.night_to_day:dusk_time = 18:00:00
+[param.c][rk_param_dump]:isp.0.night_to_day:ircut_filter_action = day
+[param.c][rk_param_dump]:isp.0.night_to_day:over_exposure_suppress = open
+[param.c][rk_param_dump]:isp.0.night_to_day:over_exposure_suppress_type = auto
+[param.c][rk_param_dump]:isp.0.night_to_day:fill_light_mode = IR
+[param.c][rk_param_dump]:isp.0.night_to_day:brightness_adjustment_mode = auto
+[param.c][rk_param_dump]:isp.0.night_to_day:light_brightness = 1
+[param.c][rk_param_dump]:isp.0.night_to_day:distance_level = 1
+[param.c][rk_param_dump]:section_name is isp.0.blc
+[param.c][rk_param_dump]:isp.0.blc:blc_region = close
+[param.c][rk_param_dump]:isp.0.blc:blc_strength = 1
+[param.c][rk_param_dump]:isp.0.blc:wdr = close
+[param.c][rk_param_dump]:isp.0.blc:wdr_level = 0
+[param.c][rk_param_dump]:isp.0.blc:hdr = close
+[param.c][rk_param_dump]:isp.0.blc:hdr_level = 1
+[param.c][rk_param_dump]:isp.0.blc:hlc = close
+[param.c][rk_param_dump]:isp.0.blc:hlc_level = 0
+[param.c][rk_param_dump]:isp.0.blc:dark_boost_level = 0
+[param.c][rk_param_dump]:isp.0.blc:position_x = 0
+[param.c][rk_param_dump]:isp.0.blc:position_y = 0
+[param.c][rk_param_dump]:isp.0.blc:blc_region_width = 120
+[param.c][rk_param_dump]:isp.0.blc:blc_region_high = 92
+[param.c][rk_param_dump]:section_name is isp.0.white_blance
+[param.c][rk_param_dump]:isp.0.white_blance:white_blance_style = autoWhiteBalance
+[param.c][rk_param_dump]:isp.0.white_blance:white_blance_red = 50
+[param.c][rk_param_dump]:isp.0.white_blance:white_blance_green = 50
+[param.c][rk_param_dump]:isp.0.white_blance:white_blance_blue = 50
+[param.c][rk_param_dump]:section_name is isp.0.enhancement
+[param.c][rk_param_dump]:isp.0.enhancement:noise_reduce_mode = close
+[param.c][rk_param_dump]:isp.0.enhancement:denoise_level = 50
+[param.c][rk_param_dump]:isp.0.enhancement:spatial_denoise_level = 50
+[param.c][rk_param_dump]:isp.0.enhancement:temporal_denoise_level = 50
+[param.c][rk_param_dump]:isp.0.enhancement:dehaze = close
+[param.c][rk_param_dump]:isp.0.enhancement:dehaze_level = 0
+[param.c][rk_param_dump]:isp.0.enhancement:dis = close
+[param.c][rk_param_dump]:isp.0.enhancement:gray_scale_mode = [0-255]
+[param.c][rk_param_dump]:isp.0.enhancement:distortion_correction = close
+[param.c][rk_param_dump]:isp.0.enhancement:ldch_level = 0
+[param.c][rk_param_dump]:section_name is isp.0.video_adjustment
+[param.c][rk_param_dump]:isp.0.video_adjustment:image_flip = close
+[param.c][rk_param_dump]:isp.0.video_adjustment:scene_mode = indoor
+[param.c][rk_param_dump]:isp.0.video_adjustment:power_line_frequency_mode = PAL(50HZ)
+[param.c][rk_param_dump]:section_name is isp.0.auto_focus
+[param.c][rk_param_dump]:isp.0.auto_focus:af_mode = semi-auto
+[param.c][rk_param_dump]:isp.0.auto_focus:zoom_level = 0
+[param.c][rk_param_dump]:isp.0.auto_focus:focus_level = 0
+[param.c][rk_param_dump]:section_name is isp.1.adjustment
+[param.c][rk_param_dump]:isp.1.adjustment:contrast = 50
+[param.c][rk_param_dump]:isp.1.adjustment:brightness = 75
+[param.c][rk_param_dump]:isp.1.adjustment:saturation = 50
+[param.c][rk_param_dump]:isp.1.adjustment:sharpness = 50
+[param.c][rk_param_dump]:isp.1.adjustment:fps = 25
+[param.c][rk_param_dump]:isp.1.adjustment:hue = 50
+[param.c][rk_param_dump]:section_name is isp.1.exposure
+[param.c][rk_param_dump]:isp.1.exposure:iris_type = auto
+[param.c][rk_param_dump]:isp.1.exposure:exposure_mode = auto
+[param.c][rk_param_dump]:isp.1.exposure:gain_mode = auto
+[param.c][rk_param_dump]:isp.1.exposure:auto_iris_level = 5
+[param.c][rk_param_dump]:isp.1.exposure:auto_exposure_enabled = 1
+[param.c][rk_param_dump]:isp.1.exposure:audo_gain_enabled = 1
+[param.c][rk_param_dump]:isp.1.exposure:exposure_time = 1/6
+[param.c][rk_param_dump]:isp.1.exposure:exposure_gain = 1
+[param.c][rk_param_dump]:section_name is isp.1.night_to_day
+[param.c][rk_param_dump]:isp.1.night_to_day:night_to_day = day
+[param.c][rk_param_dump]:isp.1.night_to_day:night_to_day_filter_level = 5
+[param.c][rk_param_dump]:isp.1.night_to_day:night_to_day_filter_time = 5
+[param.c][rk_param_dump]:isp.1.night_to_day:dawn_time = 07:00:00
+[param.c][rk_param_dump]:isp.1.night_to_day:dusk_time = 18:00:00
+[param.c][rk_param_dump]:isp.1.night_to_day:ircut_filter_action = day
+[param.c][rk_param_dump]:isp.1.night_to_day:over_exposure_suppress = open
+[param.c][rk_param_dump]:isp.1.night_to_day:over_exposure_suppress_type = auto
+[param.c][rk_param_dump]:isp.1.night_to_day:fill_light_mode = IR
+[param.c][rk_param_dump]:isp.1.night_to_day:brightness_adjustment_mode = auto
+[param.c][rk_param_dump]:isp.1.night_to_day:light_brightness = 1
+[param.c][rk_param_dump]:isp.1.night_to_day:distance_level = 1
+[param.c][rk_param_dump]:section_name is isp.1.blc
+[param.c][rk_param_dump]:isp.1.blc:blc_region = close
+[param.c][rk_param_dump]:isp.1.blc:blc_strength = 1
+[param.c][rk_param_dump]:isp.1.blc:wdr = close
+[param.c][rk_param_dump]:isp.1.blc:wdr_level = 0
+[param.c][rk_param_dump]:isp.1.blc:hdr = close
+[param.c][rk_param_dump]:isp.1.blc:hdr_level = 1
+[param.c][rk_param_dump]:isp.1.blc:hlc = close
+[param.c][rk_param_dump]:isp.1.blc:hlc_level = 0
+[param.c][rk_param_dump]:isp.1.blc:dark_boost_level = 0
+[param.c][rk_param_dump]:isp.1.blc:position_x = 0
+[param.c][rk_param_dump]:isp.1.blc:position_y = 0
+[param.c][rk_param_dump]:isp.1.blc:blc_region_width = 120
+[param.c][rk_param_dump]:isp.1.blc:blc_region_high = 92
+[param.c][rk_param_dump]:section_name is isp.1.white_blance
+[param.c][rk_param_dump]:isp.1.white_blance:white_blance_style = autoWhiteBalance
+[param.c][rk_param_dump]:isp.1.white_blance:white_blance_red = 50
+[param.c][rk_param_dump]:isp.1.white_blance:white_blance_green = 50
+[param.c][rk_param_dump]:isp.1.white_blance:white_blance_blue = 50
+[param.c][rk_param_dump]:section_name is isp.1.enhancement
+[param.c][rk_param_dump]:isp.1.enhancement:noise_reduce_mode = close
+[param.c][rk_param_dump]:isp.1.enhancement:denoise_level = 50
+[param.c][rk_param_dump]:isp.1.enhancement:spatial_denoise_level = 50
+[param.c][rk_param_dump]:isp.1.enhancement:temporal_denoise_level = 50
+[param.c][rk_param_dump]:isp.1.enhancement:dehaze = close
+[param.c][rk_param_dump]:isp.1.enhancement:dehaze_level = 0
+[param.c][rk_param_dump]:isp.1.enhancement:dis = close
+[param.c][rk_param_dump]:isp.1.enhancement:gray_scale_mode = [0-255]
+[param.c][rk_param_dump]:isp.1.enhancement:distortion_correction = close
+[param.c][rk_param_dump]:isp.1.enhancement:ldch_level = 0
+[param.c][rk_param_dump]:section_name is isp.1.video_adjustment
+[param.c][rk_param_dump]:isp.1.video_adjustment:image_flip = close
+[param.c][rk_param_dump]:isp.1.video_adjustment:scene_mode = indoor
+[param.c][rk_param_dump]:isp.1.video_adjustment:power_line_frequency_mode = PAL(50HZ)
+[param.c][rk_param_dump]:section_name is isp.1.auto_focus
+[param.c][rk_param_dump]:isp.1.auto_focus:af_mode = semi-auto
+[param.c][rk_param_dump]:isp.1.auto_focus:zoom_level = 0
+[param.c][rk_param_dump]:isp.1.auto_focus:focus_level = 0
+[param.c][rk_param_dump]:section_name is storage
+[param.c][rk_param_dump]:storage:mount_path = /userdata
+[param.c][rk_param_dump]:storage:free_size_del_min = 500
+[param.c][rk_param_dump]:storage:free_size_del_max = 1000
+[param.c][rk_param_dump]:storage:num_limit_enable = 1
+[param.c][rk_param_dump]:section_name is storage.0
+[param.c][rk_param_dump]:storage.0:enable = 0
+[param.c][rk_param_dump]:storage.0:folder_name = video0
+[param.c][rk_param_dump]:storage.0:file_format = mp4
+[param.c][rk_param_dump]:storage.0:file_duration = 60
+[param.c][rk_param_dump]:storage.0:video_quota = 30
+[param.c][rk_param_dump]:storage.0:file_max_num = 300
+[param.c][rk_param_dump]:section_name is storage.1
+[param.c][rk_param_dump]:storage.1:enable = 0
+[param.c][rk_param_dump]:storage.1:folder_name = video1
+[param.c][rk_param_dump]:storage.1:file_format = mp4
+[param.c][rk_param_dump]:storage.1:file_duration = 60
+[param.c][rk_param_dump]:storage.1:video_quota = 30
+[param.c][rk_param_dump]:storage.1:file_max_num = 300
+[param.c][rk_param_dump]:section_name is storage.2
+[param.c][rk_param_dump]:storage.2:enable = 0
+[param.c][rk_param_dump]:storage.2:folder_name = video2
+[param.c][rk_param_dump]:storage.2:file_format = mp4
+[param.c][rk_param_dump]:storage.2:file_duration = 60
+[param.c][rk_param_dump]:storage.2:video_quota = 30
+[param.c][rk_param_dump]:storage.2:file_max_num = 300
+[param.c][rk_param_dump]:section_name is system.device_info
+[param.c][rk_param_dump]:system.device_info:deivce_name = RK IP Camera
+[param.c][rk_param_dump]:system.device_info:telecontrol_id = 88
+[param.c][rk_param_dump]:system.device_info:model = RK-003
+[param.c][rk_param_dump]:system.device_info:serial_number = RK-003-A
+[param.c][rk_param_dump]:system.device_info:firmware_version = V0.2.6 build 202108
+[param.c][rk_param_dump]:system.device_info:encoder_version = V1.0 build 202108
+[param.c][rk_param_dump]:system.device_info:web_version = V2.12.2 build 202108
+[param.c][rk_param_dump]:system.device_info:plugin_version = V1.0.0.0
+[param.c][rk_param_dump]:system.device_info:channels_number = 1
+[param.c][rk_param_dump]:system.device_info:hard_disks_number = 1
+[param.c][rk_param_dump]:system.device_info:alarm_inputs_number = 0
+[param.c][rk_param_dump]:system.device_info:alarm_outputs_number = 0
+[param.c][rk_param_dump]:system.device_info:firmware_version_info = CP-3-B
+[param.c][rk_param_dump]:system.device_info:manufacturer = Rockchip
+[param.c][rk_param_dump]:system.device_info:hardware_id = c3d9b8674f4b94f6
+[param.c][rk_param_dump]:system.device_info:user_num = 1
+[param.c][rk_param_dump]:section_name is capability.video
+[param.c][rk_param_dump]:capability.video:0 = {"disabled":[{"name":"sStreamType","options":{"subStream":{"sSmart":"close"},"thirdStream":{"sSmart":"close"}},"type":"disabled/limit"},{"name":"sRCMode","options":{"CBR":{"sRCQuality":null}},"type":"disabled"},{"name":"sOutputDataType","options":{"H.265":{"sH264Profile":null}},"type":"disabled"},{"name":"unspport","options":{"iStreamSmooth":null,"sVideoType":null},"type":"disabled"}],"dynamic":{"sSmart":{"open":{"iMinRate":{"dynamicRange":{"max":"iMaxRate","maxRate":1,"min":"iMaxRate","minRate":0.125},"type":"dynamicRange"}}},"sStreamType":{"mainStream":{"iMaxRate":{"options":[256,512,1024,2048,3072,4096,6144],"type":"options"},"sResolution":{"options":["2304*1296","1920*1080","1280*720","960*540","640*360","320*240"],"type":"options"}},"subStream":{"iMaxRate"
+[param.c][rk_param_dump]:capability.video:1 = :{"options":[128,256,512],"type":"options"},"sResolution":{"options":["704*576","640*480","352*288","320*240"],"type":"options"}},"thirdStream":{"iMaxRate":{"options":[256,512],"type":"options"},"sResolution":{"options":["416*416"],"type":"options"}}}},"layout":{"encoder":["sStreamType","sVideoType","sResolution","sRCMode","sRCQuality","sFrameRate","sOutputDataType","sSmart","sH264Profile","sGOPMode","iMaxRate","iGOP","iStreamSmooth"]},"static":{"iGOP":{"range":{"max":400,"min":1},"type":"range"},"iStreamSmooth":{"range":{"max":100,"min":1,"step":1},"type":"range"},"sFrameRate":{"dynamicRange":{"max":"sFrameRateIn","maxRate":1},"options":["1/16","1/8","1/4","1/2","1","2","4","6","8","10","12","14","16","18","20","25","30"],"type":"options/dynamicRange"},"sH264Profile":{"options":["high","main","baseline"],"type":"options"},"sOutputDataType":{"options"
+[param.c][rk_param_dump]:capability.video:2 = :["H.264","H.265"],"type":"options"},"sRCMode":{"options":["CBR","VBR"],"type":"options"},"sRCQuality":{"options":["lowest","lower","low","medium","high","higher","highest"],"type":"options"},"sGOPMode":{"options":["normalP","smartP"],"type":"options"},"sSmart":{"options":["open","close"],"type":"options"},"sStreamType":{"options":["mainStream","subStream","thirdStream"],"type":"options"},"sVideoType":{"options":["videoStream","compositeStream"],"type":"options"}}}
+[param.c][rk_param_dump]:section_name is capability.image_adjustment
+[param.c][rk_param_dump]:capability.image_adjustment:0 = {"layout":{"image_adjustment":["iBrightness","iContrast","iSaturation","iSharpness","iHue"]},"static":{"iBrightness":{"range":{"max":100,"min":0,"step":1},"type":"range"},"iContrast":{"range":{"max":100,"min":0,"step":1},"type":"range"},"iHue":{"range":{"max":100,"min":0,"step":1},"type":"range"},"iSaturation":{"range":{"max":100,"min":0,"step":1},"type":"range"},"iSharpness":{"range":{"max":100,"min":0,"step":1},"type":"range"}}}
+[param.c][rk_param_dump]:section_name is capability.image_blc
+[param.c][rk_param_dump]:capability.image_blc:0 = {"disabled":[{"name":"sHLC","options":{"open":{"sBLCRegion":null}},"type":"disabled"},{"name":"sBLCRegion","options":{"open":{"iDarkBoostLevel":null,"iHLCLevel":null,"sHLC":null}},"type":"disabled"}],"dynamic":{"sBLCRegion":{"open":{"iBLCStrength":{"range":{"max":100,"min":0,"step":1},"type":"range"}}},"sHDR":{"HDR2":{"iHDRLevel":{"options":[1,2,3,4],"type":"options"}},"close":{"sBLCRegion":{"options":["close","open"],"type":"options"},"sHLC":{"options"
+[param.c][rk_param_dump]:capability.image_blc:1 = :["close","open"],"type":"options"}}},"sHLC":{"open":{"iDarkBoostLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"},"iHLCLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"}}},"sWDR":{"open":{"iWDRLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"}}}},"layout":{"image_blc":["sHDR","iHDRLevel","sBLCRegion","iBLCStrength","sHLC","iHLCLevel"]},"static":{"sHDR":{"options":["close","HDR2"],"type":"options"}}}
+[param.c][rk_param_dump]:section_name is capability.image_enhancement
+[param.c][rk_param_dump]:capability.image_enhancement:0 = {"dynamic":{"sDehaze":{"open":{"iDehazeLevel":{"range":{"max":10,"min":0,"step":1},"type":"range"}}},"sDistortionCorrection":{"FEC":{"iFecLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"}},"LDCH":{"iLdchLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"}}},"sNoiseReduceMode":{"2dnr":{"iSpatialDenoiseLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"}},"3dnr":{"iTemporalDenoiseLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"}},"mixnr":{"iSpatialDenoiseLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"},"iTemporalDenoiseLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"}}}},"layout"
+[param.c][rk_param_dump]:capability.image_enhancement:1 = :{"image_enhancement":["sNoiseReduceMode","iSpatialDenoiseLevel","iTemporalDenoiseLevel","sDehaze","iDehazeLevel","sGrayScaleMode","sDistortionCorrection","iLdchLevel","iFecLevel"]},"static":{"sDIS":{"options":["open","close"],"type":"options"},"sDehaze":{"options":["open","close","auto"],"type":"options"},"sDistortionCorrection":{"options":["LDCH","close"],"type":"options"},"sFEC":{"options":["open","close"],"type":"options"},"sGrayScaleMode":{"options":["[0-255]","[16-235]"],"type":"options"},"sNoiseReduceMode":{"options":["close","2dnr","3dnr","mixnr"],"type":"options"}}}
+[param.c][rk_param_dump]:section_name is capability.image_exposure
+[param.c][rk_param_dump]:capability.image_exposure:0 = {"dynamic":{"sExposureMode":{"auto":{"iAutoIrisLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"}},"manual":{"sExposureTime":{"options":["1","1/3","1/6","1/12","1/25","1/50","1/100","1/150","1/200","1/250","1/500","1/750","1/1000","1/2000","1/4000","1/10000","1/100000"],"type":"options"},"sGainMode":{"options":["auto","manual"],"type":"options"}}},"sGainMode":{"manual":{"iExposureGain":{"range":{"max":100,"min":1,"step":1},"type":"range"}}}},"layout":{"image_exposure":["sExposureMode","sExposureTime","sGainMode","iExposureGain","iFPS"]},"static":{"sExposureMode":{"options":["auto","manual"],"type":"options"},"iFPS":{"range":{"max":30,"min":0,"step":1},"type":"range"}}}
+[param.c][rk_param_dump]:section_name is capability.image_night_to_day
+[param.c][rk_param_dump]:capability.image_night_to_day:0 = {"disabled":[{"name":"sNightToDay","options":{"day":{"iLightBrightness":null,"sFillLightMode":null},"night":{"iDarkBoostLevel":null,"iHDRLevel":null,"iHLCLevel":null,"sHDR":null,"sHLC":"close"}},"type":"disabled"}],"dynamic":{"sNightToDay":{"auto":{"iNightToDayFilterLevel":{"options":[0,1,2,3,4,5,6,7],"type":"options"},"iNightToDayFilterTime":{"range":{"max":10,"min":3,"step":1},"type":"range"}},"schedule":{"sDawnTime":{"input":"time","type":"input"},"sDuskTime":{"input":"time","type":"input"}}},"sOverexposeSuppress":{"open"
+[param.c][rk_param_dump]:capability.image_night_to_day:1 = :{"sOverexposeSuppressType":{"options":["auto","manual"],"type":"options"}}},"sOverexposeSuppressType":{"manual":{"iDistanceLevel":{"range":{"max":100,"min":0,"step":1},"type":"range"}}}},"layout":{"image_night_to_day":["sNightToDay","iNightToDayFilterLevel","iNightToDayFilterTime","sDawnTime","sDuskTime","sFillLightMode","iLightBrightness"]},"static":{"iLightBrightness":{"range":{"max":100,"min":0,"step":10},"type":"range"},"sNightToDay":{"options":["day","night"],"type":"options"},"sFillLightMode":{"type":"options","options":["IR"]}}}
+[param.c][rk_param_dump]:section_name is capability.image_video_adjustment
+[param.c][rk_param_dump]:capability.image_video_adjustment:0 = {"layout":{"image_video_adjustment":["sPowerLineFrequencyMode","sImageFlip","iImageRotation"]},"static":{"sImageFlip":{"options":["close","flip","mirror","centrosymmetric"],"type":"options"},"sPowerLineFrequencyMode":{"options":["PAL(50HZ)","NTSC(60HZ)"],"type":"options"},"sSceneMode":{"options":["indoor","outdoor"],"type":"options"},"iImageRotation":{"options":[0,90,180,270],"type":"options"}}}
+[param.c][rk_param_dump]:section_name is capability.image_white_blance
+[param.c][rk_param_dump]:capability.image_white_blance:0 = {"dynamic":{"sWhiteBlanceStyle":{"manualWhiteBalance":{"iWhiteBalanceBlue":{"range":{"max":100,"min":0,"step":1},"type":"range"},"iWhiteBalanceGreen":{"range":{"max":100,"min":0,"step":1},"type":"range"},"iWhiteBalanceRed":{"range":{"max":100,"min":0,"step":1},"type":"range"}}}},"layout":{"image_white_blance":["sWhiteBlanceStyle","iWhiteBalanceRed","iWhiteBalanceGreen","iWhiteBalanceBlue"]},"static":{"sWhiteBlanceStyle":{"options":["manualWhiteBalance","autoWhiteBalance","lockingWhiteBalance","fluorescentLamp","incandescent","warmLight","naturalLight"],"type":"options"}}}
+[param.c][rk_param_dump]:section_name is user.0
+[param.c][rk_param_dump]:user.0:user_name = admin
+[param.c][rk_param_dump]:user.0:password = YWRtaW4=
+[param.c][rk_param_dump]:user.0:user_level = 1
+[param.c][rk_param_dump]:section_name is osd.common
+[param.c][rk_param_dump]:osd.common:enable_osd = 1
+[param.c][rk_param_dump]:osd.common:is_presistent_text = 1
+[param.c][rk_param_dump]:osd.common:attribute = transparent/not-flashing
+[param.c][rk_param_dump]:osd.common:font_size = 32
+[param.c][rk_param_dump]:osd.common:font_color_mode = customize
+[param.c][rk_param_dump]:osd.common:font_color = fff799
+[param.c][rk_param_dump]:osd.common:alignment = customize
+[param.c][rk_param_dump]:osd.common:boundary = 0
+[param.c][rk_param_dump]:osd.common:font_path = /oem/usr/share/simsun_en.ttf
+[param.c][rk_param_dump]:osd.common:normalized_screen_width = 704
+[param.c][rk_param_dump]:osd.common:normalized_screen_height = 480
+[param.c][rk_param_dump]:section_name is osd.0
+[param.c][rk_param_dump]:osd.0:type = channelName
+[param.c][rk_param_dump]:osd.0:enabled = 0
+[param.c][rk_param_dump]:osd.0:position_x = 1104
+[param.c][rk_param_dump]:osd.0:position_y = 640
+[param.c][rk_param_dump]:osd.0:display_text = Camera 01
+[param.c][rk_param_dump]:section_name is osd.1
+[param.c][rk_param_dump]:osd.1:type = dateTime
+[param.c][rk_param_dump]:osd.1:enabled = 1
+[param.c][rk_param_dump]:osd.1:position_x = 16
+[param.c][rk_param_dump]:osd.1:position_y = 16
+[param.c][rk_param_dump]:osd.1:date_style = CHR-YYYY-MM-DD
+[param.c][rk_param_dump]:osd.1:time_style = 24hour
+[param.c][rk_param_dump]:osd.1:display_week_enabled = 0
+[param.c][rk_param_dump]:section_name is osd.2
+[param.c][rk_param_dump]:osd.2:type = character
+[param.c][rk_param_dump]:osd.2:enabled = 0
+[param.c][rk_param_dump]:osd.2:position_x = 0
+[param.c][rk_param_dump]:osd.2:position_y = 0
+[param.c][rk_param_dump]:osd.2:display_text = null
+[param.c][rk_param_dump]:section_name is osd.3
+[param.c][rk_param_dump]:osd.3:type = character
+[param.c][rk_param_dump]:osd.3:enabled = 0
+[param.c][rk_param_dump]:osd.3:position_x = 0
+[param.c][rk_param_dump]:osd.3:position_y = 0
+[param.c][rk_param_dump]:osd.3:display_text = null
+[param.c][rk_param_dump]:section_name is osd.4
+[param.c][rk_param_dump]:osd.4:type = privacyMask
+[param.c][rk_param_dump]:osd.4:enabled = 0
+[param.c][rk_param_dump]:osd.4:position_x = 0
+[param.c][rk_param_dump]:osd.4:position_y = 0
+[param.c][rk_param_dump]:osd.4:width = 0
+[param.c][rk_param_dump]:osd.4:height = 0
+[param.c][rk_param_dump]:section_name is osd.5
+[param.c][rk_param_dump]:osd.5:type = privacyMask
+[param.c][rk_param_dump]:osd.5:enabled = 0
+[param.c][rk_param_dump]:osd.5:position_x = 0
+[param.c][rk_param_dump]:osd.5:position_y = 0
+[param.c][rk_param_dump]:osd.5:width = 0
+[param.c][rk_param_dump]:osd.5:height = 0
+[param.c][rk_param_dump]:section_name is osd.6
+[param.c][rk_param_dump]:osd.6:type = image
+[param.c][rk_param_dump]:osd.6:enabled = 0
+[param.c][rk_param_dump]:osd.6:position_x = 16
+[param.c][rk_param_dump]:osd.6:position_y = 640
+[param.c][rk_param_dump]:osd.6:image_path = /userdata/image.bmp
+[param.c][rk_param_dump]:section_name is event.regional_invasion
+[param.c][rk_param_dump]:event.regional_invasion:enabled = 1
+[param.c][rk_param_dump]:event.regional_invasion:position_x = 0
+[param.c][rk_param_dump]:event.regional_invasion:position_y = 0
+[param.c][rk_param_dump]:event.regional_invasion:width = 700
+[param.c][rk_param_dump]:event.regional_invasion:height = 560
+[param.c][rk_param_dump]:event.regional_invasion:proportion = 1
+[param.c][rk_param_dump]:event.regional_invasion:sensitivity_level = 90
+[param.c][rk_param_dump]:event.regional_invasion:time_threshold = 1
+[param.c][rk_param_dump]:event.regional_invasion:rockiva_model_type = small
+[param.c][rk_param_dump]:section_name is roi.0
+[param.c][rk_param_dump]:roi.0:stream_type = mainStream
+[param.c][rk_param_dump]:roi.0:id = 1
+[param.c][rk_param_dump]:roi.0:enabled = 0
+[param.c][rk_param_dump]:roi.0:name = test
+[param.c][rk_param_dump]:roi.0:position_x = 0
+[param.c][rk_param_dump]:roi.0:position_y = 0
+[param.c][rk_param_dump]:roi.0:width = 0
+[param.c][rk_param_dump]:roi.0:height = 0
+[param.c][rk_param_dump]:roi.0:quality_level = 3
+[param.c][rk_param_dump]:section_name is roi.1
+[param.c][rk_param_dump]:roi.1:stream_type = mainStream
+[param.c][rk_param_dump]:roi.1:id = 2
+[param.c][rk_param_dump]:roi.1:enabled = 0
+[param.c][rk_param_dump]:roi.1:name = test
+[param.c][rk_param_dump]:roi.1:position_x = 0
+[param.c][rk_param_dump]:roi.1:position_y = 0
+[param.c][rk_param_dump]:roi.1:width = 0
+[param.c][rk_param_dump]:roi.1:height = 0
+[param.c][rk_param_dump]:roi.1:quality_level = 3
+[param.c][rk_param_dump]:section_name is roi.2
+[param.c][rk_param_dump]:roi.2:stream_type = subStream
+[param.c][rk_param_dump]:roi.2:id = 1
+[param.c][rk_param_dump]:roi.2:enabled = 0
+[param.c][rk_param_dump]:roi.2:name = test
+[param.c][rk_param_dump]:roi.2:position_x = 0
+[param.c][rk_param_dump]:roi.2:position_y = 0
+[param.c][rk_param_dump]:roi.2:width = 0
+[param.c][rk_param_dump]:roi.2:height = 0
+[param.c][rk_param_dump]:roi.2:quality_level = 3
+[param.c][rk_param_dump]:section_name is roi.3
+[param.c][rk_param_dump]:roi.3:stream_type = subStream
+[param.c][rk_param_dump]:roi.3:id = 2
+[param.c][rk_param_dump]:roi.3:enabled = 0
+[param.c][rk_param_dump]:roi.3:name = test
+[param.c][rk_param_dump]:roi.3:position_x = 0
+[param.c][rk_param_dump]:roi.3:position_y = 0
+[param.c][rk_param_dump]:roi.3:width = 0
+[param.c][rk_param_dump]:roi.3:height = 0
+[param.c][rk_param_dump]:roi.3:quality_level = 3
+[param.c][rk_param_dump]:section_name is roi.4
+[param.c][rk_param_dump]:roi.4:stream_type = thirdStream
+[param.c][rk_param_dump]:roi.4:id = 1
+[param.c][rk_param_dump]:roi.4:enabled = 0
+[param.c][rk_param_dump]:roi.4:name = test
+[param.c][rk_param_dump]:roi.4:position_x = 0
+[param.c][rk_param_dump]:roi.4:position_y = 0
+[param.c][rk_param_dump]:roi.4:width = 0
+[param.c][rk_param_dump]:roi.4:height = 0
+[param.c][rk_param_dump]:roi.4:quality_level = 3
+[param.c][rk_param_dump]:section_name is roi.5
+[param.c][rk_param_dump]:roi.5:stream_type = thirdStream
+[param.c][rk_param_dump]:roi.5:id = 2
+[param.c][rk_param_dump]:roi.5:enabled = 0
+[param.c][rk_param_dump]:roi.5:name = test
+[param.c][rk_param_dump]:roi.5:position_x = 0
+[param.c][rk_param_dump]:roi.5:position_y = 0
+[param.c][rk_param_dump]:roi.5:width = 0
+[param.c][rk_param_dump]:roi.5:height = 0
+[param.c][rk_param_dump]:roi.5:quality_level = 3
+[param.c][rk_param_dump]:section_name is region_clip.1
+[param.c][rk_param_dump]:region_clip.1:enabled = 0
+[param.c][rk_param_dump]:region_clip.1:position_x = 0
+[param.c][rk_param_dump]:region_clip.1:position_y = 0
+[param.c][rk_param_dump]:region_clip.1:width = 640
+[param.c][rk_param_dump]:region_clip.1:height = 480
+[param.c][rk_param_dump]:section_name is network.ntp
+[param.c][rk_param_dump]:network.ntp:enable = 1
+[param.c][rk_param_dump]:network.ntp:refresh_time_s = 60
+[param.c][rk_param_dump]:network.ntp:ntp_server = 119.28.183.184
+[system.c][rk_system_init]:rk_system_init
+[rockiva.c][rkipc_rockiva_init]:begin
+[network.c][ntp_client_thread]:refresh_time_s is 60, ntp_server is 119.28.183.184
+[network.c][rk_net_proc]:Creat rk_net_proc thread!
+[rockiva.c][rkipc_rockiva_init]:ROCKIVA_Init over
+[rockiva.c][rkipc_rockiva_init]:(0,0), (9943,0), (9943,11666), (0,11666)
+[rockiva.c][rkipc_rockiva_init]:ROCKIVA_BA_Init success
+[rockiva.c][rkipc_rockiva_init]:end
+[isp.c][rk_isp_init]:g_iq_file_dir_ is /oem/usr/share/iqfiles
+[isp.c][rk_isp_init]:cam_id is 0, hdr_mode is close, scenario is normal
+[isp.c][sample_common_isp_init]:ID: 0, sensor_name is m00_b_sc3336 4-0030, iqfiles is /oem/usr/share/iqfiles
+[isp.c][sample_common_isp_init]:main_scene is normal, sub_scene is day
+[isp.c][sample_common_isp_init]:00:15:15.575565: rk_aiq_uapi2_sysctl_preInit_scene begin
+[isp.c][sample_common_isp_init]:00:15:15.575827: rk_aiq_uapi2_sysctl_preInit_scene over
+[isp.c][sample_common_isp_init]:00:15:15.758439: rk_aiq_uapi2_sysctl_init over
+[isp.c][sample_common_isp_run]:00:15:15.765758: rk_aiq_uapi2_sysctl_prepare succeed
+[isp.c][sample_common_isp_run]:00:15:15.771288: rk_aiq_uapi2_sysctl_start succeed
+[isp.c][rk_isp_set_frame_rate]:start 10
+[isp.c][rk_isp_set_frame_rate]:end, 10
+[isp.c][rk_isp_set_from_ini]:start
+[isp.c][rk_isp_set_frame_rate]:start 10
+[isp.c][rk_isp_set_frame_rate]:end, 10
+[isp.c][rk_isp_set_from_ini]:image adjustment
+[isp.c][rk_isp_set_from_ini]:exposure
+[isp.c][rk_isp_set_from_ini]:night_to_day
+failed to open /sys/class/pwm/pwmchip3/export
+[isp.c][rk_isp_set_light_strength]:pwm3 init failed -2
+[isp.c][rk_isp_set_from_ini]:blc
+[isp.c][rk_isp_set_blc_strength]:blc mode is not enabled
+[isp.c][rk_isp_set_hlc_level]:hlc mode is not enabled
+[isp.c][rk_isp_set_from_ini]:white_blance
+[isp.c][rk_isp_set_white_blance_red]:white blance is auto, not support set gain
+[isp.c][rk_isp_set_white_blance_green]:white blance is auto, not support set gain
+[isp.c][rk_isp_set_white_blance_blue]:white blance is auto, not support set gain
+[isp.c][rk_isp_set_from_ini]:enhancement
+[isp.c][rk_isp_set_spatial_denoise_level]:noise_reduce_mode is close, value is 50
+[isp.c][rk_isp_set_spatial_denoise_level]:noise_reduce_mode is close, value is 50
+[isp.c][rk_isp_set_temporal_denoise_level]:noise_reduce_mode is close, value is 50
+[isp.c][rk_isp_set_temporal_denoise_level]:noise_reduce_mode is close, value is 50
+[isp.c][rk_isp_set_from_ini]:video_adjustment
+[isp.c][rk_isp_set_from_ini]:end
+RTVersion        00:15:15-887 {dump              :064} ---------------------------------------------------------
+RTVersion        00:15:15-888 {dump              :065} rockit version: git-8cb4d25b8 Tue Feb 28 11:12:39 2023 +0800
+RTVersion        00:15:15-888 {dump              :066} rockit building: built- 2023-02-28 15:23:19
+RTVersion        00:15:15-888 {dump              :067} ---------------------------------------------------------
+(null)           00:15:15-888 {log_level_init    :203} 
+
+[32m[1m please use echo name=level > /tmp/rt_log_level set log level 
+	name: all cmpi mb sys vdec venc rgn vpss vgs tde avs wbc vo vi ai ao aenc adec
+	log_level: 0 1 2 3 4 5 6[0m 
+
+(null)           00:15:15-888 {read_log_level    :093} text is all=4
+(null)           00:15:15-888 {read_log_level    :095} module is all, log_level is 4
+(null)           00:15:15-893 {monitor_log_level :144} #Start monitor_log_level thread, arg:(nil)
+[video.c][rk_video_init]:begin
+[video.c][rk_video_init]:enable_jpeg is 0, enable_venc_0 is 1, enable_venc_1 is 0, enable_rtsp is 1, enable_rtmp is 0
+[video.c][rk_video_init]:g_vi_chn_id is 0, g_enable_vo is 0, g_vo_dev_id is 3, enable_npu is 1, enable_wrap is 1, enable_osd is 1
+[video.c][rkipc_vi_dev_init]:rkipc_vi_dev_init
+[video.c][rkipc_rtsp_init]:start
+[video.c][rkipc_rtsp_init]:end
+RKViChn          00:15:15-901 {prepareRuntime    :334} ---------------------------------------------------------
+RKViChn          00:15:15-901 {prepareRuntime    :336} vi version: 1.86, name:vvi
+RKViChn          00:15:15-901 {prepareRuntime    :337} rockit-ko version: vmpi:fb2eed2be49e
+RKViChn          00:15:15-901 {prepareRuntime    :338} rockit-ko building: -2023-02-09-11:04:49
+RKViChn          00:15:15-901 {prepareRuntime    :339} ---------------------------------------------------------
+RKViChn          00:15:15-901 {prepareRuntime    :358} mb pool create success, MBCnt= 2
+[video.c][rkipc_pipe_0_init]:set vi channel wrap line: 324, wrapBuffSize = 1119744
+[video.c][rkipc_pipe_0_init]:tmp_output_data_type is H.265, tmp_rc_mode is CBR, tmp_h264_profile is high
+RKVencChannel    00:15:15-928 {VencInvoke        :139} [31m[1mvenc get_rc_param invoke error: ctx->hw 0x234a18, ctx->hw_create 0![0m
+RKVencChannel    00:15:15-928 {getRcParam        :2350} [31m[1mreturn the user setting value on failure to get rc param from mpp fail.[0m
+[video.c][rkipc_pipe_0_init]:Bind VI and VENC success
+[roi.c][rk_roi_set_all]:video_width is 2304, video_height is 1296, x_rate is 3.272727, y_rate is 2.700000
+[video.c][rk_roi_set]:RK_MPI_VENC_SetRoiAttr to venc 0 success
+[roi.c][rk_roi_set_all]:video_width is 2304, video_height is 1296, x_rate is 3.272727, y_rate is 2.700000
+[video.c][rk_roi_set]:RK_MPI_VENC_SetRoiAttr to venc 0 success
+[roi.c][rk_roi_set_all]:video_width is 704, video_height is 576, x_rate is 1.000000, y_rate is 1.200000
+[video.c][rk_roi_set]:subStream is not exit
+[roi.c][rk_roi_set_all]:video_width is 704, video_height is 576, x_rate is 1.000000, y_rate is 1.200000
+[video.c][rk_roi_set]:subStream is not exit
+[roi.c][rk_roi_set_all]:video_width is 576, video_height is 324, x_rate is 0.818182, y_rate is 0.675000
+[video.c][rk_roi_set]:thirdStream is not exit
+[roi.c][rk_roi_set_all]:video_width is 576, video_height is 324, x_rate is 0.818182, y_rate is 0.675000
+[video.c][rk_roi_set]:thirdStream is not exit
+RKViChn          00:15:15-945 {prepareRuntime    :334} ---------------------------------------------------------
+RKViChn          00:15:15-945 {prepareRuntime    :336} vi version: 1.86, name:vvi
+RKViChn          00:15:15-945 {prepareRuntime    :337} rockit-ko version: vmpi:fb2eed2be49e
+RKViChn          00:15:15-945 {prepareRuntime    :338} rockit-ko building: -2023-02-09-11:04:49
+RKViChn          00:15:15-945 {prepareRuntime    :339} ---------------------------------------------------------
+RKViChn          00:15:15-945 {prepareRuntime    :358} mb pool create success, MBCnt= 3
+[video.c][rkipc_get_venc_0]:#Start rkipc_get_venc_0 thread, arg:(nil)
+[video.c][rkipc_osd_draw_nn_init]:start
+[video.c][rkipc_osd_draw_nn_init]:The handle: 7, create success
+[video.c][rkipc_osd_draw_nn_init]:RK_MPI_RGN_AttachToChn to venc0 success
+[video.c][rkipc_osd_draw_nn_init]:end
+[osd.c][rk_osd_init]:rk_osd_init
+[osd.c][rk_osd_init]:g_x_rate is 3.272727, g_y_rate is 2.700000
+[osd.c][rk_osd_init]:i is 0, osd_type is channelName
+[osd.c][rk_osd_init]:i is 1, osd_type is dateTime
+[osd.c][rk_osd_init]:osd_data.text.font_color is fff799
+[osd.c][rk_osd_init]:i is 2, osd_type is character
+[osd.c][rk_osd_init]:i is 3, osd_type is character
+[osd.c][rk_osd_init]:i is 4, osd_type is privacyMask
+[osd.c][rk_osd_init]:i is 5, osd_type is privacyMask
+[osd.c][rk_osd_init]:i is 6, osd_type is image
+[video.c][rk_video_init]:over
+[video.c][rkipc_get_vi_2_send]:#Start rkipc_get_vi_2_send thread, arg:(nil)
+[video.c][rkipc_get_nn_update_osd]:#Start rkipc_get_nn_update_osd thread, arg:(nil)
+[storage.c][rkipc_storage_set_dev_attr]:The DevAttr will be user-defined.
+[storage.c][rkipc_storage_set_dev_attr]:mount path is /userdata, dev_path is /dev/ubi5_0
+[storage.c][rkipc_storage_para_init]: pstHandle->dev_attr mount path is /userdata, dev_path is /dev/ubi5_0
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video0, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:15:15.967530] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rkipc_storage_file_scan_thread]:[00:15:15.968034] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:15:15.968784] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:15:15.969851] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:15:15.970257] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:15:15.970408] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:15:15-891 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:15:15-891 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:15:15-895 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:15:15-895 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:15:15-900 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:15:15-901 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:15:15-902 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:15:15-903 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:15:15-903 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:15:15-905 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:15:15-905 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:15:15-905 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:15:15-906 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:15:15-906 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:15:15-906 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:15:15-926 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:15:15-929 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:15:15-945 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:15:15-948 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:15:15-948 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:15:15-951 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:15:15-951 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:15:15-952 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:15:15-952 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:15:15-952 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:15:15-952 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:15:15-952 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:15:15-954 {mb_create_pool    :222} allocated buffer(this=0x249db0, data=0xa3d8d000, size=746496, id=160)
+cmpi             00:15:15-954 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:15:15-971 {mb_create_pool    :222} allocated buffer(this=[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+[ntp.c][rkipc_ntp_update]:connect error
+[ntp.c][rkipc_ntp_update]:connect error
+[ntp.c][rkipc_ntp_update]:connect error
+[ntp.c][rkipc_ntp_update]:connect error
+[rkipc.c][sig_proc]:received signo 15 
+[ntp.c][rkipc_ntp_update]:connect error
+[rkipc.c][wait_key_event]:wait key event out
+[storage.c][rk_storage_muxer_deinit_by_id]:begin
+[storage.c][rk_storage_muxer_deinit_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_muxer_deinit_by_id]:begin
+[storage.c][rk_storage_muxer_deinit_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_muxer_deinit_by_id]:begin
+[storage.c][rk_storage_muxer_deinit_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_event_listener_thread]:out
+[storage.c][rkipc_storage_msg_rec_msg_thread]:out
+[storage.c][rkipc_storage_file_monitor_thread]:Exit![storage.c][rkipc_storage_file_scan_thread]:out
+[server.c][rkipc_server_deinit]:rkipc_server_deinit failed
+[system.c][rk_system_deinit]:rk_system_deinit
+[video.c][rk_video_deinit]:rk_video_deinit
+[video.c][rkipc_osd_draw_nn_deinit]:rkipc_osd_draw_nn_deinit
+[video.c][rkipc_osd_draw_nn_deinit]:Destory handle:7 success
+[osd.c][rk_osd_deinit]:begin
+[osd.c][osd_time_server]:exit
+[osd.c][rk_osd_deinit]:i is 0, osd_type is channelName
+[video.c][rkipc_osd_bmp_destroy]:rkipc_osd_bmp_destroy
+[video.c][rkipc_osd_bmp_destroy]:RK_MPI_RGN_DetachFrmChn (0) to venc0 failed with 0xa0038006
+[video.c][rkipc_osd_bmp_destroy]:Destory handle:0 success
+[osd.c][rk_osd_deinit]:i is 1, osd_type is dateTime
+[video.c][rkipc_osd_bmp_destroy]:rkipc_osd_bmp_destroy
+[video.c][rkipc_osd_bmp_destroy]:Destory handle:1 success
+[osd.c][rk_osd_deinit]:i is 2, osd_type is character
+[video.c][rkipc_osd_bmp_destroy]:rkipc_osd_bmp_destroy
+[video.c][rkipc_osd_bmp_destroy]:RK_MPI_RGN_DetachFrmChn (2) to venc0 failed with 0xa0038006
+[video.c][rkipc_osd_bmp_destroy]:Destory handle:2 success
+[osd.c][rk_osd_deinit]:i is 3, osd_type is character
+[video.c][rkipc_osd_bmp_destroy]:rkipc_osd_bmp_destroy
+[video.c][rkipc_osd_bmp_destroy]:RK_MPI_RGN_DetachFrmChn (3) to venc0 failed with 0xa0038006
+[video.c][rkipc_osd_bmp_destroy]:Destory handle:3 success
+[osd.c][rk_osd_deinit]:i is 4, osd_type is privacyMask
+[video.c][rkipc_osd_cover_destroy]:rkipc_osd_cover_destroy
+[video.c][rkipc_osd_cover_destroy]:RK_MPI_RGN_DetachFrmChn (4) to vi pipe failed with 0xa0038006
+[video.c][rkipc_osd_cover_destroy]:Destory handle:4 success
+[osd.c][rk_osd_deinit]:i is 5, osd_type is privacyMask
+[video.c][rkipc_osd_cover_destroy]:rkipc_osd_cover_destroy
+[video.c][rkipc_osd_cover_destroy]:RK_MPI_RGN_DetachFrmChn (5) to vi pipe failed with 0xa0038006
+[video.c][rkipc_osd_cover_destroy]:Destory handle:5 success
+[osd.c][rk_osd_deinit]:i is 6, osd_type is image
+[video.c][rkipc_osd_bmp_destroy]:rkipc_osd_bmp_destroy
+[video.c][rkipc_osd_bmp_destroy]:RK_MPI_RGN_DetachFrmChn (6) to venc0 failed with 0xa0038006
+[video.c][rkipc_osd_bmp_destroy]:Destory handle:6 success
+[osd.c][rk_osd_deinit]:over
+[video.c][rkipc_pipe_0_deinit]:Unbind VI and VENC success
+mpp[3361]: mpp_chan: ctx is no found in chan server
+
+[video.c][rkipc_pipe_0_deinit]:RK_MPI_VENC_DestroyChn success
+[video.c][rkipc_rtsp_deinit]:rkipc_rtsp_deinit
+[isp.c][rk_isp_deinit]:cam_id is 0
+[isp.c][rk_isp_deinit]:rk_aiq_uapi2_sysctl_stop enter
+[isp.c][rk_isp_deinit]:rk_aiq_uapi2_sysctl_deinit enter
+[isp.c][rk_isp_deinit]:rk_aiq_uapi2_sysctl_deinit exit
+RKSockServer     00:20:18-204 {start             :162} [31m[1maccept failed[0m
+[rockiva.c][rkipc_rockiva_deinit]:begin
+[rockiva.c][rkipc_rockiva_deinit]:ROCKIVA_BA_Release over
+[rockiva.c][rkipc_rockiva_deinit]:end
+[ntp.c][rkipc_ntp_update]:connect error
+[param.c][rk_param_deinit]:rk_param_deinit
+0x2620e8, data=0xa2f76000, size=65536, id=162)
+cmpi             00:15:15-971 {mb_create_pool    :222} allocated buffer(this=0x262338, data=0xa2d66000, size=65536, id=163)
+cmpi             00:15:15-972 {attachToChn       :480} The channel attr attach mapid: 0x0.
+MpiAdapterEncode 00:15:16-048 {ma_encode_get_pack:1978} [32m[1mmap ptr: 0xa2a8c000[0m
+cmpi             00:15:16-051 {mb_get_buffer_by_i:422} allocated buffer(this=0x201938, data=(nil), size=0, id=-1)
+RKViChn          00:15:16-052 {getFrameRuntime   :1031} [32m[1m-------------------------------vviBuf->buf_size: 290816[0m
+rga_api version 1.7.3_[6]
+[DEBUG utils.c:186:rtsp_codec_data_parse_from_user_h265] vps 23
+[DEBUG utils.c:194:rtsp_codec_data_parse_from_user_h265] sps 43
+[DEBUG utils.c:202:rtsp_codec_data_parse_from_user_h265] pps 9
+cmpi             00:15:17-050 {mb_get_buffer_by_i:422} allocated buffer(this=0x260190, data=(nil), size=0, id=-1)
+RKViChn          00:15:17-050 {getFrameRuntime   :1031} [32m[1m-------------------------------vviBuf->buf_size: 290816[0m
+RTDeviceV4L2     00:20:17-619 {ispStreamOff      :503} [32m[1mdo ispStreamOff start[0m
+RTDeviceV4L2     00:20:17-647 {ispStreamOff      :514} [32m[1mdo ispStreamOff done[0m
+RTDeviceV4L2     00:20:17-647 {close             :365} [32m[1mdo RTDeviceV4L2 close[0m
+MpiAdapterEncode 00:20:17-747 {ma_encode_destroy :2222} [32m[1munmap ptr: 0xa2a8c000[0m
+RTDeviceV4L2     00:20:17-763 {ispStreamOff      :503} [32m[1mdo ispStreamOff start[0m
+RTDeviceV4L2     00:20:17-946 {ispStreamOff      :514} [32m[1mdo ispStreamOff done[0m
+RTDeviceV4L2     00:20:17-946 {close             :365} [32m[1mdo RTDeviceV4L2 close[0m
+[DEBUG rtsp_demo.c:645:rtsp_del_session] del session path: /live/0
+[DEBUG rtsp_demo.c:645:rtsp_del_session] del session path: /live/1
+MessageParser process loop exit!
+APD_GUARD_STOP=TIME_LIMIT
+@@ dmesg
+[  805.860367] 271: send header for set cfg change rc_mode/fps/gop
+[  805.860531] 755: MPP_ENC_SET_CFG in 
+[  805.860549] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  805.860557] 271: send header for set cfg change rc_mode/fps/gop
+[  805.860660] 755: MPP_ENC_SET_CFG in 
+[  805.860676] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  805.860684] 271: send header for set cfg change rc_mode/fps/gop
+[  805.860793] 755: MPP_ENC_SET_CFG in 
+[  805.860807] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  805.860816] 271: send header for set cfg change rc_mode/fps/gop
+[  805.872631] rkisp queue buf done
+[  805.872772] rkisp-vir0: wrap_line mode can not set the mirror
+[  805.892903] 1062: mode cbr bps [1920000:2048000:2176000] fps fix [10/1] -> fix [10/1] gop i [20] v [0]
+[  867.539857] rockit isp stream off
+[  867.669876] rockit isp stream off
+[  867.765934] rkcif-mipi-lvds: stream[0] start stopping, total mode 0x2, cur 0x2
+[  867.864975] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream off, src_sd: 0e5d1b4e, sd_name:rockchip-csi2-dphy0
+[  867.865040] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream OFF
+[  867.867468] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream_stop stream stop, dphy0
+[  867.867533] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:0, dphy0
+[  867.867582] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:0, dphy0
+[  867.867808] rkcif-mipi-lvds: stream[0] stopping finished, dma_en 0x0
+[  867.883284] stream_cif_mipi_id1: close video, entity use_count 0
+[  867.883349] stream_cif_mipi_id0: close video, entity use_count 1
+[  867.883696] stream_cif_mipi_id0: s_power 0, entity use_count 0
+[  915.576033] stream_cif_mipi_id0: s_power 1, entity use_count 1
+[  915.576816] stream_cif_mipi_id0: s_power 0, entity use_count 0
+[  915.756770] stream_cif_mipi_id0: s_power 1, entity use_count 1
+[  915.757685] stream_cif_mipi_id0: open video, entity use_countt 2
+[  915.757907] stream_cif_mipi_id1: open video, entity use_countt 1
+[  915.770129] rkisp rkisp-vir0: first params buf queue
+[  915.891452] vsys dev open 26
+[  915.908091] rkisp queue buf done
+[  915.908322] rkisp-vir0: wrap_line mode can not set the mirror
+[  915.909140] rkisp_hw ffa00000.rkisp: set isp clk = 198000000Hz
+[  915.909203] rkcif-mipi-lvds: sditf_reinit_mode, mode->rdbk_mode 0, mode->name rkisp-vir0, link_mode 1
+[  915.909235] rkisp-vir0: flip not support width wrap function
+[  915.910844] rkcif-mipi-lvds: stream[0] start streaming
+[  915.911014] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream on, src_sd: 0e5d1b4e, sd_name:rockchip-csi2-dphy0
+[  915.911029] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream ON
+[  915.911079] rockchip-csi2-dphy0: dphy0, data_rate_mbps 506
+[  915.911111] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:1, dphy0
+[  915.911122] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:1, dphy0
+[  915.931117] mpp_vcodec: 44: num_chan = 0
+[  915.931354] mpp_vcodec: 368: attr->max_width = 2304, attr->max_height = 1296
+[  915.939632] mpp_vcodec: 103: chan_entry->handle 681b2ed4, enc 681b2ed4 
+[  915.941070] 755: MPP_ENC_SET_CFG in 
+[  915.941108] 524: MPP_ENC_SET_RC_CFG bps 11197440 [10497600 : 11897280] fps [30:30] gop 60
+[  915.941126] h265e_proc_prep_cfg:414: MPP_ENC_SET_PREP_CFG w:h [2304:1296] stride [2304:1296]
+[  915.941138] 271: send header for set cfg change input/format 
+[  915.941356] 755: MPP_ENC_SET_CFG in 
+[  915.941374] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [30:30] gop 20
+[  915.941383] 271: send header for set cfg change rc_mode/fps/gop
+[  915.941578] 755: MPP_ENC_SET_CFG in 
+[  915.941597] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  915.941607] 271: send header for set cfg change rc_mode/fps/gop
+[  915.943078] 755: MPP_ENC_SET_CFG in 
+[  915.943128] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  915.943145] 271: send header for set cfg change rc_mode/fps/gop
+[  915.943306] 755: MPP_ENC_SET_CFG in 
+[  915.943323] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  915.943332] 271: send header for set cfg change rc_mode/fps/gop
+[  915.943480] 755: MPP_ENC_SET_CFG in 
+[  915.943498] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  915.943509] 271: send header for set cfg change rc_mode/fps/gop
+[  915.954139] rkisp queue buf done
+[  915.954286] rkisp-vir0: wrap_line mode can not set the mirror
+[  915.974535] 1062: mode cbr bps [1920000:2048000:2176000] fps fix [10/1] -> fix [10/1] gop i [20] v [0]
+[ 1217.620959] rockit isp stream off
+[ 1217.750199] rockit isp stream off
+[ 1217.847563] rkcif-mipi-lvds: stream[0] start stopping, total mode 0x2, cur 0x2
+[ 1217.946509] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream off, src_sd: 0e5d1b4e, sd_name:rockchip-csi2-dphy0
+[ 1217.946548] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream OFF
+[ 1217.947690] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream_stop stream stop, dphy0
+[ 1217.947714] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:0, dphy0
+[ 1217.947747] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:0, dphy0
+[ 1217.947961] rkcif-mipi-lvds: stream[0] stopping finished, dma_en 0x0
+[ 1217.959942] stream_cif_mipi_id1: close video, entity use_count 0
+[ 1217.960040] stream_cif_mipi_id0: close video, entity use_count 1
+[ 1217.960357] stream_cif_mipi_id0: s_power 0, entity use_count 0

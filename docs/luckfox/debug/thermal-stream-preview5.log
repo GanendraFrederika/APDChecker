@@ -1,0 +1,3 @@
+[ WARN:0@5.037] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 5028.998000 ms
+{"opened": false, "advertised_fps": 0.0}
+{"frames_decoded": 0, "elapsed_seconds": 0.0, "span_first_last": null, "approx_delivery_fps": null, "saved_images": false}

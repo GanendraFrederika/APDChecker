@@ -1,0 +1,12 @@
+{
+  "release": "v1.5.1",
+  "url": "https://github.com/arduino/arduino-cli/releases/download/v1.5.1/arduino-cli_1.5.1_Windows_64bit.zip",
+  "sha256": "fabe42e0eb04d00e776a66178299ff95a46c623dbc260f997e58fd514853dd40",
+  "local_only": true,
+  "upload_performed": false,
+  "configuration": {
+    "data": "D:\\RUDY\\HAIKAL\\APDChecker\\.tools\\arduino-cli-1.5.1\\data",
+    "downloads": "D:\\RUDY\\HAIKAL\\APDChecker\\.tools\\arduino-cli-1.5.1\\downloads",
+    "user": "D:\\RUDY\\HAIKAL\\APDChecker\\.tools\\arduino-cli-1.5.1\\user"
+  }
+}

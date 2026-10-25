@@ -1,0 +1,57 @@
+{
+  "retrieved_utc": "2026-10-11T02:03:29.621911+00:00",
+  "reference_only": true,
+  "deployed": false,
+  "runtime_replaced": false,
+  "board_inventory": {
+    "rknnmrt_sha256": "9a24388418e861bf2576ae5ec541ba4d23f4f59d3cfbf260b451268f26440f58",
+    "rockiva_sha256": "b7c72aa707cb598c659cd9eaf113b7458f742ccfe93d6f800cbbabe4c3917458",
+    "rknnmrt_static_version_string": "1.4.1b9",
+    "source": "docs/luckfox/debug/reconnect/20261011T012148Z/runtime-summary.json",
+    "api_version_queried": false
+  },
+  "files": [
+    {
+      "repository": "airockchip/rknpu2",
+      "commit": "aacd9d216a1119565c9d48c77f65162c225d4f9c",
+      "repository_path": "runtime/RV1106/Linux/librknn_api/include/rknn_api.h",
+      "github_blob_sha1": "10b3f95af39d7b68257ea3e666d6b6be456572de",
+      "source_url": "https://raw.githubusercontent.com/airockchip/rknpu2/aacd9d216a1119565c9d48c77f65162c225d4f9c/runtime/RV1106/Linux/librknn_api/include/rknn_api.h",
+      "local_path": "docs\\luckfox\\debug\\build-preflight\\sdk-native\\rknn_api-1.4.0.h.txt",
+      "bytes": 28536,
+      "sha256": "2bb8008935f6ea3df421fcc3d294887c804fff5c08e7f29c330b557bd31d65c2"
+    },
+    {
+      "repository": "airockchip/rknpu2",
+      "commit": "aacd9d216a1119565c9d48c77f65162c225d4f9c",
+      "repository_path": "runtime/RV1106/Linux/librknn_api/armhf/librknnmrt.so",
+      "github_blob_sha1": "2e340dbb993e8d834b20c1f43d97fcb58dc5e5d5",
+      "source_url": "https://raw.githubusercontent.com/airockchip/rknpu2/aacd9d216a1119565c9d48c77f65162c225d4f9c/runtime/RV1106/Linux/librknn_api/armhf/librknnmrt.so",
+      "local_path": "docs\\luckfox\\debug\\build-preflight\\sdk-native\\rknnmrt-1.4.0.so.reference",
+      "bytes": 141048,
+      "sha256": "a9f6598406448bfb549deab1f3a735d98ee984e6e5c099b2894d251a6a739844"
+    },
+    {
+      "repository": "LuckfoxTECH/luckfox-pico",
+      "commit": "824b817f889c2cbff1d48fcdb18ab494a68f69d1",
+      "repository_path": "media/iva/iva/librockiva/rockiva-rv1106-Linux/lib/librknnmrt.so",
+      "github_blob_sha1": "f879d05ef98d6b68c2116be6719254a2f73a08f7",
+      "source_url": "https://raw.githubusercontent.com/LuckfoxTECH/luckfox-pico/824b817f889c2cbff1d48fcdb18ab494a68f69d1/media/iva/iva/librockiva/rockiva-rv1106-Linux/lib/librknnmrt.so",
+      "local_path": "docs\\luckfox\\debug\\build-preflight\\sdk-native\\luckfox-sdk-rknnmrt.so.reference",
+      "bytes": 190368,
+      "sha256": "d6259f5f8537acc15b0c3686010109bf4182e654281aad180a44bfd73ce929cc"
+    },
+    {
+      "repository": "LuckfoxTECH/luckfox-pico",
+      "commit": "824b817f889c2cbff1d48fcdb18ab494a68f69d1",
+      "repository_path": "media/iva/iva/librockiva/rockiva-rv1106-Linux/lib/librockiva.so",
+      "github_blob_sha1": "850a8aae1c18f1f87833278fb7d31cd605db715e",
+      "source_url": "https://raw.githubusercontent.com/LuckfoxTECH/luckfox-pico/824b817f889c2cbff1d48fcdb18ab494a68f69d1/media/iva/iva/librockiva/rockiva-rv1106-Linux/lib/librockiva.so",
+      "local_path": "docs\\luckfox\\debug\\build-preflight\\sdk-native\\luckfox-sdk-rockiva.so.reference",
+      "bytes": 671008,
+      "sha256": "af7cade87c3c2882adf49a14fc03e782b4436807c0b9f02e6c90090f425900fa"
+    }
+  ],
+  "compatibility_verified": false,
+  "conclusion": "Downloaded reference runtimes are byte-different from board; does not establish ABI incompatibility or header match. Do not install or use as proven matching SDK."
+}

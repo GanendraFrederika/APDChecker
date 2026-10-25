@@ -1,0 +1,18 @@
+{
+  "default_cutoff_c": 60,
+  "maximum_explicit_cutoff_c": 78,
+  "maximum_seconds": 300,
+  "not_chip_safe_rating": true,
+  "files": [
+    {
+      "file": "/userdata/apd-preview-session.sh",
+      "sha256": "aeb53a30e8514c3aa6335cfd5369e672b158c8ce3ad788555b3e72dad15d8cb8",
+      "backup_sha256": "2ab284fda83eb8d71332a255784a1876786fe30fc73af4b5999ee1a45e0c112c"
+    },
+    {
+      "file": "/userdata/apd-previewctl.sh",
+      "sha256": "1a69772e509c8ff91a3ed9bd3a49767e4dab8523f6e60c0784e49c8dbdfed9d1",
+      "backup_sha256": "94808cefdc6c1429ee2f59d4e3d59369d705868888a56e33d463012faffcba85"
+    }
+  ]
+}

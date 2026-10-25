@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "stage": "NOT_DEPLOYABLE_TEMPLATE",
+  "board": "Luckfox Pico Mini B",
+  "soc": "RV1103",
+  "validated": false,
+  "model": {
+    "architecture": "UNSELECTED_RV1103_COMPATIBLE_DETECTOR",
+    "file": null,
+    "sha256": null,
+    "labels": null,
+    "input_shape": null,
+    "input_layout": null,
+    "input_color_order": null,
+    "quantization": null,
+    "output_contract": null
+  },
+  "backend": {
+    "runtime": "C API matching installed RKNN micro runtime",
+    "version": null,
+    "compiler_abi": "armhf-uclibcgnueabihf (verify against SDK)",
+    "camera_sensor": "SC3336",
+    "capture_size": null,
+    "capture_fps": null,
+    "rotation_degrees": 180
+  },
+  "limits": {
+    "max_people": 8,
+    "max_equipment": 64,
+    "overflow_behavior": "MODEL_ERROR_NO_ACTUATION"
+  },
+  "acceptance": {
+    "thermal_cause_resolved": false,
+    "policy_confirmed": false,
+    "person_ppe_dataset_metrics_verified": false,
+    "model_quantization_parity_verified": false,
+    "native_core_tested": false,
+    "RV1103_memory_and_latency_measured": false,
+    "MCU_firmware_and_relay_polarity_verified": false
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "stage": "HOST_TRACKING_PROTOTYPE",
+  "policy": {
+    "required": [
+      "vest",
+      "shoes",
+      "helmet"
+    ],
+    "confirmed_by_operator": true,
+    "confirmation_scope": "Required PPE and item-to-color mapping only; timing, accuracy, physical unknown display and multi-person selection NOT commissioned."
+  },
+  "indicator_colors": {
+    "vest": "green",
+    "shoes": "yellow",
+    "helmet": "red"
+  },
+  "tracking": {
+    "confidence": 0.4,
+    "match_iou": 0.3,
+    "overlap_fraction": 0.2,
+    "present_seconds": 0.25,
+    "absent_seconds": 1.5,
+    "present_samples": 2,
+    "absent_samples": 3,
+    "evidence_ttl_seconds": 2,
+    "lost_ttl_seconds": 1,
+    "max_gap_seconds": 0.75,
+    "max_frame_age_seconds": 0.75,
+    "max_tracks": 8,
+    "max_equipment": 64
+  },
+  "target": {
+    "deployment_enabled": false,
+    "blockers": [
+      "short_idle_camera_vendor_NPU_tests_passed_but_enclosure_supply_sustained_PPE_acceptance_unresolved",
+      "current_model_lacks_vest_no_vest_and_person",
+      "body_visibility_adapter_not_implemented",
+      "native_tracker_HOST_tested_but_RV1103_camera_NPU_runtime_not_integrated",
+      "multi_person_physical_indicator_policy_not_finalized",
+      "MCU_APD3_candidate_compiled_but_not_uploaded_or_physically_commissioned",
+      "RKNN_engine_candidate_HOST_mocked_only_matching_board_SDK_ABI_and_real_model_unverified",
+      "pan_tilt_HOST_motion_gate_only_servo_driver_capture_metadata_and_MCU_motor_protocol_not_integrated"
+    ]
+  },
+  "actuators": {
+    "enabled": false
+  }
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "uptime": 1088.55,
+    "temp_c": 40.445,
+    "cpu": null,
+    "rkipc": "970",
+    "isp": "rkisp-vir0 Version:v02.00.00\nclk_isp_core 198000000\naclk_isp   198000000\nhclk_isp   148500000\nclk_isp_core_vicap 0\nInterrupt  Cnt:52 ErrCnt:0\nInput      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)\nIsp online frame:25 idle time:32ms v-blank:67343us\nOutput     rkisp_mainpath Format:NV12 Size:2304x1296 Dcrop(0,0|2304x1296) (frame:25 rate:99ms delay:32ms frameloss:0)\nISP2ENC    online warp:324\nMIR_FLIP   mirror:0 flip(mp:0 sp:0 bp:0 mpds:0 bpds:0)\nSDG        OFF(0x6197)\nAWBGAIN    ON(0x6197) (gain0:0x01000100 0x01000100 gain1:0x111111 0x1941e4)\nVSM        OFF(0x0)"
+  },
+  {
+    "uptime": 1093.8,
+    "temp_c": 41.039,
+    "cpu": {
+      "busy_percent": 19.922630560928432,
+      "iowait_percent": 0.0
+    },
+    "rkipc": "970",
+    "isp": "rkisp-vir0 Version:v02.00.00\nclk_isp_core 198000000\naclk_isp   198000000\nhclk_isp   148500000\nclk_isp_core_vicap 0\nInterrupt  Cnt:157 ErrCnt:0\nInput      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)\nIsp online frame:77 working time:32ms v-blank:67312us\nOutput     rkisp_mainpath Format:NV12 Size:2304x1296 Dcrop(0,0|2304x1296) (frame:77 rate:99ms delay:32ms frameloss:0)\nISP2ENC    online warp:324\nMIR_FLIP   mirror:0 flip(mp:0 sp:0 bp:0 mpds:0 bpds:0)\nSDG        OFF(0x6197)\nAWBGAIN    ON(0x6197) (gain0:0x01000100 0x01000100 gain1:0x111111 0x1941e4)\nVSM        OFF(0x0)"
+  },
+  {
+    "uptime": 1099.01,
+    "temp_c": 41.633,
+    "cpu": {
+      "busy_percent": 18.83495145631068,
+      "iowait_percent": 0.0
+    },
+    "rkipc": "970",
+    "isp": "rkisp-vir0 Version:v02.00.00\nclk_isp_core 198000000\naclk_isp   198000000\nhclk_isp   148500000\nclk_isp_core_vicap 0\nInterrupt  Cnt:262 ErrCnt:0\nInput      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)\nIsp online frame:130 idle time:32ms v-blank:67295us\nOutput     rkisp_mainpath Format:NV12 Size:2304x1296 Dcrop(0,0|2304x1296) (frame:130 rate:99ms delay:32ms frameloss:0)\nISP2ENC    online warp:324\nMIR_FLIP   mirror:0 flip(mp:0 sp:0 bp:0 mpds:0 bpds:0)\nSDG        OFF(0x6197)\nAWBGAIN    ON(0x6197) (gain0:0x01000100 0x01000100 gain1:0x111111 0x1941e4)\nVSM        OFF(0x0)"
+  },
+  {
+    "uptime": 1104.26,
+    "temp_c": 42.227,
+    "cpu": {
+      "busy_percent": 20.0,
+      "iowait_percent": 0.0
+    },
+    "rkipc": "970",
+    "isp": "rkisp-vir0 Version:v02.00.00\nclk_isp_core 198000000\naclk_isp   198000000\nhclk_isp   148500000\nclk_isp_core_vicap 0\nInterrupt  Cnt:366 ErrCnt:0\nInput      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)\nIsp online frame:182 idle time:32ms v-blank:67346us\nOutput     rkisp_mainpath Format:NV12 Size:2304x1296 Dcrop(0,0|2304x1296) (frame:182 rate:99ms delay:32ms frameloss:0)\nISP2ENC    online warp:324\nMIR_FLIP   mirror:0 flip(mp:0 sp:0 bp:0 mpds:0 bpds:0)\nSDG        OFF(0x6197)\nAWBGAIN    ON(0x6197) (gain0:0x01000100 0x01000100 gain1:0x111111 0x1941e4)\nVSM        OFF(0x0)"
+  },
+  {
+    "uptime": 1109.5,
+    "temp_c": 42.821,
+    "cpu": {
+      "busy_percent": 18.7984496124031,
+      "iowait_percent": 0.0
+    },
+    "rkipc": "970",
+    "isp": "rkisp-vir0 Version:v02.00.00\nclk_isp_core 198000000\naclk_isp   198000000\nhclk_isp   148500000\nclk_isp_core_vicap 0\nInterrupt  Cnt:471 ErrCnt:0\nInput      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)\nIsp online frame:234 working time:32ms v-blank:67320us\nOutput     rkisp_mainpath Format:NV12 Size:2304x1296 Dcrop(0,0|2304x1296) (frame:234 rate:99ms delay:32ms frameloss:0)\nISP2ENC    online warp:324\nMIR_FLIP   mirror:0 flip(mp:0 sp:0 bp:0 mpds:0 bpds:0)\nSDG        OFF(0x6197)\nAWBGAIN    ON(0x6197) (gain0:0x01000100 0x01000100 gain1:0x111111 0x1941e4)\nVSM        OFF(0x0)"
+  },
+  {
+    "uptime": 1114.71,
+    "temp_c": 43.415,
+    "cpu": {
+      "busy_percent": 19.223300970873787,
+      "iowait_percent": 0.0
+    },
+    "rkipc": "970",
+    "isp": "rkisp-vir0 Version:v02.00.00\nclk_isp_core 198000000\naclk_isp   198000000\nhclk_isp   148500000\nclk_isp_core_vicap 0\nInterrupt  Cnt:576 ErrCnt:0\nInput      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)\nIsp online frame:287 idle time:32ms v-blank:67344us\nOutput     rkisp_mainpath Format:NV12 Size:2304x1296 Dcrop(0,0|2304x1296) (frame:287 rate:99ms delay:32ms frameloss:0)\nISP2ENC    online warp:324\nMIR_FLIP   mirror:0 flip(mp:0 sp:0 bp:0 mpds:0 bpds:0)\nSDG        OFF(0x6197)\nAWBGAIN    ON(0x6197) (gain0:0x01000100 0x01000100 gain1:0x111111 0x1941e4)\nVSM        OFF(0x0)"
+  },
+  {
+    "uptime": 1119.91,
+    "temp_c": 42.821,
+    "cpu": {
+      "busy_percent": 15.503875968992247,
+      "iowait_percent": 0.0
+    },
+    "rkipc": "",
+    "isp": "rkisp-vir0 Version:v02.00.00\nclk_isp_core 198000000\naclk_isp   198000000\nhclk_isp   148500000\nclk_isp_core_vicap 0\nInterrupt  Cnt:644 ErrCnt:0\nInput      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)"
+  },
+  {
+    "uptime": 1125.09,
+    "temp_c": 42.227,
+    "cpu": {
+      "busy_percent": 2.7131782945736433,
+      "iowait_percent": 0.0
+    },
+    "rkipc": "",
+    "isp": "rkisp-vir0 Version:v02.00.00\nclk_isp_core 198000000\naclk_isp   198000000\nhclk_isp   148500000\nclk_isp_core_vicap 0\nInterrupt  Cnt:644 ErrCnt:0\nInput      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)"
+  }
+]

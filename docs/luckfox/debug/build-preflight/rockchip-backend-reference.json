@@ -1,0 +1,45 @@
+{
+  "repository": "airockchip/rknn_model_zoo",
+  "commit": "bad6c7334531becaf90a561988519b7bec34d0ab",
+  "retrieved_utc": "2026-10-11T00:56:26.063822+00:00",
+  "files": [
+    {
+      "url": "https://raw.githubusercontent.com/airockchip/rknn_model_zoo/bad6c7334531becaf90a561988519b7bec34d0ab/examples/yolov5/cpp/rknpu2/yolov5_rv1106_1103.cc",
+      "path": "rockchip-yolov5_rv1106_1103-cc.txt",
+      "sha256": "ff51b20ba5a8549c4ed87853113c23d2aa85a01be0681d8c642ba3aeb3f2717c",
+      "bytes": 7841
+    },
+    {
+      "url": "https://raw.githubusercontent.com/airockchip/rknn_model_zoo/bad6c7334531becaf90a561988519b7bec34d0ab/examples/yolov5/cpp/CMakeLists.txt",
+      "path": "rockchip-CMakeLists-txt.txt",
+      "sha256": "8763e5f1312d19c08c3c443cf5f5f0f7bbe7e2f067a4b2b06e6a7105fb4601d8",
+      "bytes": 2097
+    },
+    {
+      "url": "https://raw.githubusercontent.com/airockchip/rknn_model_zoo/bad6c7334531becaf90a561988519b7bec34d0ab/examples/yolov5/README.md",
+      "path": "rockchip-README-md.txt",
+      "sha256": "fa89a045e8ebd2fb57deecaef4b72ebb531afa9057aaa43a6ccec8ccf286a601",
+      "bytes": 7069
+    },
+    {
+      "url": "https://raw.githubusercontent.com/airockchip/rknn_model_zoo/bad6c7334531becaf90a561988519b7bec34d0ab/examples/yolov5/cpp/yolov5.h",
+      "path": "rockchip-yolov5-h.txt",
+      "sha256": "24f2b63a020bb5aa667f76aad88e43b19ea4e8b50b9f82cb7b06ab5fc98a5b5d",
+      "bytes": 1588
+    },
+    {
+      "url": "https://raw.githubusercontent.com/airockchip/rknn_model_zoo/bad6c7334531becaf90a561988519b7bec34d0ab/examples/yolov5/cpp/postprocess.h",
+      "path": "rockchip-postprocess-h.txt",
+      "sha256": "c4d797a498405ed87142968975bb9ab320c1c1a1b2d84324ace3f16083c83d6c",
+      "bytes": 944
+    },
+    {
+      "url": "https://raw.githubusercontent.com/airockchip/rknn_model_zoo/bad6c7334531becaf90a561988519b7bec34d0ab/examples/yolov5/cpp/postprocess.cc",
+      "path": "rockchip-postprocess-cc.txt",
+      "sha256": "7ff57612f1f5a89ae61e07e685aaed49e1603046e8bf6e75e0bb849d11a5572c",
+      "bytes": 21634
+    }
+  ],
+  "reference_only": true,
+  "board_runtime_abi_verified": false
+}

@@ -1,0 +1,22 @@
+{
+  "template_only": true,
+  "run_id": null,
+  "started_wib": null,
+  "operator": null,
+  "board_serial_verified": null,
+  "camera_fixed_confirmed": false,
+  "servo_disconnected_while_power_off": false,
+  "outputs_disabled_confirmed": false,
+  "cooling_description": null,
+  "actual_camera_profile": null,
+  "model_sha256": null,
+  "model_labels_verified": false,
+  "backend_commit_or_sha256": null,
+  "shoe_definition": null,
+  "human_annotations_independent": false,
+  "participant_consent": false,
+  "sample_count": 0,
+  "evidence_files": [],
+  "result": "NOT_RUN",
+  "production_ready": false
+}

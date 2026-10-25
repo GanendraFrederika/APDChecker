@@ -1,0 +1,10 @@
+APD native core tests passed; NO HARDWARE accessed
+Workshop C policy parity passed; tracker size=1096 bytes; NO HARDWARE
+Backend coordinate vectors PASS: 1024 synthetic boxes; NO CAMERA
+Backend frame contract HOST PASS; no camera/NPU/UART
+Workshop C boundary contracts HOST PASS; no hardware
+MCU C receiver HOST PASS: 263 byte streams; sizeof=216; NO UART/GPIO
+Workshop C/Python parity PASS: 598 synthetic frames; NOT detector accuracy.
+HOST backend transform PASS: 1024 synthetic boxes; NOT live calibration.
+HOST MCU parser tests PASS: 263 streams; NOT AVR/physical commissioning.
+HOST native policy tests PASS; NOT an ARM/NPU/camera deployment.

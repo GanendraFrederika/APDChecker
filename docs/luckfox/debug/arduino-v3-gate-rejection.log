@@ -1,0 +1,10 @@
+D:\RUDY\HAIKAL\APDChecker\arduino\apd_receiver_v3\apd_receiver_v3.ino:22:2: error: #error "Alarm requires verified Uno bootloader/watchdog behavior"
+ #error "Alarm requires verified Uno bootloader/watchdog behavior"
+  ^~~~~
+D:\RUDY\HAIKAL\APDChecker\arduino\apd_receiver_v3\apd_receiver_v3.ino:25:2: error: #error "Commission indicators/site policy before alarm"
+ #error "Commission indicators/site policy before alarm"
+  ^~~~~
+Error during build: exit status 1
+
+Used platform Version Path
+arduino:avr   1.8.8   D:\RUDY\HAIKAL\APDChecker\.tools\arduino-cli-1.5.1\data\packages\arduino\hardware\avr\1.8.8

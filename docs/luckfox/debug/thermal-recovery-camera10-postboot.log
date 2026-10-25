@@ -1,0 +1,2 @@
+{"host_utc": "2026-10-11T00:10:30.949830+00:00", "uptime_seconds": 183.17, "temperature_c": 43.415, "cpu": null, "disk_io_since_previous_sample": null, "memory": "MemTotal:          33560 kB\nMemFree:            1088 kB\nMemAvailable:       9472 kB\nSwapTotal:             0 kB\nSwapFree:              0 kB", "rkipc_pid": "1040", "frequency_khz": "1104000"}
+Evidence saved to D:\RUDY\HAIKAL\APDChecker\docs\luckfox\debug\thermal-audit\20261011T001030613141Z

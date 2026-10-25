@@ -1,0 +1,16 @@
+{
+  "purpose": "restart/RTSP/manual-stop; NOT PPE inference; no images saved",
+  "outputs_enabled": false,
+  "start": "PREVIEW_STARTED GUARDED seconds=30 cutoff_C=60 poll_seconds=2\n\nAPD_CONTROL_EXIT=0\n",
+  "advertised_fps": 10.0,
+  "decoded_frames": 80,
+  "elapsed_seconds": 8.0,
+  "decoded_fps": 10.0,
+  "frame_shape": [
+    1296,
+    2304,
+    3
+  ],
+  "stop": "PREVIEW_STOPPED\n\nAPD_CONTROL_EXIT=0\n",
+  "final_status": "MONITORING/PPE INFERENCE: NOT DEPLOYED\nCAMERA_IDLE\nBOOT_MODE_IDLE\n41633\nAPD_GUARD_START seconds=30 cutoff_raw=60000\nAPD_GUARD_STOP=STOP_REQUEST\n\nAPD_CONTROL_EXIT=0\n"
+}

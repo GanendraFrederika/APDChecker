@@ -1,0 +1,20 @@
+{
+  "_comment": "Setelan rig APD Sentinel. Ubah di sini, bukan di kode. CLI flag menimpa nilai ini.",
+  "camera": {
+    "rotate": 90,
+    "hfov_deg": 52.0,
+    "vfov_deg": 88.0
+  },
+  "servo": {
+    "pan_sign": -1,
+    "tilt_sign": 1
+  },
+  "brain": {
+    "patrol_interval": 60.0,
+    "alarm_delay": 1.0
+  },
+  "alarm_sound": true,
+  "volume": 50,
+  "debug_assume_gloves": false,
+  "_volume": "Volume speaker 0..100 % (sirine, nada, dan suara salam laptop)."
+}

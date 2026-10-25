@@ -1,0 +1,3 @@
+{"opened": true, "advertised_fps": 5.0}
+{"frames_decoded_after_warmup": 134, "approx_delivery_fps": 11.215110886242934, "saved_images": false}
+[hevc @ 0000025d1babad80] Could not find ref with POC 8

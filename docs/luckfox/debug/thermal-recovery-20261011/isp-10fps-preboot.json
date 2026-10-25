@@ -1,0 +1,5 @@
+{
+  "start": "270.28 225.74\nrkisp-vir0 Version:v02.00.00\nclk_isp_core 198000000\naclk_isp   198000000\nhclk_isp   148500000\nclk_isp_core_vicap 0\nInterrupt  Cnt:2800 ErrCnt:0\nInput      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)\nIsp online frame:1399 idle time:32ms v-blank:67370us\nOutput     rkisp_mainpath Format:NV12 Size:2304x1296 Dcrop(0,0|2304x1296) (frame:1399 rate:99ms delay:32ms frameloss:0)\nISP2ENC    online warp:324\nMIR_FLIP   mirror:0 flip(mp:0 sp:0 bp:0 mpds:0 bpds:0)\nSDG        OFF(0x6197)\n",
+  "end": "280.42 234.06\nrkisp-vir0 Version:v02.00.00\nclk_isp_core 198000000\naclk_isp   198000000\nhclk_isp   148500000\nclk_isp_core_vicap 0\nInterrupt  Cnt:3002 ErrCnt:0\nInput      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)\nIsp online frame:1500 idle time:32ms v-blank:67376us\nOutput     rkisp_mainpath Format:NV12 Size:2304x1296 Dcrop(0,0|2304x1296) (frame:1500 rate:99ms delay:32ms frameloss:0)\nISP2ENC    online warp:324\nMIR_FLIP   mirror:0 flip(mp:0 sp:0 bp:0 mpds:0 bpds:0)\nSDG        OFF(0x6197)\n",
+  "measured_isp_fps": 9.960552268244534
+}

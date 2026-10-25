@@ -1,0 +1,11 @@
+{"t":0,"person":[{"label":"person","confidence":0.9,"box":[0,0,100,200]}],"ppe":[{"label":"no_helmet","confidence":0.9,"box":[10,10,40,35]}]}
+{"t":0.75,"person":[{"label":"person","confidence":0.9,"box":[0,0,100,200]}],"ppe":[{"label":"no_helmet","confidence":0.9,"box":[10,10,40,35]}]}
+{"t":1.5,"person":[{"label":"person","confidence":0.9,"box":[0,0,100,200]}],"ppe":[{"label":"no_helmet","confidence":0.9,"box":[10,10,40,35]}]}
+{"t":2,"person":[{"label":"person","confidence":0.9,"box":[0,0,100,200]}],"ppe":[]}
+{"t":2.5,"person":[{"label":"person","confidence":0.9,"box":[0,0,100,200]}],"ppe":[{"label":"helmet","confidence":0.9,"box":[10,10,40,35]},{"label":"mask","confidence":0.9,"box":[10,35,40,60]}]}
+{"t":4,"person":[{"label":"person","confidence":0.9,"box":[0,0,100,200]}],"ppe":[{"label":"helmet","confidence":0.9,"box":[10,10,40,35]},{"label":"mask","confidence":0.9,"box":[10,35,40,60]}]}
+{"t":5.5,"person":[{"label":"person","confidence":0.9,"box":[0,0,100,200]}],"ppe":[{"label":"helmet","confidence":0.9,"box":[10,10,40,35]},{"label":"mask","confidence":0.9,"box":[10,35,40,60]}]}
+{"t":6,"person":[{"label":"person","confidence":0.9,"box":[0,0,100,200]}],"ppe":[{"label":"no_helmet","confidence":0.9,"box":[10,10,40,35]}]}
+{"t":6.75,"person":[{"label":"person","confidence":0.9,"box":[0,0,100,200]}],"ppe":[{"label":"no_helmet","confidence":0.9,"box":[10,10,40,35]}]}
+{"t":7.5,"person":[{"label":"person","confidence":0.9,"box":[0,0,100,200]}],"ppe":[{"label":"no_helmet","confidence":0.9,"box":[10,10,40,35]}]}
+{"t":8,"fault":"CAMERA_LOST"}

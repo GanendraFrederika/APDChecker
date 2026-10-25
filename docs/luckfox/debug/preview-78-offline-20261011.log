@@ -1,0 +1,21 @@
+test_explicit_duration_sent_to_guard (test_luckfox_preview_control.PreviewControlTests.test_explicit_duration_sent_to_guard) ... ok
+test_invalid_action_rejected_before_adb (test_luckfox_preview_control.PreviewControlTests.test_invalid_action_rejected_before_adb) ... ok
+test_invalid_cutoff_before_adb (test_luckfox_preview_control.PreviewControlTests.test_invalid_cutoff_before_adb) ... ok
+test_invalid_duration_before_board_access (test_luckfox_preview_control.PreviewControlTests.test_invalid_duration_before_board_access) ... ok
+test_missing_marker_is_not_success (test_luckfox_preview_control.PreviewControlTests.test_missing_marker_is_not_success) ... ok
+test_nonzero_remote_status_rejected (test_luckfox_preview_control.PreviewControlTests.test_nonzero_remote_status_rejected) ... ok
+test_stop_cannot_have_custom_duration (test_luckfox_preview_control.PreviewControlTests.test_stop_cannot_have_custom_duration) ... ok
+test_stop_success_no_hardware_protocols (test_luckfox_preview_control.PreviewControlTests.test_stop_success_no_hardware_protocols) ... ok
+test_user_cutoff_78_explicit (test_luckfox_preview_control.PreviewControlTests.test_user_cutoff_78_explicit) ... ok
+test_wrong_board_sends_no_control (test_luckfox_preview_control.PreviewControlTests.test_wrong_board_sends_no_control) ... ok
+test_automatic_stop_without_host_control (test_preview_session.SessionGuardTests.test_automatic_stop_without_host_control) ... ok
+test_explicit_78_keeps_sensor_and_time_guards (test_preview_session.SessionGuardTests.test_explicit_78_keeps_sensor_and_time_guards) ... ok
+test_invalid_duration_never_starts_camera (test_preview_session.SessionGuardTests.test_invalid_duration_never_starts_camera) ... ok
+test_no_takeover_or_stale_lock_cleanup (test_preview_session.SessionGuardTests.test_no_takeover_or_stale_lock_cleanup) ... ok
+test_source_has_no_actuator_or_boot_control (test_preview_session.SessionGuardTests.test_source_has_no_actuator_or_boot_control) ... ok
+test_wrong_board_or_bad_sensor_never_starts (test_preview_session.SessionGuardTests.test_wrong_board_or_bad_sensor_never_starts) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 8.413s
+
+OK

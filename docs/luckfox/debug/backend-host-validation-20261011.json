@@ -1,0 +1,103 @@
+{
+  "created_utc": "2026-10-11T01:04:02.505414+00:00",
+  "scope": "HOST_SYNTHETIC_TESTS_ONLY",
+  "production_ready": false,
+  "board_uploaded_this_addition": false,
+  "offline_tests_passed": 177,
+  "native_workshop_parity_frames": 598,
+  "native_geometry_vectors": 1024,
+  "native_boundary_contracts_passed": true,
+  "native_builder_tracker_contracts_passed": true,
+  "compiler": "verified local Zig 0.13.0 cc, HOST only",
+  "flags": [
+    "-std=c99",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-pedantic"
+  ],
+  "limitations": [
+    "No ARM ABI validation",
+    "No camera/RK-MPI/RKNN runtime integration",
+    "No model/dataset accuracy evidence",
+    "No MCU actuation",
+    "ADB last known offline; last camera stop confirmed; current temperature unknown"
+  ],
+  "files": [
+    {
+      "path": "edge/luckfox/backend_frame.h",
+      "bytes": 2660,
+      "sha256": "6abc29c0fd7ed940ae25a0fbf97bc3ce7a065919a8b01a80f2427fb2fdd19dbc"
+    },
+    {
+      "path": "edge/luckfox/backend_frame.c",
+      "bytes": 5523,
+      "sha256": "b2e116c489303efbb8b6cfffb4688645827bc0218f13775c91ebfa4ae70e10bd"
+    },
+    {
+      "path": "edge/luckfox/workshop_tracker.h",
+      "bytes": 3187,
+      "sha256": "07cfd0567ff231b45ac8903a113db453d3f019c077aa801ebce638c46afdcf22"
+    },
+    {
+      "path": "edge/luckfox/workshop_tracker.c",
+      "bytes": 11078,
+      "sha256": "8e8e00e8010f6fc485d2ff75ce7b06b3bf31e77a422b0975da594d82af468d7b"
+    },
+    {
+      "path": "edge/luckfox/backend_contract.h",
+      "bytes": 1737,
+      "sha256": "97a654a1fe30f2d7a11b9664f3c4e9442c3ff76c6e958c8634a934bcb24c6576"
+    },
+    {
+      "path": "edge/luckfox/test_backend_frame.c",
+      "bytes": 7211,
+      "sha256": "7fbaa3c621d1d61e9bd2b1cbb85d67647a75a50ffa4c27337e14ee9e37f43755"
+    },
+    {
+      "path": "edge/luckfox/test_workshop_boundaries.c",
+      "bytes": 4679,
+      "sha256": "b2e9b6a3fdbec1c27c95c4162add63fad0d38f1c22c237f5741f9a01d091b95e"
+    },
+    {
+      "path": "scripts/check_native_core.py",
+      "bytes": 3815,
+      "sha256": "6d28c63b9c708855ca5997f43df926018a063f5b40630b590b8d2352f21d198e"
+    },
+    {
+      "path": "scripts/native_backend_vectors.py",
+      "bytes": 2981,
+      "sha256": "bb01f2f53b3acb766821970b18b8e23dc8fe167d4b37c2e32b5e2e2195be3f6c"
+    },
+    {
+      "path": "scripts/native_workshop_parity.py",
+      "bytes": 9126,
+      "sha256": "7e42008e86e87f5eb23def697a59d38dee28364be485f442396d9433e5e5da0c"
+    },
+    {
+      "path": "tests/test_native_workshop_generation.py",
+      "bytes": 2758,
+      "sha256": "33c84b4f2d95358bd4762fc737b51bbbd06a43d5ab465cbe763315f7495f1046"
+    },
+    {
+      "path": "config/apd_workshop.json",
+      "bytes": 1341,
+      "sha256": "933ae7144b4650dced9a5e1a68a62ecf14581d6629f053fb3f83f2713e74056e"
+    },
+    {
+      "path": "docs/luckfox/debug/native-tests-20261011-backend.log",
+      "bytes": 514,
+      "sha256": "705ea42bf2cfc01d010d58de97ad7654ee0ad0fadab20248bb933daef2c2c2cc"
+    },
+    {
+      "path": "docs/luckfox/debug/offline-tests-20261011-backend.log",
+      "bytes": 22922,
+      "sha256": "7446f9fd372cb49f0098fce1aa1621be502e124a21bc0b4de89181b774a555ea"
+    },
+    {
+      "path": "docs/luckfox/debug/build-preflight/rockchip-backend-reference.json",
+      "bytes": 2163,
+      "sha256": "4625767121e83bb5a95a62a7350a485b913aa22dc33e740ad2f7b905a40f23fb"
+    }
+  ]
+}

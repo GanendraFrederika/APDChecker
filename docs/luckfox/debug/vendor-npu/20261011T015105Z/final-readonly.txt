@@ -1,0 +1,20 @@
+1268.04 1082.13
+f1c3063a-4fab-478e-bf10-b7d84b9fda1d
+MemAvailable:      15368 kB
+CmaFree:               0 kB
+ 34:       6540     GIC-0 141 Level     ff660000.npu
+/userdata/video0:
+total 0
+drwxr-xr-x    2 root     root           160 Jan  1 00:00 [1;34m.[m
+drwxrwxr-x    5 1005     1005          1224 Jan  1 00:05 [1;34m..[m
+
+/userdata/video1:
+total 0
+drwxr-xr-x    2 root     root           160 Jan  1 00:00 [1;34m.[m
+drwxrwxr-x    5 1005     1005          1224 Jan  1 00:05 [1;34m..[m
+
+/userdata/video2:
+total 0
+drwxr-xr-x    2 root     root           160 Jan  1 00:00 [1;34m.[m
+drwxrwxr-x    5 1005     1005          1224 Jan  1 00:05 [1;34m..[m
+END_FINAL_CHECK

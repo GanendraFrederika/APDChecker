@@ -1,0 +1,4 @@
+APD native core tests passed; NO HARDWARE accessed
+Workshop C policy parity passed; tracker size=1096 bytes; NO HARDWARE
+Workshop C/Python parity PASS: 598 synthetic frames; NOT detector accuracy.
+HOST native policy tests PASS; NOT an ARM/NPU/camera deployment.

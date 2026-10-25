@@ -1,0 +1,120 @@
+{
+  "created_utc": "2026-10-11T01:19:18.652468+00:00",
+  "scope": "HOST_SYNTHETIC_AND_AVR_COMPILE_ONLY",
+  "mcu_hardware_tested": false,
+  "upload_performed": false,
+  "serial_uart_opened": false,
+  "production_ready": false,
+  "offline_tests_passed": 186,
+  "mcu_host_byte_streams": 263,
+  "tracker_codec_receiver_replay_frames": 598,
+  "mcu_host_struct_size_bytes": 216,
+  "default_uno_flash_bytes": 6404,
+  "default_uno_globals_bytes": 657,
+  "compiler_branch_uno_flash_bytes": 7256,
+  "compiler_branch_uno_globals_bytes": 678,
+  "commissioning_gates_source_default": false,
+  "toolchain": "portable Arduino CLI 1.5.1, arduino:avr 1.8.8, AVR GCC 7.3.0-atmel3.6.1-arduino7",
+  "files": [
+    {
+      "path": "arduino/apd_receiver_v3/apd_receiver_v3.ino",
+      "bytes": 3241,
+      "sha256": "41c584ddb9d3d5bd497f7cbf62d7bbb7689aea0c27bebe774c55ca0398b571b8"
+    },
+    {
+      "path": "arduino/apd_receiver_v3/receiver_core.c",
+      "bytes": 8013,
+      "sha256": "e2555be10985b90bdf77e6e2fcaff0cd60c60a00871781f84abfd003531a0468"
+    },
+    {
+      "path": "arduino/apd_receiver_v3/receiver_core.h",
+      "bytes": 1635,
+      "sha256": "051aa12015d8e304cfbf6d9a81215ab7dc3047fcaf44c01430a9ca52c27307eb"
+    },
+    {
+      "path": "arduino/apd_receiver/apd_receiver.ino",
+      "bytes": 7648,
+      "sha256": "3ede46b9a057de9fe7c4697315c728bbdf9d95bd5dda786c043da8fcf2ca37a4"
+    },
+    {
+      "path": "edge/luckfox/mcu_frame.c",
+      "bytes": 3943,
+      "sha256": "4b6b16a2c2fd853f09bfa49a6a19837f0b23af1356e84b84dd2408f1c4982dc2"
+    },
+    {
+      "path": "edge/luckfox/mcu_frame.h",
+      "bytes": 1189,
+      "sha256": "1a65a4de59aa4ddf5778382c26cb2bd0286aec3c86eeddb67870832c40162c46"
+    },
+    {
+      "path": "python/apd_runtime/mcu_protocol.py",
+      "bytes": 4863,
+      "sha256": "7da0d92705b1005826c77ee9f23d8be4c4f7127bed03dd6235d9c04967fdcd75"
+    },
+    {
+      "path": "scripts/native_mcu_vectors.py",
+      "bytes": 8394,
+      "sha256": "ea8b09e1e8fb9d2ca4d4910453bc501c6ae66aedee59f2b1575fa6fcad36ab34"
+    },
+    {
+      "path": "scripts/native_workshop_parity.py",
+      "bytes": 11867,
+      "sha256": "ab92fc97ededa3304cd137a30321e3e097221e8f2e501a49c6543f93d2d7e33c"
+    },
+    {
+      "path": "scripts/check_native_core.py",
+      "bytes": 4801,
+      "sha256": "0dcaa9881cf1cd1a0ca8ba438756f02e07335c8c698fb7cbacacce939a17b085"
+    },
+    {
+      "path": "tests/test_mcu_protocol.py",
+      "bytes": 3849,
+      "sha256": "d26179640f5099f291ce6481c53adcfb09aa8116e5e8df43b5ce0763bad9dade"
+    },
+    {
+      "path": "tests/test_native_workshop_generation.py",
+      "bytes": 3870,
+      "sha256": "bb8264df53d1084c49d7b70ba6306ade121de5d261c276a6b89934da397bf526"
+    },
+    {
+      "path": "docs/luckfox/debug/native-tests-20261011-mcu.log",
+      "bytes": 658,
+      "sha256": "17eed450eaa0c5d95a8b1131906025da6fa1b3e53c5e63bcb3d225379d7bd6b3"
+    },
+    {
+      "path": "docs/luckfox/debug/offline-tests-20261011-mcu.log",
+      "bytes": 24229,
+      "sha256": "24097406e9c58fcb52bbd79ec7d8b4c458e898808823caf1f260450cc3104e0e"
+    },
+    {
+      "path": "docs/luckfox/debug/arduino-v3-build.log",
+      "bytes": 200,
+      "sha256": "f0b8519503afc9ed0b311a4406f1756dc663348e27d367df67dafbed4362c385"
+    },
+    {
+      "path": "docs/luckfox/debug/arduino-v3-build/apd_receiver_v3.ino.hex",
+      "bytes": 18034,
+      "sha256": "828f66613e5d77bddcb4d3b60cb3a45492526c6592670223247c682839c5b271"
+    },
+    {
+      "path": "docs/luckfox/debug/arduino-v3-compile-only-active-low.log",
+      "bytes": 200,
+      "sha256": "27088f6a5d3a0598def8aedca8f30c235bd26b32102caf5626d2d153e919d4c2"
+    },
+    {
+      "path": "docs/luckfox/debug/arduino-v3-compile-only-active-high.log",
+      "bytes": 200,
+      "sha256": "27088f6a5d3a0598def8aedca8f30c235bd26b32102caf5626d2d153e919d4c2"
+    },
+    {
+      "path": "docs/luckfox/debug/arduino-v3-gate-rejection.log",
+      "bytes": 614,
+      "sha256": "9681b20f2edf7866ae070b82663fe488e5d07c91c8989d1314b0f70e07af6326"
+    },
+    {
+      "path": "docs/luckfox/debug/build-preflight/arduino-host-toolchain.json",
+      "bytes": 547,
+      "sha256": "dae585dfa0d46ed5c2a6198f21e24bcb4bf5cddcf7837e18f4b0efd074b53742"
+    }
+  ]
+}

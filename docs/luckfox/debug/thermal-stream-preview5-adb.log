@@ -1,0 +1,3 @@
+{"opened": true, "advertised_fps": 25.0}
+{"frames_decoded": 321, "elapsed_seconds": 12.031000000002678, "span_first_last": 11.937999999994645, "approx_delivery_fps": 26.805159993310735, "saved_images": false}
+[hevc @ 0000028d5d94d240] Could not find ref with POC 4

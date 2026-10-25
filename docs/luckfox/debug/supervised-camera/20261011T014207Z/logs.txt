@@ -1,0 +1,261 @@
+Session: 12345678
+Public: OPTIONS, DESCRIBE, SETUP, PLAY, PAUSE, TEARDOWN
+Server: rtsp_demo
+
+[ntp.c][rkipc_ntp_update]:connect error
+[DEBUG rtsp_msg.c:865:rtsp_msg_parse_from_array] 
+OPTIONS rtsp://127.0.0.1:18554/live/0 RTSP/1.0
+CSeq: 6
+User-Agent: Lavf61.7.100
+Session: 12345678
+
+[DEBUG rtsp_demo.c:725:rtsp_handle_OPTIONS] 
+[DEBUG rtsp_msg.c:998:rtsp_msg_build_to_array] 
+RTSP/1.0 200 OK
+CSeq: 6
+Date: Thu Jan  1 00:07:31 1970
+Session: 12345678
+Public: OPTIONS, DESCRIBE, SETUP, PLAY, PAUSE, TEARDOWN
+Server: rtsp_demo
+
+[DEBUG rtsp_msg.c:865:rtsp_msg_parse_from_array] 
+OPTIONS rtsp://127.0.0.1:18554/live/0 RTSP/1.0
+CSeq: 7
+User-Agent: Lavf61.7.100
+Session: 12345678
+
+[DEBUG rtsp_demo.c:725:rtsp_handle_OPTIONS] 
+[DEBUG rtsp_msg.c:998:rtsp_msg_build_to_array] 
+RTSP/1.0 200 OK
+CSeq: 7
+Date: Thu Jan  1 00:08:01 1970
+Session: 12345678
+Public: OPTIONS, DESCRIBE, SETUP, PLAY, PAUSE, TEARDOWN
+Server: rtsp_demo
+
+[ntp.c][rkipc_ntp_update]:connect error
+[DEBUG rtsp_msg.c:865:rtsp_msg_parse_from_array] 
+OPTIONS rtsp://127.0.0.1:18554/live/0 RTSP/1.0
+CSeq: 8
+User-Agent: Lavf61.7.100
+Session: 12345678
+
+[DEBUG rtsp_demo.c:725:rtsp_handle_OPTIONS] 
+[DEBUG rtsp_msg.c:998:rtsp_msg_build_to_array] 
+RTSP/1.0 200 OK
+CSeq: 8
+Date: Thu Jan  1 00:08:31 1970
+Session: 12345678
+Public: OPTIONS, DESCRIBE, SETUP, PLAY, PAUSE, TEARDOWN
+Server: rtsp_demo
+
+[DEBUG rtsp_msg.c:865:rtsp_msg_parse_from_array] 
+OPTIONS rtsp://127.0.0.1:18554/live/0 RTSP/1.0
+CSeq: 9
+User-Agent: Lavf61.7.100
+Session: 12345678
+
+[DEBUG rtsp_demo.c:725:rtsp_handle_OPTIONS] 
+[DEBUG rtsp_msg.c:998:rtsp_msg_build_to_array] 
+RTSP/1.0 200 OK
+CSeq: 9
+Date: Thu Jan  1 00:09:01 1970
+Session: 12345678
+Public: OPTIONS, DESCRIBE, SETUP, PLAY, PAUSE, TEARDOWN
+Server: rtsp_demo
+
+[ntp.c][rkipc_ntp_update]:connect error
+[DEBUG rtsp_msg.c:865:rtsp_msg_parse_from_array] 
+OPTIONS rtsp://127.0.0.1:18554/live/0 RTSP/1.0
+CSeq: 10
+User-Agent: Lavf61.7.100
+Session: 12345678
+
+[DEBUG rtsp_demo.c:725:rtsp_handle_OPTIONS] 
+[DEBUG rtsp_msg.c:998:rtsp_msg_build_to_array] 
+RTSP/1.0 200 OK
+CSeq: 10
+Date: Thu Jan  1 00:09:31 1970
+Session: 12345678
+Public: OPTIONS, DESCRIBE, SETUP, PLAY, PAUSE, TEARDOWN
+Server: rtsp_demo
+
+[DEBUG rtsp_msg.c:865:rtsp_msg_parse_from_array] 
+OPTIONS rtsp://127.0.0.1:18554/live/0 RTSP/1.0
+CSeq: 11
+User-Agent: Lavf61.7.100
+Session: 12345678
+
+[DEBUG rtsp_demo.c:725:rtsp_handle_OPTIONS] 
+[DEBUG rtsp_msg.c:998:rtsp_msg_build_to_array] 
+RTSP/1.0 200 OK
+CSeq: 11
+Date: Thu Jan  1 00:10:01 1970
+Session: 12345678
+Public: OPTIONS, DESCRIBE, SETUP, PLAY, PAUSE, TEARDOWN
+Server: rtsp_demo
+
+[ntp.c][rkipc_ntp_update]:connect error
+[DEBUG rtsp_msg.c:865:rtsp_msg_parse_from_array] 
+OPTIONS rtsp://127.0.0.1:18554/live/0 RTSP/1.0
+CSeq: 12
+User-Agent: Lavf61.7.100
+Session: 12345678
+
+[DEBUG rtsp_demo.c:725:rtsp_handle_OPTIONS] 
+[DEBUG rtsp_msg.c:998:rtsp_msg_build_to_array] 
+RTSP/1.0 200 OK
+CSeq: 12
+Date: Thu Jan  1 00:10:31 1970
+Session: 12345678
+Public: OPTIONS, DESCRIBE, SETUP, PLAY, PAUSE, TEARDOWN
+Server: rtsp_demo
+
+[DEBUG rtsp_msg.c:865:rtsp_msg_parse_from_array] 
+OPTIONS rtsp://127.0.0.1:18554/live/0 RTSP/1.0
+CSeq: 13
+User-Agent: Lavf61.7.100
+Session: 12345678
+
+[DEBUG rtsp_demo.c:725:rtsp_handle_OPTIONS] 
+[DEBUG rtsp_msg.c:998:rtsp_msg_build_to_array] 
+RTSP/1.0 200 OK
+CSeq: 13
+Date: Thu Jan  1 00:11:01 1970
+Session: 12345678
+Public: OPTIONS, DESCRIBE, SETUP, PLAY, PAUSE, TEARDOWN
+Server: rtsp_demo
+
+[WARN  rtsp_demo.c:1302:rtp_tx_data] rtp over tcp send 1456 bytes to 127.0.0.1 failed: Broken pipe
+[DEBUG rtsp_msg.c:865:rtsp_msg_parse_from_array] 
+TEARDOWN rtsp://127.0.0.1:18554/live/0 RTSP/1.0
+CSeq: 14
+User-Agent: Lavf61.7.100
+Session: 12345678
+
+[DEBUG rtsp_demo.c:1061:rtsp_handle_TEARDOWN] 
+[DEBUG rtsp_msg.c:998:rtsp_msg_build_to_array] 
+RTSP/1.0 200 OK
+CSeq: 14
+Date: Thu Jan  1 00:11:06 1970
+Session: 12345678
+Server: rtsp_demo
+
+[ERROR rtsp_demo.c:1203:rtsp_send_msg] rtsp response send failed: Broken pipe
+[DEBUG rtsp_demo.c:1158:rtsp_recv_msg] peer closed
+[INFO  rtsp_demo.c:427:rtsp_del_client_connection] delete client 59 from 127.0.0.1
+[ntp.c][rkipc_ntp_update]:connect error
+[server.c][rkipc_server_deinit]:rkipc_server_deinit failed
+mpp[993]: mpp_chan: ctx is no found in chan server
+
+MpiAdapterEncode 00:11:19-531 {ma_encode_destroy :2222} [32m[1munmap ptr: 0xa33bb000[0m
+RTDeviceV4L2     00:11:19-546 {ispStreamOff      :503} [32m[1mdo ispStreamOff start[0m
+RTDeviceV4L2     00:11:19-729 {ispStreamOff      :514} [32m[1mdo ispStreamOff done[0m
+RTDeviceV4L2     00:11:19-729 {close             :365} [32m[1mdo RTDeviceV4L2 close[0m
+[DEBUG rtsp_demo.c:645:rtsp_del_session] del session path: /live/0
+[DEBUG rtsp_demo.c:645:rtsp_del_session] del session path: /live/1
+MessageParser process loop exit!
+RKSockServer     00:11:20-000 {start             :162} [31m[1maccept failed[0m
+[ntp.c][rkipc_ntp_update]:connect error
+APD_GUARD_STOP=TIME_LIMIT
+@@ dmesg
+[    2.868221] sc3336 4-0030: supply dvdd not found, using dummy regulator
+[    2.886002] sc3336 4-0030: Detected OV00cc41 sensor
+[    2.886076] rockchip-csi2-dphy csi2-dphy0: dphy0 matches m00_b_sc3336 4-0030:bus type 5
+[    2.905848] rockchip-pinctrl pinctrl: pin gpio3-20 already requested by 4-0030; cannot claim for 4-0030-2
+[    2.905875] rockchip-pinctrl pinctrl: pin-116 (4-0030-2) status -22
+[    2.905907] rockchip-pinctrl pinctrl: could not request pin 116 (gpio3-20) from group mipi-refclk-out0  on device rockchip-pinctrl
+[    2.905918] sc530ai 4-0030-2: Error applying setting, reverse things back
+[    2.905961] sc530ai: probe of 4-0030-2 failed with error -22
+[    2.908264] rkcif rkcif-mipi-lvds: clear unready subdev num: 2
+[    2.910920] rkcif-mipi-lvds: Async subdev notifier completed
+[    2.912783] rkisp-vir0: Async subdev notifier completed
+[    2.913808] rkisp rkisp-vir0: clear unready subdev num: 0
+[    2.954501] rga: rga2, irq = 35, match scheduler
+[    2.956807] rga: rga2 hardware loaded successfully, hw_version:3.3.87975.
+[    2.956853] rga: rga2 probe successfully
+[    2.957885] rga_iommu: IOMMU binding successfully, default mapping core[0x4]
+[    2.959416] rga: Module initialized. v1.2.23
+[    3.058542] mpp_vcodec: loading out-of-tree module taints kernel.
+[    3.084108] file system registered
+[    3.084881] mpp_vcodec: init new
+[    3.085058] mpp_service mpp-srv: 3760314f author: Zhihua Wang 2023-01-12 [vcodec]: check chan create when destroy
+[    3.085072] mpp_service mpp-srv: probe start
+[    3.089059] mpp_rkvenc_540c ffa50000.rkvenc: probing start
+[    3.090982] mpp_rkvenc_540c ffa50000.rkvenc: probing finish
+[    3.091512] mpp_vepu_pp ffa60000.rkvenc-pp: probe device
+[    3.091633] mpp_vepu_pp ffa60000.rkvenc-pp: shared_rst_a_pp is not found!
+[    3.091645] vepu_pp_init:528: No aclk reset resource define
+[    3.091654] mpp_vepu_pp ffa60000.rkvenc-pp: shared_rst_h_pp is not found!
+[    3.091661] vepu_pp_init:531: No hclk reset resource define
+[    3.094429] mpp_vepu_pp ffa60000.rkvenc-pp: probing finish
+[    3.094743] mpp_service mpp-srv: probe success
+[    3.122505] RKNPU ff660000.npu: RKNPU: rknpu iommu device-tree entry not found!, using non-iommu mode
+[    3.123445] RKNPU ff660000.npu: RKNPU: Initialized RKNPU driver: v0.8.2 for 20220829
+[    3.123582] RKNPU ff660000.npu: dev_pm_opp_set_regulators: no regulator (rknpu) found: -19
+[    3.162269] using random self ethernet address
+[    3.162315] using random host ethernet address
+[    3.213516] Mass Storage Function, version: 2009/09/11
+[    3.213881] LUN: removable file: (no medium)
+[    3.368310] rockit_load start
+[    3.378124] rockit_load end
+[    3.438384] read descriptors
+[    3.438489] read strings
+[    4.401063] usb0: HOST MAC d2:71:44:83:6f:ed
+[    4.401090] usb0: MAC c6:5b:b5:fb:d8:b8
+[    4.525133] dwc3 ffb00000.usb: device reset
+[    4.625044] android_work: sent uevent USB_STATE=CONNECTED
+[    4.705738] android_work: sent uevent USB_STATE=CONFIGURED
+[  116.039642] adbd (637): /proc/637/oom_adj is deprecated, please use /proc/637/oom_score_adj instead.
+[  377.262552] stream_cif_mipi_id0: s_power 1, entity use_count 1
+[  377.263347] stream_cif_mipi_id0: s_power 0, entity use_count 0
+[  377.528295] stream_cif_mipi_id0: s_power 1, entity use_count 1
+[  377.530815] stream_cif_mipi_id0: open video, entity use_countt 2
+[  377.531044] stream_cif_mipi_id1: open video, entity use_countt 1
+[  377.566738] rkisp rkisp-vir0: first params buf queue
+[  377.708294] vsys dev open 26
+[  377.751316] rkisp queue buf done
+[  377.751511] rkisp-vir0: wrap_line mode can not set the mirror
+[  377.751966] rkisp_hw ffa00000.rkisp: set isp clk = 198000000Hz
+[  377.752588] rkcif-mipi-lvds: sditf_reinit_mode, mode->rdbk_mode 0, mode->name rkisp-vir0, link_mode 1
+[  377.752629] rkisp-vir0: flip not support width wrap function
+[  377.754234] rkcif-mipi-lvds: stream[0] start streaming
+[  377.754441] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream on, src_sd: 0e5d1b4e, sd_name:rockchip-csi2-dphy0
+[  377.754454] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream ON
+[  377.754505] rockchip-csi2-dphy0: dphy0, data_rate_mbps 506
+[  377.754534] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:1, dphy0
+[  377.754547] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:1, dphy0
+[  377.783847] mpp_vcodec: 44: num_chan = 0
+[  377.784561] mpp_vcodec: 368: attr->max_width = 2304, attr->max_height = 1296
+[  377.790549] mpp_vcodec: 103: chan_entry->handle c138de1b, enc c138de1b 
+[  377.799303] 755: MPP_ENC_SET_CFG in 
+[  377.799346] 524: MPP_ENC_SET_RC_CFG bps 11197440 [10497600 : 11897280] fps [30:30] gop 60
+[  377.799365] h265e_proc_prep_cfg:414: MPP_ENC_SET_PREP_CFG w:h [2304:1296] stride [2304:1296]
+[  377.799377] 271: send header for set cfg change input/format 
+[  377.800433] 755: MPP_ENC_SET_CFG in 
+[  377.800459] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [30:30] gop 20
+[  377.800475] 271: send header for set cfg change rc_mode/fps/gop
+[  377.801235] 755: MPP_ENC_SET_CFG in 
+[  377.801258] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  377.801284] 271: send header for set cfg change rc_mode/fps/gop
+[  377.801463] 755: MPP_ENC_SET_CFG in 
+[  377.801480] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  377.801492] 271: send header for set cfg change rc_mode/fps/gop
+[  377.801614] 755: MPP_ENC_SET_CFG in 
+[  377.801630] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  377.801638] 271: send header for set cfg change rc_mode/fps/gop
+[  377.804740] 755: MPP_ENC_SET_CFG in 
+[  377.804772] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[  377.804790] 271: send header for set cfg change rc_mode/fps/gop
+[  377.817972] 1062: mode cbr bps [1920000:2048000:2176000] fps fix [10/1] -> fix [10/1] gop i [20] v [0]
+[  679.534175] rockit isp stream off
+[  679.630693] rkcif-mipi-lvds: stream[0] start stopping, total mode 0x2, cur 0x2
+[  679.729959] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream off, src_sd: 0e5d1b4e, sd_name:rockchip-csi2-dphy0
+[  679.729999] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream OFF
+[  679.731142] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream_stop stream stop, dphy0
+[  679.731168] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:0, dphy0
+[  679.731203] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:0, dphy0
+[  679.731415] rkcif-mipi-lvds: stream[0] stopping finished, dma_en 0x0
+[  679.743090] stream_cif_mipi_id1: close video, entity use_count 0
+[  679.743140] stream_cif_mipi_id0: close video, entity use_count 1
+[  679.743484] stream_cif_mipi_id0: s_power 0, entity use_count 0

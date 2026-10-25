@@ -1,0 +1,12 @@
+{
+  "toolchain": "Zig 0.13.0 cc",
+  "origin": "ziglang PyPI wheel; compared to PyPI metadata SHA256",
+  "archive_sha256": "b64b2aa936ebbfeecfbb2611df331a5474edebe1246b98c2f56d6ae4d58b71fc",
+  "expected_sha256": "b64b2aa936ebbfeecfbb2611df331a5474edebe1246b98c2f56d6ae4d58b71fc",
+  "host_policy_tests_only": true,
+  "RV1103_ABI_validated": false,
+  "native_core_tests_passed": true,
+  "workshop_parity_frames": 598,
+  "tracker_size_host_bytes": 1096,
+  "board_deployed": false
+}

@@ -1,0 +1,26 @@
+{
+  "serial": "2be53eb6debe9106",
+  "requested_seconds": 300,
+  "requested_cutoff_c": 78,
+  "cutoff_not_chip_rating": true,
+  "summary": {
+    "samples": 56,
+    "temperature_min_c": 41.633,
+    "temperature_max_c": 46.98,
+    "temperature_mean_c": 45.54789285714286,
+    "cpu_busy_mean_percent": 26.738034435940293,
+    "thermal_safety_verified": false,
+    "measured_camera_fps": null,
+    "measured_inference_fps": null
+  },
+  "errors": [],
+  "camera_stop_confirmed": true,
+  "persistent_config_unchanged": true,
+  "vendor_npu_interrupt_activity_observed": true,
+  "measured_inference_fps": null,
+  "requested_npu_fps": 3,
+  "ppe_inference": false,
+  "production_ready": false,
+  "images_saved": false,
+  "cooling": "operator-reported nearby fan, no installed heatsink yet"
+}

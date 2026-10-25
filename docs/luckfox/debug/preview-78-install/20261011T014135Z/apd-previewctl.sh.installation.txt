@@ -1,0 +1,2 @@
+INSTALL_EXIT=0
+1a69772e509c8ff91a3ed9bd3a49767e4dab8523f6e60c0784e49c8dbdfed9d1  /userdata/apd-previewctl.sh

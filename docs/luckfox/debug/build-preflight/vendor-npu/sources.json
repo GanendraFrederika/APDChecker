@@ -1,0 +1,60 @@
+{
+  "rkipc_git_tree": "67b823975e2ea5b71e69bf11afc6f00b55a950d3",
+  "executed": false,
+  "board_match_unverified": true,
+  "files": [
+    {
+      "path": "common/rockiva/rockiva.c",
+      "git_blob": "dbf9043a1766565ac715cfee1a87b8be31119e66",
+      "source_url": "https://api.github.com/repos/LuckfoxTECH/luckfox-pico/git/blobs/dbf9043a1766565ac715cfee1a87b8be31119e66",
+      "file": "common__rockiva__rockiva.c.txt",
+      "sha256": "c085b75591838137d6e47e267ee62876464395f0df24ce689e69037ba09d3ba8"
+    },
+    {
+      "path": "common/rockiva/rockiva.h",
+      "git_blob": "2c01cd182b49b1cb124be895eed7c0477ecdd580",
+      "source_url": "https://api.github.com/repos/LuckfoxTECH/luckfox-pico/git/blobs/2c01cd182b49b1cb124be895eed7c0477ecdd580",
+      "file": "common__rockiva__rockiva.h.txt",
+      "sha256": "285dba077557ef0d40df86b3018f4290aa5a2b5043d89222cfc76f3a378ab917"
+    },
+    {
+      "path": "src/rv1103_ipc/video/video.c",
+      "git_blob": "1455dadc4311064c2e5f310825f418b83d271658",
+      "source_url": "https://api.github.com/repos/LuckfoxTECH/luckfox-pico/git/blobs/1455dadc4311064c2e5f310825f418b83d271658",
+      "file": "src__rv1103_ipc__video__video.c.txt",
+      "sha256": "0eecb578e403138a2acca01a6772e0339bfb0f14b125c444a75a7f6e026ee502"
+    },
+    {
+      "path": "src/rv1103_ipc/main.c",
+      "git_blob": "1d9395862968f7c412aa84659abc4cfae4981bcf",
+      "source_url": "https://api.github.com/repos/LuckfoxTECH/luckfox-pico/git/blobs/1d9395862968f7c412aa84659abc4cfae4981bcf",
+      "file": "src__rv1103_ipc__main.c.txt",
+      "sha256": "4cae5e60a8d091fb8117f6cc5fa5e63a7657aad1f74b657778fc30a50992c89b"
+    },
+    {
+      "path": "src/rv1103_ipc/rkipc-300w.ini",
+      "git_blob": "aad2682c8a6d606ef7e773c16bcfb7bb93893e20",
+      "source_url": "https://api.github.com/repos/LuckfoxTECH/luckfox-pico/git/blobs/aad2682c8a6d606ef7e773c16bcfb7bb93893e20",
+      "file": "src__rv1103_ipc__rkipc-300w.ini.txt",
+      "sha256": "5fbcb88ce5a458da7e6ad0ccf69ada4d26f52bb4911fdf70cfb68bc95edaa076"
+    },
+    {
+      "path": "src/rv1103_ipc/CMakeLists.txt",
+      "git_blob": "1180651a9fdbab9df018121ca591b19fdafe315b",
+      "source_url": "https://api.github.com/repos/LuckfoxTECH/luckfox-pico/git/blobs/1180651a9fdbab9df018121ca591b19fdafe315b",
+      "file": "src__rv1103_ipc__CMakeLists.txt.txt",
+      "sha256": "945c0796f1fd7304346887c2b817411d51eda34ecf5866e0d75cec2b13b44bf3"
+    },
+    {
+      "path": "LICENSE",
+      "git_blob": "d04b1cb4cceb903fa73136ddb0078f58a575027b",
+      "source_url": "https://api.github.com/repos/LuckfoxTECH/luckfox-pico/git/blobs/d04b1cb4cceb903fa73136ddb0078f58a575027b",
+      "file": "LICENSE.txt",
+      "sha256": "aafd7626b9386c8beb579e38a93ca6a5478555408e18ae4bc8e0f9549904e645"
+    }
+  ],
+  "repository_commit_observed": "824b817f889c2cbff1d48fcdb18ab494a68f69d1",
+  "full_repo_tree_truncated": true,
+  "rkipc_subtree_complete": true,
+  "commit_to_subtree_independently_verified": false
+}

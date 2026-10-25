@@ -1,0 +1,327 @@
+{
+  "recorded_utc": "2026-10-11T01:57:16.913793+00:00",
+  "production_ready": false,
+  "ppe_model_deployed": false,
+  "mcu_uploaded": false,
+  "full_firmware_backup": false,
+  "offline_test_count": 206,
+  "host_native_not_arm": true,
+  "test_is_vendor_npu_activity_not_ppe_accuracy": true,
+  "files": [
+    {
+      "path": "docs/luckfox/debug/grid-boundaries-final-20261011.log",
+      "bytes": 151,
+      "sha256": "09ce7df1ce954dc1f2ea85489ce3a9619670973a47688cc4db7a2b8f54850488"
+    },
+    {
+      "path": "docs/luckfox/debug/native-tests-20261011-grid.log",
+      "bytes": 885,
+      "sha256": "fe0a817a33cea2469ca7398c27af719f62d2ebd6942cc7b5c98539d1f6a58337"
+    },
+    {
+      "path": "docs/luckfox/debug/offline-tests-20261011-supervised-final.log",
+      "bytes": 27532,
+      "sha256": "638030bc5f4c2b325f546ad657a4bee3da8eac7f00da3ea93066c999706e474d"
+    },
+    {
+      "path": "docs/luckfox/debug/preview-78-install/20261011T014135Z/apd-preview-session.sh.before",
+      "bytes": 4139,
+      "sha256": "2ab284fda83eb8d71332a255784a1876786fe30fc73af4b5999ee1a45e0c112c"
+    },
+    {
+      "path": "docs/luckfox/debug/preview-78-install/20261011T014135Z/apd-preview-session.sh.installation.txt",
+      "bytes": 114,
+      "sha256": "c441d0b25101b9a7b2981e4b5dfa6d10751471f82fdd3d4d23b23a7da1acdb6a"
+    },
+    {
+      "path": "docs/luckfox/debug/preview-78-install/20261011T014135Z/apd-previewctl.sh.before",
+      "bytes": 2654,
+      "sha256": "94808cefdc6c1429ee2f59d4e3d59369d705868888a56e33d463012faffcba85"
+    },
+    {
+      "path": "docs/luckfox/debug/preview-78-install/20261011T014135Z/apd-previewctl.sh.installation.txt",
+      "bytes": 109,
+      "sha256": "2a995e173d206a882985a298f825fdd0c5af28a37e3420226da4046e96c10ca0"
+    },
+    {
+      "path": "docs/luckfox/debug/preview-78-install/20261011T014135Z/manifest.json",
+      "bytes": 624,
+      "sha256": "ea135f0320f5ec619b6ebb956d3a32aaf12825d8ccd34e47b72ea4286fe84b68"
+    },
+    {
+      "path": "docs/luckfox/debug/supervised-camera/20261011T014207Z/before.txt",
+      "bytes": 98,
+      "sha256": "ae88d858482864865a5163ba3eb6200ede7ea4831aa7e986556c6cc6aa85b43b"
+    },
+    {
+      "path": "docs/luckfox/debug/supervised-camera/20261011T014207Z/logs.txt",
+      "bytes": 11592,
+      "sha256": "5042b2c0d56da8b1afe8b55598d7bdb4dd72341c0cd5265b3cca79ba68ef42a1"
+    },
+    {
+      "path": "docs/luckfox/debug/supervised-camera/20261011T014207Z/samples.jsonl",
+      "bytes": 29675,
+      "sha256": "65bd4f202fd7c87e07907df4ff23746347c12811a93bd783d16a1842a02c0cf3"
+    },
+    {
+      "path": "docs/luckfox/debug/supervised-camera/20261011T014207Z/start.txt",
+      "bytes": 86,
+      "sha256": "cadecea7b63f7e44ea0a9c827abfd6abc27190db218198bb0df921b3d399f537"
+    },
+    {
+      "path": "docs/luckfox/debug/supervised-camera/20261011T014207Z/stop.txt",
+      "bytes": 210,
+      "sha256": "56f2a2a14a9ce034b2d3435fcfc0389aaa4362063f871832047126ccf2c6eea7"
+    },
+    {
+      "path": "docs/luckfox/debug/supervised-camera/20261011T014207Z/stream.jsonl",
+      "bytes": 3658,
+      "sha256": "fca4e5eb937368e37f76c9c2c101d1482a3ee2c00f929800cb7cad4fda569c1e"
+    },
+    {
+      "path": "docs/luckfox/debug/supervised-camera/20261011T014207Z/stream.stderr.txt",
+      "bytes": 58,
+      "sha256": "87634e762a4c8cd7b9e6eb70c119b1a9484f5c46f51fdcd0e2a19c80e2840ed2"
+    },
+    {
+      "path": "docs/luckfox/debug/supervised-camera/20261011T014207Z/summary.json",
+      "bytes": 708,
+      "sha256": "f008e85b62df2e2b40158d713ae34815f1657946bfa2f9c5b9b90b547d4d46df"
+    },
+    {
+      "path": "docs/luckfox/debug/thermal-audit-status.json",
+      "bytes": 4090,
+      "sha256": "0073ba11871ddca5d65bbff340b29d693499a389c5c276dd63d973d3d7853ff4"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/before.txt",
+      "bytes": 111,
+      "sha256": "88302de350f14d8300f03b4d07aa4ddd8ecf531a12b0377586be6f6eec14a0c3"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/candidate.ini",
+      "bytes": 23717,
+      "sha256": "a763761a1932ee18286d8e98e782164d3b30eefea1da6af0923d9ae04897e3d4"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/ctl.sh",
+      "bytes": 2879,
+      "sha256": "92bf3eb2fdc3303cf49dd81bb923012235d20380d0cf415d35374265ef9415de"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/final-readonly.txt",
+      "bytes": 675,
+      "sha256": "7f91992a23949dd01cf481f61544fb7391fb74a21ae77de3a72a4f7c45f23d38"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/final-status.txt",
+      "bytes": 171,
+      "sha256": "fe98d17a5ecd139f97bf9694d6e16b85d3cf5c33eed023267b3f035f04da1ce1"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/logs-snapshots.txt",
+      "bytes": 393659,
+      "sha256": "39cfa54469453eb2c820dd623ecde4f9ce5e1ccc080821661fd5d58d8cb9779e"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/logs.txt",
+      "bytes": 59096,
+      "sha256": "5951c32e3e6a1c853c4e70396b3596a86c60e142b673e170808f7171ddca9cb3"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/postrun-analysis.json",
+      "bytes": 1229,
+      "sha256": "df4dbf20eeeb9c0de957a16426a6637e065ee35195abbffa0f0a539f99902741"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/rkipc.ini.after",
+      "bytes": 23717,
+      "sha256": "fc64e217140aa35297548c72642f2b4f0b328b2a5d1c13bfec65df43fa9aec7f"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/rkipc.ini.original",
+      "bytes": 23717,
+      "sha256": "fc64e217140aa35297548c72642f2b4f0b328b2a5d1c13bfec65df43fa9aec7f"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/samples.jsonl",
+      "bytes": 84328,
+      "sha256": "4744c8cf3cfc0ac10d1e199a1bfbaf507f30bc357a11de60e3b89cee54720d86"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/session.sh",
+      "bytes": 4337,
+      "sha256": "8f6eff2ac346efe9ae79dc3acc31fd1cb18f09a25f28114f6715b5fbe721671a"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/start.txt",
+      "bytes": 102,
+      "sha256": "4c283ba0632ff3da556e910d0460c9fffef469e015a8d03648e05f9d6312ccf1"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/stop.txt",
+      "bytes": 204,
+      "sha256": "aaf4a987e7655df5a09450deadcc6455c50a616cdfe0168b2af9f6dff1e01d81"
+    },
+    {
+      "path": "docs/luckfox/debug/vendor-npu/20261011T015105Z/summary.json",
+      "bytes": 803,
+      "sha256": "da2175fa11a3395085dad9782e14db91ca053d0b7e7c9ba375a4df3f4e484e03"
+    },
+    {
+      "path": "docs/luckfox/PRODUCTION_PROGRESS.md",
+      "bytes": 11770,
+      "sha256": "6ed58091dd32eddebd0521a2ca9168e3bb41036d5989015c6771c95eb7a01bd2"
+    },
+    {
+      "path": "docs/luckfox/VENDOR_NPU_TEST.md",
+      "bytes": 5131,
+      "sha256": "9d9417c1b73b5f0593824c4cdeca2af6c7cdfd66ec4dc4a2cd55ac380f770b6c"
+    },
+    {
+      "path": "edge/luckfox/apd-preview-session.sh",
+      "bytes": 4331,
+      "sha256": "aeb53a30e8514c3aa6335cfd5369e672b158c8ce3ad788555b3e72dad15d8cb8"
+    },
+    {
+      "path": "edge/luckfox/apd-previewctl.sh",
+      "bytes": 2852,
+      "sha256": "1a69772e509c8ff91a3ed9bd3a49767e4dab8523f6e60c0784e49c8dbdfed9d1"
+    },
+    {
+      "path": "edge/luckfox/apd_core.c",
+      "bytes": 5810,
+      "sha256": "b7120b8cf898cf01ffc1c1a1b38d89928060ff0d78a9afe432d6ab970686de3d"
+    },
+    {
+      "path": "edge/luckfox/apd_core.h",
+      "bytes": 1986,
+      "sha256": "f5e745e65deabc2cfe8e7f185bea24b55f957f0e8b9e76cc86957bce0f45c713"
+    },
+    {
+      "path": "edge/luckfox/apd_debug_probe.sh",
+      "bytes": 1408,
+      "sha256": "55367f1a117fbd7e666ba2ad12f4ecc3bb79bd3bbe1fd1f10ca4a9b75e76b6c2"
+    },
+    {
+      "path": "edge/luckfox/backend_contract.h",
+      "bytes": 1737,
+      "sha256": "97a654a1fe30f2d7a11b9664f3c4e9442c3ff76c6e958c8634a934bcb24c6576"
+    },
+    {
+      "path": "edge/luckfox/backend_frame.c",
+      "bytes": 5523,
+      "sha256": "b2e116c489303efbb8b6cfffb4688645827bc0218f13775c91ebfa4ae70e10bd"
+    },
+    {
+      "path": "edge/luckfox/backend_frame.h",
+      "bytes": 2660,
+      "sha256": "6abc29c0fd7ed940ae25a0fbf97bc3ce7a065919a8b01a80f2427fb2fdd19dbc"
+    },
+    {
+      "path": "edge/luckfox/grid_decoder.c",
+      "bytes": 6542,
+      "sha256": "aab5459cc1d250b360a87086b150843812273161b26b059546b5eb9e7667fa79"
+    },
+    {
+      "path": "edge/luckfox/grid_decoder.h",
+      "bytes": 2343,
+      "sha256": "b8eb0f6e17840c1ac60c19ba23ecbfca5f06113ab6371549c70c02356970341c"
+    },
+    {
+      "path": "edge/luckfox/mcu_frame.c",
+      "bytes": 3943,
+      "sha256": "4b6b16a2c2fd853f09bfa49a6a19837f0b23af1356e84b84dd2408f1c4982dc2"
+    },
+    {
+      "path": "edge/luckfox/mcu_frame.h",
+      "bytes": 1189,
+      "sha256": "1a65a4de59aa4ddf5778382c26cb2bd0286aec3c86eeddb67870832c40162c46"
+    },
+    {
+      "path": "edge/luckfox/session.c",
+      "bytes": 2822,
+      "sha256": "69948eaae918213c22d484ef38c6496d725d33b0496372f811af855a0e1c3eb6"
+    },
+    {
+      "path": "edge/luckfox/session.h",
+      "bytes": 934,
+      "sha256": "d5e9604d559a2a8a2422fd25c2910c35c551fef81729c86169f357271dfca3f4"
+    },
+    {
+      "path": "edge/luckfox/test_backend_frame.c",
+      "bytes": 7211,
+      "sha256": "7fbaa3c621d1d61e9bd2b1cbb85d67647a75a50ffa4c27337e14ee9e37f43755"
+    },
+    {
+      "path": "edge/luckfox/test_core.c",
+      "bytes": 2999,
+      "sha256": "541fcb093756e1eeb9750606b8198c2c603f97810cd8caf6d77d396a8f94cdcf"
+    },
+    {
+      "path": "edge/luckfox/test_grid_decoder.c",
+      "bytes": 8528,
+      "sha256": "52a145ffb0bd4305e3f0753b5a94ed728dc2b16e8874057bd477ddeff81a2c8a"
+    },
+    {
+      "path": "edge/luckfox/test_workshop_boundaries.c",
+      "bytes": 4679,
+      "sha256": "b2e9b6a3fdbec1c27c95c4162add63fad0d38f1c22c237f5741f9a01d091b95e"
+    },
+    {
+      "path": "edge/luckfox/workshop_tracker.c",
+      "bytes": 11078,
+      "sha256": "8e8e00e8010f6fc485d2ff75ce7b06b3bf31e77a422b0975da594d82af468d7b"
+    },
+    {
+      "path": "edge/luckfox/workshop_tracker.h",
+      "bytes": 3187,
+      "sha256": "07cfd0567ff231b45ac8903a113db453d3f019c077aa801ebce638c46afdcf22"
+    },
+    {
+      "path": "scripts/audit_luckfox_thermal.py",
+      "bytes": 8559,
+      "sha256": "6d17a81c16e18be99ee29bd87f06f494fa3a8ac450fdf6bada141c72f804356f"
+    },
+    {
+      "path": "scripts/control_luckfox_preview.py",
+      "bytes": 2727,
+      "sha256": "fc4c6e367005723939b0f268db1e9a4cc4750e16f249aad51abd1ab5562e94a1"
+    },
+    {
+      "path": "scripts/test_luckfox_camera_supervised.py",
+      "bytes": 7094,
+      "sha256": "536d13b525b423ab0fd528ef3464a771fe1efd98206fb18c7a90348715fcf0c3"
+    },
+    {
+      "path": "scripts/test_luckfox_vendor_npu.py",
+      "bytes": 10571,
+      "sha256": "8be57e74a67230271f5adcde51532afa887a124fe54d8495a5939babc47a143b"
+    },
+    {
+      "path": "tests/test_grid_reference.py",
+      "bytes": 1663,
+      "sha256": "3a10557263cb839da71c8f575dd1b381aba388b94c444982cb6795b9748423c8"
+    },
+    {
+      "path": "tests/test_luckfox_preview_control.py",
+      "bytes": 3488,
+      "sha256": "3acc29be065bfb5845a4008561db084b3bcd5a8733c582cdf998d95b4746fd92"
+    },
+    {
+      "path": "tests/test_preview_session.py",
+      "bytes": 5966,
+      "sha256": "c59ceeeb0fb6130107f35940ab1c6951dcd7ac68f4a6680c49e44b840a8d4c93"
+    },
+    {
+      "path": "tests/test_supervised_camera_runner.py",
+      "bytes": 2822,
+      "sha256": "eabb32838c6a204d70985ce1ce67932e89270c36c29942ddc559c83286163f8a"
+    },
+    {
+      "path": "tests/test_vendor_npu_supervised.py",
+      "bytes": 3269,
+      "sha256": "0b17c580d3407bf46a207b1220fb92accc514adf244c3ba3ab0a44267b89dcae"
+    }
+  ]
+}

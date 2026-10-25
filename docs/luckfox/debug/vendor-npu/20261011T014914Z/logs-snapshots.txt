@@ -1,0 +1,1213 @@
+
+2026-10-11T01:49:19.826887+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:49:25.345566+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:49:30.901946+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:49:36.439525+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:49:41.953421+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:49:47.496950+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:49:53.034688+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:49:58.545129+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:50:04.129051+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:50:09.646639+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:50:15.150522+00:00
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video1, Limit--300
+[storage.c][rkipc_storage_para_init]:DevAttr set:  AutoDel--1, FreeSizeDel--500~1000, Path--/userdata/video2, Limit--300
+[storage.c][rkipc_storage_para_init]:Set user-defined device attributes done.
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+[osd.c][osd_time_server]:osd_time_id is 1
+[osd.c][osd_time_server]:osd_data.text.font_color is fff799
+[osd.c][osd_time_server]:osd_data.text.format is 24hour CHR-YYYY-MM-DD
+[server.c][rkipc_server_thread]:#Start rkipc_server_thread thread, arg:(nil)
+[storage.c][rk_storage_init]:i:0
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:0: record_path is /userdata/video0
+[storage.c][rk_storage_muxer_init_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_init]:i:1
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rk_storage_muxer_init_by_id]:1: record_path is /userdata/video1
+[storage.c][rk_storage_muxer_init_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_init]:i:2
+[storage.c][rk_storage_muxer_init_by_id]:begin
+[storage.c][rkipc_storage_file_scan_thread]:/userdata, /dev/ubi5_0, ubifs, rw,relatime,assert=read-only,ubi=5,vol=0
+[storage.c][rkipc_storage_file_scan_thread]:devAttr.folder_num = 3
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video0
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video0 finished
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.885467] i is 0, before rkipc_storage_read_file_list
+[storage.c][rk_storage_muxer_init_by_id]:2: record_path is /userdata/video2
+[storage.c][rk_storage_muxer_init_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887346] i is 0, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video1
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video1 finished
+[video.c][rkipc_osd_bmp_create]:id is 1
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.887909] i is 1, before rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.888577] i is 1, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:/userdata/video2
+[storage.c][rkipc_storage_create_folder]:Create /userdata/video2 finished
+create rknn_list success
+rkaiq log level ff0
+[32m[1mrockit log path (null), log_size = 0, can use export rt_log_path=, export rt_log_size= change[0m
+log_file = (nil) 
+[32m[1mrockit default level 4, can use export rt_log_level=x, x=0,1,2,3,4,5,6 change[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-810 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-814 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:13:25-819 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-821 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:13:25-821 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:13:25-822 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-822 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-824 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:13:25-825 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-825 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-825 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-825 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-825 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-845 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+MpiAdapterEncode 00:13:25-847 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+cmpi             00:13:25-864 {createRuntime     :546} [non-WRAP MODE]: buff size = 290304
+RTIsp3x          00:13:25-867 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:13:25-867 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:13:25-870 {open              :138} [32m[1mopen video name(/dev/video13)[0m
+RKViChn          00:13:25-870 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(2) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+2026-10-11T01:50:20.364200+00:00
+RTDeviceV4L2     00:13:25-870 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video13 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:13:25-870 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:13:25-870 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:13:25-870 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:13:25-871 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+cmpi             00:13:25-872 {mb_create_pool    :222} allocated buffer(this=0x24a430, data=0xa3dd8000, size=746496, id=157)
+cmpi             00:13:25-873 {attachToChn       :480} The channel attr attach mapid: 0x0.
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:13:25-889 {mb_create_pool    :222} allocated buffer(this=[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889066] i is 2, before rkipc_storage_read_file_list
+[video.c][rkipc_osd_bmp_create]:The handle: 1, create success
+[video.c][rkipc_osd_bmp_create]:RK_MPI_RGN_AttachToChn to venc0 success
+[storage.c][rkipc_storage_file_scan_thread]:[00:13:25.889882] i is 2, after rkipc_storage_read_file_list
+[storage.c][rkipc_storage_file_scan_thread]:total_size = 4584, free_size = 4508
+[storage.c][rkipc_storage_file_monitor_thread]:rkipc_storage_file_monitor_thread
+[storage.c][rkipc_storage_file_monitor_thread]:pHandle->dev_sta.mount_status is 4
+[rkipc.c][sig_proc]:received signo 15 
+[ntp.c][rkipc_ntp_update]:connect error
+[rkipc.c][wait_key_event]:wait key event out
+[storage.c][rk_storage_muxer_deinit_by_id]:begin
+[storage.c][rk_storage_muxer_deinit_by_id]:storage[0]:enable is 0
+[storage.c][rk_storage_muxer_deinit_by_id]:begin
+[storage.c][rk_storage_muxer_deinit_by_id]:storage[1]:enable is 0
+[storage.c][rk_storage_muxer_deinit_by_id]:begin
+[storage.c][rk_storage_muxer_deinit_by_id]:storage[2]:enable is 0
+[storage.c][rkipc_storage_event_listener_thread]:out
+[storage.c][rkipc_storage_msg_rec_msg_thread]:out
+[storage.c][rkipc_storage_file_monitor_thread]:Exit![storage.c][rkipc_storage_file_scan_thread]:out
+[server.c][rkipc_server_deinit]:rkipc_server_deinit failed
+[system.c][rk_system_deinit]:rk_system_deinit
+[video.c][rk_video_deinit]:rk_video_deinit
+[video.c][rkipc_osd_draw_nn_deinit]:rkipc_osd_draw_nn_deinit
+[video.c][rkipc_osd_draw_nn_deinit]:Destory handle:7 success
+[osd.c][rk_osd_deinit]:begin
+[osd.c][osd_time_server]:exit
+[osd.c][rk_osd_deinit]:i is 0, osd_type is channelName
+[video.c][rkipc_osd_bmp_destroy]:rkipc_osd_bmp_destroy
+[video.c][rkipc_osd_bmp_destroy]:RK_MPI_RGN_DetachFrmChn (0) to venc0 failed with 0xa0038006
+[video.c][rkipc_osd_bmp_destroy]:Destory handle:0 success
+[osd.c][rk_osd_deinit]:i is 1, osd_type is dateTime
+[video.c][rkipc_osd_bmp_destroy]:rkipc_osd_bmp_destroy
+[video.c][rkipc_osd_bmp_destroy]:Destory handle:1 success
+[osd.c][rk_osd_deinit]:i is 2, osd_type is character
+[video.c][rkipc_osd_bmp_destroy]:rkipc_osd_bmp_destroy
+[video.c][rkipc_osd_bmp_destroy]:RK_MPI_RGN_DetachFrmChn (2) to venc0 failed with 0xa0038006
+[video.c][rkipc_osd_bmp_destroy]:Destory handle:2 success
+[osd.c][rk_osd_deinit]:i is 3, osd_type is character
+[video.c][rkipc_osd_bmp_destroy]:rkipc_osd_bmp_destroy
+[video.c][rkipc_osd_bmp_destroy]:RK_MPI_RGN_DetachFrmChn (3) to venc0 failed with 0xa0038006
+[video.c][rkipc_osd_bmp_destroy]:Destory handle:3 success
+[osd.c][rk_osd_deinit]:i is 4, osd_type is privacyMask
+[video.c][rkipc_osd_cover_destroy]:rkipc_osd_cover_destroy
+[video.c][rkipc_osd_cover_destroy]:RK_MPI_RGN_DetachFrmChn (4) to vi pipe failed with 0xa0038006
+[video.c][rkipc_osd_cover_destroy]:Destory handle:4 success
+[osd.c][rk_osd_deinit]:i is 5, osd_type is privacyMask
+[video.c][rkipc_osd_cover_destroy]:rkipc_osd_cover_destroy
+[video.c][rkipc_osd_cover_destroy]:RK_MPI_RGN_DetachFrmChn (5) to vi pipe failed with 0xa0038006
+[video.c][rkipc_osd_cover_destroy]:Destory handle:5 success
+[osd.c][rk_osd_deinit]:i is 6, osd_type is image
+[video.c][rkipc_osd_bmp_destroy]:rkipc_osd_bmp_destroy
+[video.c][rkipc_osd_bmp_destroy]:RK_MPI_RGN_DetachFrmChn (6) to venc0 failed with 0xa0038006
+[video.c][rkipc_osd_bmp_destroy]:Destory handle:6 success
+[osd.c][rk_osd_deinit]:over
+[video.c][rkipc_pipe_0_deinit]:Unbind VI and VENC success
+mpp[2543]: mpp_chan: ctx is no found in chan server
+
+[video.c][rkipc_pipe_0_deinit]:RK_MPI_VENC_DestroyChn success
+[video.c][rkipc_rtsp_deinit]:rkipc_rtsp_deinit
+[isp.c][rk_isp_deinit]:cam_id is 0
+[isp.c][rk_isp_deinit]:rk_aiq_uapi2_sysctl_stop enter
+[isp.c][rk_isp_deinit]:rk_aiq_uapi2_sysctl_deinit enter
+[isp.c][rk_isp_deinit]:rk_aiq_uapi2_sysctl_deinit exit
+RKSockServer     00:14:28-875 {start             :162} [31m[1maccept failed[0m
+[rockiva.c][rkipc_rockiva_deinit]:begin
+[rockiva.c][rkipc_rockiva_deinit]:ROCKIVA_BA_Release over
+[rockiva.c][rkipc_rockiva_deinit]:end
+[ntp.c][rkipc_ntp_update]:connect error
+[param.c][rk_param_deinit]:rk_param_deinit
+0x25ea30, data=0xa2fc1000, size=65536, id=159)
+cmpi             00:13:25-890 {mb_create_pool    :222} allocated buffer(this=0x25ec38, data=0xa2fb1000, size=65536, id=160)
+cmpi             00:13:25-890 {attachToChn       :480} The channel attr attach mapid: 0x0.
+MpiAdapterEncode 00:13:25-967 {ma_encode_get_pack:1978} [32m[1mmap ptr: 0xa2ad7000[0m
+[DEBUG utils.c:186:rtsp_codec_data_parse_from_user_h265] vps 23
+[DEBUG utils.c:194:rtsp_codec_data_parse_from_user_h265] sps 43
+[DEBUG utils.c:202:rtsp_codec_data_parse_from_user_h265] pps 9
+cmpi             00:13:25-971 {mb_get_buffer_by_i:422} allocated buffer(this=0x2017e8, data=(nil), size=0, id=-1)
+RKViChn          00:13:25-972 {getFrameRuntime   :1031} [32m[1m-------------------------------vviBuf->buf_size: 290816[0m
+rga_api version 1.7.3_[6]
+cmpi             00:13:26-968 {mb_get_buffer_by_i:422} allocated buffer(this=0x263830, data=(nil), size=0, id=-1)
+RKViChn          00:13:26-968 {getFrameRuntime   :1031} [32m[1m-------------------------------vviBuf->buf_size: 290816[0m
+RTDeviceV4L2     00:14:27-538 {ispStreamOff      :503} [32m[1mdo ispStreamOff start[0m
+RTDeviceV4L2     00:14:27-565 {ispStreamOff      :514} [32m[1mdo ispStreamOff done[0m
+RTDeviceV4L2     00:14:27-565 {close             :365} [32m[1mdo RTDeviceV4L2 close[0m
+MpiAdapterEncode 00:14:27-667 {ma_encode_destroy :2222} [32m[1munmap ptr: 0xa2ad7000[0m
+RTDeviceV4L2     00:14:27-683 {ispStreamOff      :503} [32m[1mdo ispStreamOff start[0m
+RTDeviceV4L2     00:14:27-866 {ispStreamOff      :514} [32m[1mdo ispStreamOff done[0m
+RTDeviceV4L2     00:14:27-866 {close             :365} [32m[1mdo RTDeviceV4L2 close[0m
+[DEBUG rtsp_demo.c:645:rtsp_del_session] del session path: /live/0
+[DEBUG rtsp_demo.c:645:rtsp_del_session] del session path: /live/1
+MessageParser process loop exit!
+APD_GUARD_STOP=TIME_LIMIT

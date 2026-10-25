@@ -1,0 +1,24 @@
+@@ userdata_videos
+total 0
+drwxr-xr-x    2 root     root           160 Jan  1 00:00 [1;34m.[m
+drwxrwxr-x    5 1005     1005          1224 Jan  1 00:05 [1;34m..[m
+total 0
+drwxr-xr-x    2 root     root           160 Jan  1 00:00 [1;34m.[m
+drwxrwxr-x    5 1005     1005          1224 Jan  1 00:05 [1;34m..[m
+total 0
+drwxr-xr-x    2 root     root           160 Jan  1 00:00 [1;34m.[m
+drwxrwxr-x    5 1005     1005          1224 Jan  1 00:05 [1;34m..[m
+@@ vendor_logs_delete_errors
+[storage.c][rkipc_storage_auto_delete_init]:mountpath:/userdata,devpath:,devtype:,devattr:
+@@ model_runtime_maps
+a68d5000-a68f7000 r-xp 00000000 00:15 83         /oem/usr/lib/librknnmrt.so
+a6906000-a6907000 r--p 00021000 00:15 83         /oem/usr/lib/librknnmrt.so
+a6907000-a6908000 rw-p 00022000 00:15 83         /oem/usr/lib/librknnmrt.so
+a6bcb000-a6c5a000 r-xp 00000000 00:15 68         /oem/usr/lib/librockiva.so
+a6c6a000-a6c6b000 r--p 0008f000 00:15 68         /oem/usr/lib/librockiva.so
+a6c6b000-a6c6c000 rw-p 00090000 00:15 68         /oem/usr/lib/librockiva.so
+@@ memory
+MemFree:            1388 kB
+MemAvailable:       8920 kB
+CmaTotal:          24576 kB
+CmaFree:               0 kB

@@ -1,0 +1,30 @@
+rkisp-vir0 Version:v02.00.00
+clk_isp_core 198000000
+aclk_isp   198000000
+hclk_isp   148500000
+clk_isp_core_vicap 0
+Interrupt  Cnt:362 ErrCnt:0
+Input      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       
+tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN      
+tcp        0      0 127.0.0.1:5037          0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:5555            0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:23              0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN      
+netstat: /proc/net/tcp6: No such file or directory
+[DEBUG rtsp_demo.c:1158:rtsp_recv_msg] peer closed
+[INFO  rtsp_demo.c:427:rtsp_del_client_connection] delete client 60 from 127.0.0.1
+[server.c][rkipc_server_deinit]:rkipc_server_deinit failed
+mpp[1265]: mpp_chan: ctx is no found in chan server
+
+MpiAdapterEncode 00:20:21-742 {ma_encode_destroy :2222} [32m[1munmap ptr: 0xa33c7000[0m
+RTDeviceV4L2     00:20:21-759 {ispStreamOff      :503} [32m[1mdo ispStreamOff start[0m
+RTDeviceV4L2     00:20:21-942 {ispStreamOff      :514} [32m[1mdo ispStreamOff done[0m
+RTDeviceV4L2     00:20:21-942 {close             :365} [32m[1mdo RTDeviceV4L2 close[0m
+[DEBUG rtsp_demo.c:645:rtsp_del_session] del session path: /live/0
+[DEBUG rtsp_demo.c:645:rtsp_del_session] del session path: /live/1
+MessageParser process loop exit!
+RKSockServer     00:20:22-003 {start             :162} [31m[1maccept failed[0m
+[ntp.c][rkipc_ntp_update]:connect error
+APD_GUARD_STOP=STOP_REQUEST

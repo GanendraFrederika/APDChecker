@@ -1,0 +1,2 @@
+Grid C/Python differential PASS: 256 synthetic tensors, NOT model accuracy
+Grid boundary/integration HOST PASS; workspace=6664 bytes; NOT RV1103/NPU

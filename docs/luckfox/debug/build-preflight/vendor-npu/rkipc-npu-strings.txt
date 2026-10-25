@@ -1,0 +1,18 @@
+librockiva.so
+RkipcGetJpeg
+RkipcGetVi2
+video.source:npu_fps
+RkipcGetIVS
+video.2:width
+video.2:height
+video.2:max_width
+video.2:max_height
+rkipc_rknn_object_get
+rkipc_rockiva_init
+rkipc_rockiva_deinit
+create rknn_list success
+rockiva.c
+[%s][%s]:topLeft:[%d,%d], bottomRight:[%d,%d],objId is %d, frameId is %d, score is %d, type is %d
+[%s][%s]:ba_result->objNum is %d
+/usr/lib/
+event.regional_invasion:rockiva_model_type

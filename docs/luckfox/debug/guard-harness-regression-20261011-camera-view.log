@@ -1,0 +1,8 @@
+test_automatic_stop_without_host_control (test_preview_session.SessionGuardTests.test_automatic_stop_without_host_control) ... ok
+test_automatic_stop_without_host_control (test_preview_session.SessionGuardTests.test_automatic_stop_without_host_control) ... ok
+test_automatic_stop_without_host_control (test_preview_session.SessionGuardTests.test_automatic_stop_without_host_control) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 17.091s
+
+OK

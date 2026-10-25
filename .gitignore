@@ -1,0 +1,29 @@
+# Local environments and tool caches (re-creatable, very large)
+.venv/
+.tools/
+.cache/
+__pycache__/
+*.pyc
+
+# Vendor binaries (download with platform-tools from Google, see README)
+platform-tools/
+
+# Build outputs
+*.elf
+*.hex
+*.eep
+build/
+
+# Large or private debug artefacts from on-board sessions
+docs/luckfox/debug/reconnect/
+docs/luckfox/debug/build-preflight/vendor-npu/librockiva.so
+docs/luckfox/debug/build-preflight/vendor-npu/object_detection_pfp.data
+docs/luckfox/debug/arduino-v3-build/
+docs/luckfox/debug/arduino-v3-compile-only-active-high/
+docs/luckfox/debug/arduino-v3-compile-only-active-low/
+docs/luckfox/debug/rkipc-backups/
+
+# OS / editor
+Thumbs.db
+.DS_Store
+*.swp

@@ -1,0 +1,17 @@
+{
+  "updated_utc": "2026-10-11T00:50:25.309092+00:00",
+  "scope": "config/scripts and test evidence; NOT full firmware",
+  "files": {
+    "apd-preview-session.sh": "2ab284fda83eb8d71332a255784a1876786fe30fc73af4b5999ee1a45e0c112c",
+    "apd-previewctl.previous.sh": "dd9a1af8b52eead0403d4156efbaedc70d5608f59fb62443f01f1fce403c9af9",
+    "apd-previewctl.sh": "94808cefdc6c1429ee2f59d4e3d59369d705868888a56e33d463012faffcba85",
+    "live-final.txt": "5f6b89ee8ac3e41257a5df61e2662bf32140846e7cc39dcc261e46c29fbac7e3",
+    "live-samples.json": "6f2fff80712c555afd05887533f73cf44e2013ed1ff1d882b4e752e830985e14",
+    "live-start.txt": "969f802796cf6e3426f02e4120ae577361aa7be38770ead881747116b4bd99b1",
+    "live-stop.txt": "a7b75e9107faba57ff14ad15fbdffe9f8ac4f9b4c524a0a31b1647f123a05ff8",
+    "precheck.txt": "5bc97c7c3c5b10ebda32d6e10eed7aa91fc60f7f80e692358e88846964e0537e",
+    "restart-final.txt": "ad95a4b5f5f1b0058ef3bcf46b2d5ea3e13a4aef6c57f5e04924e46c1167ee84",
+    "restart-stream.json": "76d51b68e9b28955ff7519d282a1285bb0a1f5cd3a8c735d2c64c791fee49702",
+    "rkipc.ini": "fc64e217140aa35297548c72642f2b4f0b328b2a5d1c13bfec65df43fa9aec7f"
+  }
+}

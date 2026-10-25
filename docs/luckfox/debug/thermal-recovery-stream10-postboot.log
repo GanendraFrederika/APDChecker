@@ -1,0 +1,3 @@
+{"opened": true, "advertised_fps": 10.0}
+{"frames_decoded_after_warmup": 121, "approx_delivery_fps": 10.0, "saved_images": false}
+[hevc @ 0000021b02b8ad80] Could not find ref with POC 15

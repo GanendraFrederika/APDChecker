@@ -1,0 +1,10 @@
+{
+  "remote_file": "/oem/usr/lib/object_detection_pfp.data",
+  "sha256": "4a9a0dbd8318608f8454e1f5d927d3db17cef0ca8431e0dde91a905bfb406dd1",
+  "bytes": 736112,
+  "first64_hex": "524b4e4e00000000031000000000000020310b0000000000b044f570fd7f000020584f03000000000053b5020000000020000000000000002000000000000000",
+  "format": "vendor opaque .data, not asserted plain RKNN",
+  "ppe_classes_verified": false,
+  "provenance": "preinstalled firmware; license/artifact training unknown",
+  "host_execution": false
+}

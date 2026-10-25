@@ -1,0 +1,12 @@
+{
+  "apd-previewctl.original.sh": "a6e32e3ed685e29ae5942a52e51b4aa02efc60a5db4773c052d97aa3927aaf0d",
+  "apd-previewctl.sh": "dd9a1af8b52eead0403d4156efbaedc70d5608f59fb62443f01f1fce403c9af9",
+  "apply-checked.txt": "fe8e04f8aca0d197a4a1fc0894dfb9b851d0c6e6b70b5061eefce7ba7763bf9c",
+  "camera-10fps.ini": "fc64e217140aa35297548c72642f2b4f0b328b2a5d1c13bfec65df43fa9aec7f",
+  "camera10.after-stop.ini": "fc64e217140aa35297548c72642f2b4f0b328b2a5d1c13bfec65df43fa9aec7f",
+  "isp-10fps-preboot.json": "d7354a0465c73c514a8c630c8b924ac67843b56d2f48d21a5c1d282f5069c51d",
+  "rkipc.stopped.ini": "26ba959165389d384b4fa1e62a4283adb7a68f4d88e399e661483d942c993f47",
+  "RkLunch.idle-guard.sh": "e4c9a2187ddf907a4480650844f0168ac2c9acc981187c7ed40905ff67c9807e",
+  "RkLunch.original.sh": "b6d58f74c8d6219472083718c7bda45b35250ecfb1e1cd4e628ca465e7ca763a",
+  "socket-inheritance.txt": "05fefcae0b96c9338d56c8f032ad6ce93c4d68384834893e1bbe82a30075a24b"
+}

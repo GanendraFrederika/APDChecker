@@ -1,0 +1,3 @@
+PREVIEW_STARTED GUARDED seconds=300 cutoff_C=78 poll_seconds=2
+
+APD_CONTROL_EXIT=0

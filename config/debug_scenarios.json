@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "stage": "DIAGNOSTIC_PLAN_NOT_ACCEPTANCE",
+  "planned_live_date": "2026-10-17",
+  "planned_timezone": "Asia/Jakarta",
+  "hardware_outputs_enabled": false,
+  "camera_mode": "FIXED",
+  "live_ppe_inference_ready": false,
+  "proposed_repetitions_per_scenario": 10,
+  "repetitions_are_not_statistical_acceptance": true,
+  "deferred": [
+    "two_servo_calibration",
+    "power_UPS_brownout_test",
+    "fan_enclosure_thermal_soak"
+  ],
+  "scenarios": [
+    {
+      "id": "D01",
+      "operator_setup": "APD lengkap; diam lalu berjalan",
+      "ground_truth_rule": "PRESENT/PRESENT/PRESENT",
+      "expected_behavior": "Tidak ada alarm APD setelah konfirmasi; item per orang benar",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D02",
+      "operator_setup": "Helm tidak dipakai, kepala jelas terlihat",
+      "ground_truth_rule": "helmet=ABSENT",
+      "expected_behavior": "Helm ABSENT setelah debounce; item lain tidak tertukar",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D03",
+      "operator_setup": "Rompi tidak dipakai, torso jelas terlihat",
+      "ground_truth_rule": "vest=ABSENT",
+      "expected_behavior": "Rompi ABSENT setelah debounce",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D04",
+      "operator_setup": "Sepatu tidak dipakai, kaki jelas terlihat di area uji aman",
+      "ground_truth_rule": "shoes=ABSENT",
+      "expected_behavior": "Sepatu ABSENT setelah debounce; definisi sepatu ditetapkan",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D05",
+      "operator_setup": "Kaki terpotong/tertutup",
+      "ground_truth_rule": "shoes=UNOBSERVABLE",
+      "expected_behavior": "UNKNOWN atau cache valid sampai TTL; tanpa bukti negatif baru",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D06",
+      "operator_setup": "Kepala/torso tertutup bergantian",
+      "ground_truth_rule": "hidden_item=UNOBSERVABLE",
+      "expected_behavior": "UNKNOWN atau cache valid sampai TTL; tidak otomatis ABSENT",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D07",
+      "operator_setup": "Lepas lalu pakai ulang APD dalam frame",
+      "ground_truth_rule": "transitions=PRESENT/ABSENT/PRESENT",
+      "expected_behavior": "Bukti fresh membatalkan cache lama; ukur delay kedua perubahan",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D08",
+      "operator_setup": "Dua orang berpapasan; kelengkapan berbeda",
+      "ground_truth_rule": "per_person_annotation",
+      "expected_behavior": "Tidak mencampur APD, ambigu -> UNKNOWN; catat ID switch",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D09",
+      "operator_setup": "Masuk, keluar, kembali lewat; near/far",
+      "ground_truth_rule": "per_person_annotation",
+      "expected_behavior": "TTL expired; ID sementara/re-entry bukan identitas biometrik",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D10",
+      "operator_setup": "Lintasan cepat, cahaya redup/terang/backlight",
+      "ground_truth_rule": "per_person_annotation",
+      "expected_behavior": "Ukur missed person/item dan latency; belum lulus hanya karena tidak alarm",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D11",
+      "operator_setup": "Frame kosong dan putus stream melalui kontrol software",
+      "ground_truth_rule": "NO_PERSON/FAULT",
+      "expected_behavior": "Frame kosong bukan fault; stream gagal -> FAULT, bukan SAFE",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "D12",
+      "operator_setup": "Frame terlambat/cache kedaluwarsa/model fault via replay",
+      "ground_truth_rule": "FAULT/UNKNOWN",
+      "expected_behavior": "Tidak memakai laporan SAFE lama; tes HOST lebih dulu",
+      "status": "NOT_RUN"
+    }
+  ]
+}

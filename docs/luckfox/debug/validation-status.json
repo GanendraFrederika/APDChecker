@@ -1,0 +1,37 @@
+{
+  "checked_utc": "2026-10-10T11:29:22.601Z",
+  "synthetic_offline_tests": 143,
+  "checks": [
+    {
+      "name": "unit_tests",
+      "exit_code": 0
+    },
+    {
+      "name": "compileall",
+      "exit_code": 0
+    },
+    {
+      "name": "probe_shell_syntax",
+      "exit_code": 0
+    },
+    {
+      "name": "workshop_replay",
+      "exit_code": 0
+    },
+    {
+      "name": "legacy_replay",
+      "exit_code": 0
+    }
+  ],
+  "host_opencv_import_verified": true,
+  "host_opencv_version": "4.14.0",
+  "host_ffmpeg_support_verified": true,
+  "ultralytics_available": false,
+  "board_accessed": false,
+  "camera_accessed": false,
+  "arduino_accessed": false,
+  "pico_probe_uploaded": false,
+  "hardware_outputs_enabled": false,
+  "pico_ai_deployed": false,
+  "thermal_safety_verified": false
+}

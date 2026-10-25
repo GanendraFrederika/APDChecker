@@ -1,0 +1,26 @@
+[
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "6c0e3d5c912330f3bd12bdee8a556cd8b3177b3d4e99427f297a9fc15f56672b"
+    },
+    "digests": {
+      "blake2b_256": "e00c66f4710aedf5544e15779ff9c6e770322986e15daf9299b1a4df0be19e09",
+      "md5": "c77d11ca76b0eca2e7f9fe5f4cd6bfa8",
+      "sha256": "b64b2aa936ebbfeecfbb2611df331a5474edebe1246b98c2f56d6ae4d58b71fc"
+    },
+    "downloads": -1,
+    "filename": "ziglang-0.13.0-py3-none-win_amd64.whl",
+    "has_sig": false,
+    "md5_digest": "c77d11ca76b0eca2e7f9fe5f4cd6bfa8",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": "~=3.5",
+    "size": 80418705,
+    "upload_time": "2024-06-26T13:50:00",
+    "upload_time_iso_8601": "2024-06-26T13:50:00.513267Z",
+    "url": "https://files.pythonhosted.org/packages/e0/0c/66f4710aedf5544e15779ff9c6e770322986e15daf9299b1a4df0be19e09/ziglang-0.13.0-py3-none-win_amd64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  }
+]

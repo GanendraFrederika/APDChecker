@@ -1,0 +1,111 @@
+MONITORING/PPE INFERENCE: NOT DEPLOYED
+CAMERA_IDLE
+BOOT_MODE_IDLE
+41039
+APD_GUARD_START seconds=30 cutoff_raw=60000
+APD_GUARD_STOP=TIME_LIMIT
+rkisp-vir0 Version:v02.00.00
+clk_isp_core 198000000
+aclk_isp   198000000
+hclk_isp   148500000
+clk_isp_core_vicap 0
+Interrupt  Cnt:644 ErrCnt:0
+Input      rkcif-mipi-lvds Format:SBGGR10_1X10 Size:2304x1296@25fps Offset(0,0)
+RTIsp3x          00:18:06-168 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTIsp3x          00:18:06-172 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:18:06-172 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RKViDev          00:18:06-182 {vi_set_dev_attr   :440} [33m[1mVI_DEV_ATTR_S all parameter reserved[0m
+[INFO  rtsp_demo.c:280:rtsp_new_demo] rtsp server demo starting on port 554
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/0
+[DEBUG rtsp_demo.c:480:rtsp_new_session] add session path: /live/1
+rtsp streamq_alloc size is 1753484
+rtsp streamq_alloc size is 1753484
+  === VI ATTRS INFO: ===  
+	devId  :      0
+	chnId  :      0
+	buffcnt:      0
+	buffSize:     0
+	width:        0
+	height:       0
+	Maxwidth:     0
+	Maxwidth:     0
+	streaming:    0
+RKViChn          00:18:06-190 {prepareRuntime    :334} ---------------------------------------------------------
+RKViChn          00:18:06-190 {prepareRuntime    :336} vi version: 1.86, name:vvi
+RKViChn          00:18:06-190 {prepareRuntime    :337} rockit-ko version: vmpi:fb2eed2be49e
+RKViChn          00:18:06-190 {prepareRuntime    :338} rockit-ko building: -2023-02-09-11:04:49
+RKViChn          00:18:06-190 {prepareRuntime    :339} ---------------------------------------------------------
+RKViChn          00:18:06-194 {prepareRuntime    :358} mb pool create success, MBCnt= 2
+cmpi             00:18:06-195 {updateWrapLine    :1643} tmp wrap_line: 324, cur wrap_line: 324, cur_w: 2304, cur_h: 1296, max_res_width: 2304
+cmpi             00:18:06-195 {createRuntime     :542} [WRAP MODE]:set wrap buffer cnt = 2, wrap buff size = 1119744
+RTIsp3x          00:18:06-198 {ispInitDevice     :208} [32m[1msensor name = m00_b_sc3336 4-0030[0m
+RTIsp3x          00:18:06-198 {ispInitDevice     :211} [32m[1msensor_index = 0[0m
+RTDeviceV4L2     00:18:06-201 {open              :138} [32m[1mopen video name(/dev/video11)[0m
+RKViChn          00:18:06-201 {setFrameRate      :1153} [33m[1m[vi] dev(0) ch(0) illegal param s32SrcFrameRate(0) s32DstFrameRate(0)[0m
+RTDeviceV4L2     00:18:06-202 {ispCameraInfo     :549} [33m[1mcurrent device:/dev/video11 isn't compatible(cap:0x84201000) device,memoryType:4, retry:0[0m
+RTDeviceV4L2     00:18:06-202 {ispInitFormat     :726} [32m[1mioctl VIDIOC_S_FMT OK[0m
+RKViChn          00:18:06-203 {start             :813} [32m[1m=========== vi Start startRuntime ===========[0m
+RTDeviceV4L2     00:18:06-203 {ispStreamOn       :440} [32m[1mdo ispStreamOn start[0m
+RTDeviceV4L2     00:18:06-223 {ispStreamOn       :493} [32m[1mdo ispStreamOn done[0m
+RKVencChannel    00:18:06-229 {VencInvoke        :139} [31m[1mvenc get_rc_param invoke error: ctx->hw 0x190260, ctx->hw_create 0![0m
+RKVencChannel    00:18:06-231 {getRcParam        :2350} [31m[1mreturn the user setting value on failure to get rc param from mpp fail.[0m
+MpiAdapterEncode 00:18:06-236 {ma_encode_create  :1653} [32m[1mringbuf buf_size 1495040[0m
+#Start osd_time_server thread, arg:(nil)
+cmpi             00:18:06-328 {mb_create_pool    :222} allocated buffer(this=0x162f90, data=0xa36f3000, size=65536, id=152)
+cmpi             00:18:06-328 {mb_create_pool    :222} allocated buffer(this=0x1a6e98, data=0xa36e3000, size=65536, id=153)
+cmpi             00:18:06-329 {attachToChn       :480} The channel attr attach mapid: 0x0.
+MpiAdapterEncode 00:18:06-343 {ma_encode_get_pack:1978} [32m[1mmap ptr: 0xa3409000[0m
+[DEBUG utils.c:186:rtsp_codec_data_parse_from_user_h265] vps 23
+[DEBUG utils.c:194:rtsp_codec_data_parse_from_user_h265] sps 43
+[DEBUG utils.c:202:rtsp_codec_data_parse_from_user_h265] pps 9
+[server.c][rkipc_server_deinit]:rkipc_server_deinit failed
+mpp[970]: mpp_chan: ctx is no found in chan server
+
+MpiAdapterEncode 00:18:37-985 {ma_encode_destroy :2222} [32m[1munmap ptr: 0xa3409000[0m
+RTDeviceV4L2     00:18:38-003 {ispStreamOff      :503} [32m[1mdo ispStreamOff start[0m
+RTDeviceV4L2     00:18:38-182 {ispStreamOff      :514} [32m[1mdo ispStreamOff done[0m
+RTDeviceV4L2     00:18:38-183 {close             :365} [32m[1mdo RTDeviceV4L2 close[0m
+[DEBUG rtsp_demo.c:645:rtsp_del_session] del session path: /live/0
+[DEBUG rtsp_demo.c:645:rtsp_del_session] del session path: /live/1
+MessageParser process loop exit!
+RKSockServer     00:18:39-195 {start             :162} [31m[1maccept failed[0m
+[ntp.c][rkipc_ntp_update]:connect error
+APD_GUARD_STOP=TIME_LIMIT
+[ 1086.254274] 524: MPP_ENC_SET_RC_CFG bps 11197440 [10497600 : 11897280] fps [30:30] gop 60
+[ 1086.254292] h265e_proc_prep_cfg:414: MPP_ENC_SET_PREP_CFG w:h [2304:1296] stride [2304:1296]
+[ 1086.254305] 271: send header for set cfg change input/format 
+[ 1086.256296] 755: MPP_ENC_SET_CFG in 
+[ 1086.256329] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [30:30] gop 20
+[ 1086.256346] 271: send header for set cfg change rc_mode/fps/gop
+[ 1086.257219] 755: MPP_ENC_SET_CFG in 
+[ 1086.257246] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[ 1086.257260] 271: send header for set cfg change rc_mode/fps/gop
+[ 1086.257467] 755: MPP_ENC_SET_CFG in 
+[ 1086.257487] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[ 1086.257498] 271: send header for set cfg change rc_mode/fps/gop
+[ 1086.257577] 755: MPP_ENC_SET_CFG in 
+[ 1086.257606] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[ 1086.257616] 271: send header for set cfg change rc_mode/fps/gop
+[ 1086.260107] 755: MPP_ENC_SET_CFG in 
+[ 1086.260150] 524: MPP_ENC_SET_RC_CFG bps 2048000 [1920000 : 2176000] fps [10:10] gop 20
+[ 1086.260166] 271: send header for set cfg change rc_mode/fps/gop
+[ 1086.271176] 1062: mode cbr bps [1920000:2048000:2176000] fps fix [10/1] -> fix [10/1] gop i [20] v [0]
+[ 1117.988758] rockit isp stream off
+[ 1118.084220] rkcif-mipi-lvds: stream[0] start stopping, total mode 0x2, cur 0x2
+[ 1118.183158] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream off, src_sd: 9f6c255b, sd_name:rockchip-csi2-dphy0
+[ 1118.183196] rockchip-mipi-csi2 ffa20000.mipi-csi2: stream OFF
+[ 1118.184338] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream_stop stream stop, dphy0
+[ 1118.184363] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:0, dphy0
+[ 1118.184396] rockchip-csi2-dphy csi2-dphy0: csi2_dphy_s_stream stream on:0, dphy0
+[ 1118.184612] rkcif-mipi-lvds: stream[0] stopping finished, dma_en 0x0
+[ 1118.196388] stream_cif_mipi_id1: close video, entity use_count 0
+[ 1118.196454] stream_cif_mipi_id0: close video, entity use_count 1
+[ 1118.196789] stream_cif_mipi_id0: s_power 0, entity use_count 0
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       
+tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN      
+tcp        0      0 127.0.0.1:5037          0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:5555            0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:23              0.0.0.0:*               LISTEN      
+tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN      
+netstat: /proc/net/tcp6: No such file or directory

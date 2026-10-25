@@ -1,0 +1,7 @@
+e4c9a2187ddf907a4480650844f0168ac2c9acc981187c7ed40905ff67c9807e  /oem/usr/bin/RkLunch.sh
+b6d58f74c8d6219472083718c7bda45b35250ecfb1e1cd4e628ca465e7ca763a  /oem/usr/bin/RkLunch.sh.apd-original
+fc64e217140aa35297548c72642f2b4f0b328b2a5d1c13bfec65df43fa9aec7f  /userdata/rkipc.ini
+-rwxr-xr-x    1 1005     1005          2920 Oct 11  2026 [1;32m/oem/usr/bin/RkLunch.sh[m
+-rw-r--r--    1 root     root            40 Jan  1 00:02 [0;0m/userdata/apd-camera-idle[m
+
+APD_APPLY_EXIT=0

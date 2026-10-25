@@ -1,0 +1,54 @@
+{
+  "checked_utc": "2026-10-10T10:58:28.757Z",
+  "hardware_accessed": false,
+  "board_reconnected": false,
+  "python_tests": {
+    "passed": 118,
+    "failed": 0,
+    "scope": "Legacy policy/config/protocol mocks/detector mocks and workshop tracking/cache/visibility contracts; NOT model or real-video accuracy"
+  },
+  "synthetic_replay": {
+    "frames": 11,
+    "passed": true,
+    "hardware_outputs_enabled": false
+  },
+  "native_C": {
+    "compiled": false,
+    "reason": "No host gcc/clang compiler"
+  },
+  "photo_inference": {
+    "executed": false,
+    "command_attempted": true,
+    "reason": "Host dependency installation failed with network read timeout; cv2 not installed. No neural inference run."
+  },
+  "edge_deployment": {
+    "ready": false,
+    "flashed": false,
+    "model_uploaded": false
+  },
+  "python_compileall": {
+    "passed": true
+  },
+  "workshop_tracking": {
+    "synthetic_frames": 29,
+    "unit_tested": true,
+    "hardware_outputs_enabled": false,
+    "production_required": [
+      "vest",
+      "shoes",
+      "helmet"
+    ],
+    "indicator_colors": {
+      "vest": "green",
+      "shoes": "yellow",
+      "helmet": "red"
+    },
+    "current_model_missing": [
+      "vest",
+      "no_vest"
+    ],
+    "visibility_adapter_implemented": false,
+    "real_video_validated": false,
+    "native_port_implemented": false
+  }
+}

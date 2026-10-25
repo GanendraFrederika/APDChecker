@@ -1,0 +1,20 @@
+{
+  "read_only": true,
+  "changes_applied": false,
+  "serial": "2be53eb6debe9106",
+  "backup_sha256": "77c9ca72f55a354df6c805e8557f009ef083d91bbfb48d1c666c4088a6a69021",
+  "requested_duration_seconds": 120,
+  "cutoff_c": 70.0,
+  "stopped_reason": null,
+  "disk_note": "Empty disk counters are NOT proof of no I/O; raw MTD/flash may not expose block statistics.",
+  "summary": {
+    "samples": 24,
+    "temperature_min_c": 42.821,
+    "temperature_max_c": 48.168,
+    "temperature_mean_c": 45.12320833333334,
+    "cpu_busy_mean_percent": 17.646780189137704,
+    "thermal_safety_verified": false,
+    "measured_camera_fps": null,
+    "measured_inference_fps": null
+  }
+}

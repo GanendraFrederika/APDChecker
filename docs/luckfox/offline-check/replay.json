@@ -1,0 +1,405 @@
+{
+  "stage": "HOST_OFFLINE_REPLAY",
+  "simulated": true,
+  "required": [
+    "helmet",
+    "mask"
+  ],
+  "policy_confirmed": false,
+  "frames": [
+    {
+      "index": 0,
+      "t": 0.0,
+      "evidence": {
+        "observation": "VIOLATION",
+        "people": [
+          {
+            "index": 1,
+            "state": "VIOLATION",
+            "present": [],
+            "missing_evidence": [
+              "helmet",
+              "mask"
+            ],
+            "explicit_missing": [
+              "helmet"
+            ],
+            "conflicting_evidence": [],
+            "box": [
+              0,
+              0,
+              100,
+              200
+            ]
+          }
+        ],
+        "people_count": 1,
+        "violator_count": 1,
+        "unassigned_equipment": 0,
+        "invalid_equipment": 0,
+        "invalid_people": 0,
+        "required": [
+          "helmet",
+          "mask"
+        ]
+      },
+      "alarm_indication": false,
+      "hardware_outputs_enabled": false
+    },
+    {
+      "index": 1,
+      "t": 0.75,
+      "evidence": {
+        "observation": "VIOLATION",
+        "people": [
+          {
+            "index": 1,
+            "state": "VIOLATION",
+            "present": [],
+            "missing_evidence": [
+              "helmet",
+              "mask"
+            ],
+            "explicit_missing": [
+              "helmet"
+            ],
+            "conflicting_evidence": [],
+            "box": [
+              0,
+              0,
+              100,
+              200
+            ]
+          }
+        ],
+        "people_count": 1,
+        "violator_count": 1,
+        "unassigned_equipment": 0,
+        "invalid_equipment": 0,
+        "invalid_people": 0,
+        "required": [
+          "helmet",
+          "mask"
+        ]
+      },
+      "alarm_indication": false,
+      "hardware_outputs_enabled": false
+    },
+    {
+      "index": 2,
+      "t": 1.5,
+      "evidence": {
+        "observation": "VIOLATION",
+        "people": [
+          {
+            "index": 1,
+            "state": "VIOLATION",
+            "present": [],
+            "missing_evidence": [
+              "helmet",
+              "mask"
+            ],
+            "explicit_missing": [
+              "helmet"
+            ],
+            "conflicting_evidence": [],
+            "box": [
+              0,
+              0,
+              100,
+              200
+            ]
+          }
+        ],
+        "people_count": 1,
+        "violator_count": 1,
+        "unassigned_equipment": 0,
+        "invalid_equipment": 0,
+        "invalid_people": 0,
+        "required": [
+          "helmet",
+          "mask"
+        ]
+      },
+      "alarm_indication": true,
+      "hardware_outputs_enabled": false
+    },
+    {
+      "index": 3,
+      "t": 2.0,
+      "evidence": {
+        "observation": "UNKNOWN",
+        "people": [
+          {
+            "index": 1,
+            "state": "UNKNOWN",
+            "present": [],
+            "missing_evidence": [
+              "helmet",
+              "mask"
+            ],
+            "explicit_missing": [],
+            "conflicting_evidence": [],
+            "box": [
+              0,
+              0,
+              100,
+              200
+            ]
+          }
+        ],
+        "people_count": 1,
+        "violator_count": 0,
+        "unassigned_equipment": 0,
+        "invalid_equipment": 0,
+        "invalid_people": 0,
+        "required": [
+          "helmet",
+          "mask"
+        ]
+      },
+      "alarm_indication": true,
+      "hardware_outputs_enabled": false
+    },
+    {
+      "index": 4,
+      "t": 2.5,
+      "evidence": {
+        "observation": "COMPLIANT",
+        "people": [
+          {
+            "index": 1,
+            "state": "COMPLIANT",
+            "present": [
+              "helmet",
+              "mask"
+            ],
+            "missing_evidence": [],
+            "explicit_missing": [],
+            "conflicting_evidence": [],
+            "box": [
+              0,
+              0,
+              100,
+              200
+            ]
+          }
+        ],
+        "people_count": 1,
+        "violator_count": 0,
+        "unassigned_equipment": 0,
+        "invalid_equipment": 0,
+        "invalid_people": 0,
+        "required": [
+          "helmet",
+          "mask"
+        ]
+      },
+      "alarm_indication": true,
+      "hardware_outputs_enabled": false
+    },
+    {
+      "index": 5,
+      "t": 4.0,
+      "evidence": {
+        "observation": "COMPLIANT",
+        "people": [
+          {
+            "index": 1,
+            "state": "COMPLIANT",
+            "present": [
+              "helmet",
+              "mask"
+            ],
+            "missing_evidence": [],
+            "explicit_missing": [],
+            "conflicting_evidence": [],
+            "box": [
+              0,
+              0,
+              100,
+              200
+            ]
+          }
+        ],
+        "people_count": 1,
+        "violator_count": 0,
+        "unassigned_equipment": 0,
+        "invalid_equipment": 0,
+        "invalid_people": 0,
+        "required": [
+          "helmet",
+          "mask"
+        ]
+      },
+      "alarm_indication": true,
+      "hardware_outputs_enabled": false
+    },
+    {
+      "index": 6,
+      "t": 5.5,
+      "evidence": {
+        "observation": "COMPLIANT",
+        "people": [
+          {
+            "index": 1,
+            "state": "COMPLIANT",
+            "present": [
+              "helmet",
+              "mask"
+            ],
+            "missing_evidence": [],
+            "explicit_missing": [],
+            "conflicting_evidence": [],
+            "box": [
+              0,
+              0,
+              100,
+              200
+            ]
+          }
+        ],
+        "people_count": 1,
+        "violator_count": 0,
+        "unassigned_equipment": 0,
+        "invalid_equipment": 0,
+        "invalid_people": 0,
+        "required": [
+          "helmet",
+          "mask"
+        ]
+      },
+      "alarm_indication": false,
+      "hardware_outputs_enabled": false
+    },
+    {
+      "index": 7,
+      "t": 6.0,
+      "evidence": {
+        "observation": "VIOLATION",
+        "people": [
+          {
+            "index": 1,
+            "state": "VIOLATION",
+            "present": [],
+            "missing_evidence": [
+              "helmet",
+              "mask"
+            ],
+            "explicit_missing": [
+              "helmet"
+            ],
+            "conflicting_evidence": [],
+            "box": [
+              0,
+              0,
+              100,
+              200
+            ]
+          }
+        ],
+        "people_count": 1,
+        "violator_count": 1,
+        "unassigned_equipment": 0,
+        "invalid_equipment": 0,
+        "invalid_people": 0,
+        "required": [
+          "helmet",
+          "mask"
+        ]
+      },
+      "alarm_indication": false,
+      "hardware_outputs_enabled": false
+    },
+    {
+      "index": 8,
+      "t": 6.75,
+      "evidence": {
+        "observation": "VIOLATION",
+        "people": [
+          {
+            "index": 1,
+            "state": "VIOLATION",
+            "present": [],
+            "missing_evidence": [
+              "helmet",
+              "mask"
+            ],
+            "explicit_missing": [
+              "helmet"
+            ],
+            "conflicting_evidence": [],
+            "box": [
+              0,
+              0,
+              100,
+              200
+            ]
+          }
+        ],
+        "people_count": 1,
+        "violator_count": 1,
+        "unassigned_equipment": 0,
+        "invalid_equipment": 0,
+        "invalid_people": 0,
+        "required": [
+          "helmet",
+          "mask"
+        ]
+      },
+      "alarm_indication": false,
+      "hardware_outputs_enabled": false
+    },
+    {
+      "index": 9,
+      "t": 7.5,
+      "evidence": {
+        "observation": "VIOLATION",
+        "people": [
+          {
+            "index": 1,
+            "state": "VIOLATION",
+            "present": [],
+            "missing_evidence": [
+              "helmet",
+              "mask"
+            ],
+            "explicit_missing": [
+              "helmet"
+            ],
+            "conflicting_evidence": [],
+            "box": [
+              0,
+              0,
+              100,
+              200
+            ]
+          }
+        ],
+        "people_count": 1,
+        "violator_count": 1,
+        "unassigned_equipment": 0,
+        "invalid_equipment": 0,
+        "invalid_people": 0,
+        "required": [
+          "helmet",
+          "mask"
+        ]
+      },
+      "alarm_indication": true,
+      "hardware_outputs_enabled": false
+    },
+    {
+      "index": 10,
+      "t": 8.0,
+      "evidence": {
+        "observation": "CAMERA_LOST",
+        "people": [],
+        "people_count": 0
+      },
+      "alarm_indication": false,
+      "hardware_outputs_enabled": false
+    }
+  ],
+  "hardware_outputs_enabled": false
+}

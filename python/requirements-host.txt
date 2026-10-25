@@ -1,0 +1,8 @@
+# HOST / LAPTOP ONLY. Never install on Luckfox Pico Mini B.
+# CPU torch was installed from the official PyTorch CPU index separately.
+torch==2.14.1+cpu
+torchvision==0.29.1+cpu
+ultralytics==8.4.175
+opencv-python==4.14.0.94
+pyserial==3.5
+imageio-ffmpeg==0.6.0

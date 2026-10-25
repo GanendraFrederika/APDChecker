@@ -1,0 +1,87 @@
+{
+  "recorded_utc": "2026-10-11T02:10:54.187870+00:00",
+  "production_ready": false,
+  "ppe_model_deployed": false,
+  "mcu_uploaded": false,
+  "engine_test_is_host_mock_not_arm_or_npu": true,
+  "matching_sdk_abi_verified": false,
+  "offline_test_count": 208,
+  "new_live_workload_started": false,
+  "files": [
+    {
+      "path": "edge/luckfox/rknn_engine.h",
+      "bytes": 3228,
+      "sha256": "82d55bb3ae1d7b7cceeb8e43e5d7fb7d4b794d7a982275fb8605df0377c3e34f"
+    },
+    {
+      "path": "edge/luckfox/rknn_engine.c",
+      "bytes": 9184,
+      "sha256": "60bdb675aaa4facc94d90834a775f4d30bbb0f427bb0cd924c00bb10f1870246"
+    },
+    {
+      "path": "edge/luckfox/test_rknn_engine.c",
+      "bytes": 10563,
+      "sha256": "18929fc6317a5cf9ce45069b063b0bab23f231cdd9c1e12880f24b0af81c3746"
+    },
+    {
+      "path": "scripts/check_native_core.py",
+      "bytes": 6799,
+      "sha256": "19f30b85f3a43b5fa6c98b4702672c195e59433bcd9e71dc268248cf0549a34f"
+    },
+    {
+      "path": "scripts/audit_luckfox_thermal.py",
+      "bytes": 8559,
+      "sha256": "963f67fb889e05040967aaf0db8c206ff93fb973a2a8dc0debaf68bc189f7dd0"
+    },
+    {
+      "path": "tests/test_thermal_audit_cli.py",
+      "bytes": 6380,
+      "sha256": "b4c8939ee093439ecd8f0dbbaa27836383b27d1e9b63fa3f1f9ca0173c4a9386"
+    },
+    {
+      "path": "config/apd_workshop.json",
+      "bytes": 1459,
+      "sha256": "0256a466d3ce63b5448780e8d9e8621dcec2738b37e509c9b8d4368f0b03e1a8"
+    },
+    {
+      "path": "docs/luckfox/RKNN_ENGINE_CANDIDATE.md",
+      "bytes": 4557,
+      "sha256": "7dff34a5373f8eadfd71849b5f1473c34390be37ee312f5a8fed0ec9a5196cfb"
+    },
+    {
+      "path": "docs/luckfox/PRODUCTION_PROGRESS.md",
+      "bytes": 13564,
+      "sha256": "b559657525007d2688d8f8fd4e5aeb61914bd2c4ea460c08dd150052f2b00842"
+    },
+    {
+      "path": "docs/luckfox/RV1103_BACKEND.md",
+      "bytes": 6394,
+      "sha256": "63032f80e2f8cccb2da08731f419d0e2934bab1a841780ccd2c7692ad49cb94e"
+    },
+    {
+      "path": "docs/luckfox/debug/thermal-audit-status.json",
+      "bytes": 4359,
+      "sha256": "086719a5618df4e059d7544dbc294a7cda0c68e0b51841e6e45f7ad1e828f85b"
+    },
+    {
+      "path": "docs/luckfox/debug/build-preflight/sdk-native/sdk-reference-manifest.json",
+      "bytes": 3437,
+      "sha256": "759d46d4ca190d86e8d1536c88227ea062255b76d5918ebc1bd2649341081062"
+    },
+    {
+      "path": "docs/luckfox/debug/native-tests-20261011-rknn-engine.log",
+      "bytes": 1018,
+      "sha256": "cb588aacc7731508d29941211687b691b4215fa75620c676f26a143fa2958fec"
+    },
+    {
+      "path": "docs/luckfox/debug/offline-tests-20261011-rknn-engine.log",
+      "bytes": 28910,
+      "sha256": "49040facf85ebb5df05d051b80cf3b7c79a6569476375289d088c5369fbc3485"
+    },
+    {
+      "path": "docs/luckfox/debug/rknn-engine-continuation/20261011T021054Z/board-idle-readonly.txt",
+      "bytes": 404,
+      "sha256": "ff162a5b862534175a9d0029636666b6219742b576c97a2e265ba303fff89e61"
+    }
+  ]
+}

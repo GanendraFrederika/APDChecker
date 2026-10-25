@@ -1,0 +1,169 @@
+__deregister_frame_info
+__register_frame_info
+ROCKIVA_Init
+ROCKIVA_DETECT_Init
+ROCKIVA_PushFrame
+ROCKIVA_PushFrame2
+ROCKIVA_SetFrameReleaseCallback
+_ZNSt8ios_base4InitC1Ev
+_ZNSt8ios_base4InitD1Ev
+_ZNSt9basic_iosIcSt11char_traitsIcEE4initEPSt15basic_streambufIcS1_E
+pthread_mutex_init
+ROCKIVA_ONE_Init
+ROCKIVA_FACE_Init
+ROCKIVA_BA_Init
+ROCKIVA_TS_Init
+pthread_cond_init
+rknn_destroy_mem
+rknn_destroy
+rknn_outputs_get
+rknn_outputs_release
+rknn_run
+rknn_create_mem_from_fd
+rknn_set_io_mem
+rknn_inputs_set
+rknn_create_mem
+rknn_query
+rknn_init
+librknnmrt.so
+_ZNKSt5ctypeIcE13_M_widen_initEv
+pthread_mutexattr_init
+ROCKIVA_Init
+ROCKIVA_DETECT_Init
+ROCKIVA_PushFrame2
+ROCKIVA_SetFrameReleaseCallback
+_FrameReleaseCallback
+frame %u
+result frameId=%d count=%d
+objInfo %d frameId=%d objId=%d objType=%d score=%d objRect=(%d %d %d %d)
+RockIVA SDK (version: 1.5.1 | target: rv1106 Linux | build: d0ec0292 2022-09-28 10:30:33)
+handle not init!
+ROCKIVA_DETECT_Init finish
+frameid=%d
+begin api callback channelId=%d release frame count=%d
+St23_Sp_counted_ptr_inplaceIN7rockiva12RockIvaFrameESaIS1_ELN9__gnu_cxx12_Lock_policyE2EE
+St23_Sp_counted_ptr_inplaceIN7rockiva19RockIvaFrameManagerESaIS1_ELN9__gnu_cxx12_Lock_policyE2EE
+PutFrame
+PutFrame
+InitObjectTracker
+all frames %d
+before callback channelId=%d release frame num=%d
+ frameId=
+RockIva::Init begin
+ modelPath:
+RockIva::Init end ret=%d
+channelId=%d frameId=%d exist %s
+frame %d tracked object num: %lu
+FrameReleaseCallback
+ROCKIVA_ONE_Init
+ParseLicense
+frameId
+faceCapFrameType
+modelPath
+licensePath
+licensePath: %s
+license content:
+read license file fail path=%s
+license
+Init common fail ret=%d
+Init face fail ret=%d
+ROCKIVA_BA_Init error %d
+ROCKIVA_BA_Init
+ROCKIVA_BA_Init finish
+obj id=%d multi firstTrigger, delay to next frame
+obj id %d last frame first trigger add
+objInfo %d frameId=%d objId=%d objType=%d score=%d objRect=(%d %d %d %d) triggerRules=0x%x firstTrigger:(ruleID=%d triggerType=%d)
+ROCKIVA_TS_Init
+ROCKIVA_FACE_Init
+ frameindex=
+result frameId=%d objNum=%d
+faceInfo %d frameId=%d objId=%d quality score=%d clarity=%d angle=(%d %d %d) objRect=(%d %d %d %d) relate_person=%d rect=(%d %d %d %d)
+API Capture Result channelId=%d frameId=%d faceCapFrameType=%d faceInfo: objId=%d faceRect=(%d %d %d %d) score=%d
+ROCKIVA_FACE_Init finish
+querystring
+can't find symbol querystring in %s
+librga version: %s
+init runtime error %d
+init module(%d) error %d
+post_init error %d
+ROCKX_LIBRKNN_RUNTIME_PATH
+ROCKX_CONFIG_RKNN_RUNTIME_PATH=%s
+~RockxRKNNRuntime
+dump_rknn_tensor
+query_model_info
+load_model
+N5rockx16RockxRKNNRuntimeE
+/home/xdc/Projects/RockX/src/runtime/rknn/rockx_rknn_runtime.cpp
+release rknn
+rknn_run error %d
+rknn_create_mem error
+rknn_set_io_mem fail! ret=%d
+rknn_inputs_set error %d
+rknn_inputs_set finish
+rknn_create_mem %p size=%d virt_addr=%p fd=%d
+rknn_set_io_mem for input %d
+rknn_query RKNN_QUERY_IN_OUT_NUM fail! ret=%d
+rknn_query RKNN_QUERY_INPUT_ATTR fail! ret=%d
+rknn_query RKNN_QUERY_OUTPUT_ATTR fail! ret=%d
+rknn_query RKNN_QUERY_NATIVE_INPUT_ATTR fail! ret=%d
+rknn_query RKNN_QUERY_NATIVE_OUTPUT_ATTR fail! ret=%d
+rknn_init fail! ret=%d
+get_model_path
+load_model
+/home/xdc/Projects/RockX/src/model_loader/model_loader.cpp
+sys_set_model_path=%s
+user_set_model_path_str=%s
+target_model_path=%s
+%s model data not found!
+%s.rknn
+object_detection_pfp
+OBJECT_DETECTION_IPC_PFP
+post_init
+update MODEL_INPUT_WIDTH=%d
+change MODEL_INPUT_HEIGHT=%d
+N7rockiva11PFPDetectorE
+init rockx module ROCKX_MODULE_OBJECT_DETECTION_IPC error %d
+ObjectDetector::Init start
+ObjectDetector already Init
+ObjectDetector::Init end
+frame %d size=(%dx%d)
+init rockx module ROCKX_MODULE_OBJECT_TRACK error %d
+ObjectTracker::Init start
+ObjectTracker::Init end
+faceLandmark module has not init
+RKBarrierAlert::Init begin
+RKBarrierAlert::Init end
+Init rule from config %lu
+InitImageMem
+objId=%d Update oldFrameId=%d newFrameId=%d
+frame %d refCount++
+frame %d refCount--
+release objId=%d frameId=%d
+RockIvaFace::Init begin
+Init error %d
+RockIvaFace::Init end
+update - face id: %d frame %d ==> %d
+frame %d no face!
+verify librga and driver version
+RGA_api version       : 
+RGA version           : 
+Failed to call RockChipRga interface, query log to find the cause of failure.
+rga_api version 1.7.3_[6]
+librga fail to get hw versions!
+librga fail to get driver version! Legacy mode will be enabled.
+librga fail to get RGA2/RGA1 version! %s
+Had init the rga dev ctx = %p
+Try to exit uninit rgaCtx=%p
+Try to uninit rgaCtx=%p
+This can not be happened, close before init
+Try to use uninit rgaCtx=%p
+rga_im2d: The current RockchipRga singleton is destroyed. Please check if RkRgaInit/RkRgaDeInit are called, if so, please disable them.
+The current RockchipRga singleton is destroyed.Please check if RkRgaInit/RkRgaDeInit are called, if so, please disable them.
+rga_im2d: Can not get the correct RGA version, please check the driver, version=%s
+Can not get the correct RGA version, please check the driver, version=%s
+The driver may be compatible, but it is best to update the driver to version %s. current version: librga %s, driver %s.
+illegal %s format, please query and fix, format = 0x%x(%s)
+.gnu.version
+.gnu.version_r
+.eh_frame
+.init_array

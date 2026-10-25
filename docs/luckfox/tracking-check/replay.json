@@ -1,0 +1,2438 @@
+{
+  "stage": "HOST_TRACKING_PROTOTYPE",
+  "simulated": true,
+  "required": [
+    "vest",
+    "shoes",
+    "helmet"
+  ],
+  "indicator_colors": {
+    "vest": "green",
+    "shoes": "yellow",
+    "helmet": "red"
+  },
+  "current_model_capabilities": {
+    "label_contract_supported": false,
+    "missing_positive": [
+      "vest"
+    ],
+    "missing_negative": [
+      "no_vest"
+    ],
+    "accuracy_validated": false,
+    "deployment_ready": false
+  },
+  "frames": [
+    {
+      "frame_id": 1,
+      "t": 0,
+      "scenario": "A_walks_feet_not_visible",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            0,
+            0,
+            100,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": null,
+          "shoes": null,
+          "helmet": null
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 2,
+      "t": 0.3,
+      "scenario": "A_walks_feet_not_visible",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            3,
+            0,
+            103,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 0.3,
+              "expires_at": 2.3,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 2,
+              "transition": {
+                "previous": "UNKNOWN",
+                "current": "PRESENT",
+                "cause": "POSITIVE_CONFIRMED"
+              }
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 0.3,
+              "expires_at": 2.3,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 2,
+              "transition": {
+                "previous": "UNKNOWN",
+                "current": "PRESENT",
+                "cause": "POSITIVE_CONFIRMED"
+              }
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": null,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 3,
+      "t": 0.6,
+      "scenario": "A_walks_feet_not_visible",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            6,
+            0,
+            106,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 0.6,
+              "expires_at": 2.6,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 3,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 0.6,
+              "expires_at": 2.6,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 3,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": null,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 4,
+      "t": 0.9,
+      "scenario": "A_full_PPE_becomes_visible",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            9,
+            0,
+            109,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 0.9,
+              "expires_at": 2.9,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 4,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 0.9,
+              "expires_at": 2.9,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 4,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": null,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 5,
+      "t": 1.2,
+      "scenario": "A_full_PPE_becomes_visible",
+      "observation": "COMPLIANT",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            12,
+            0,
+            112,
+            200
+          ],
+          "state": "COMPLIANT",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 1.2,
+              "expires_at": 3.2,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 5,
+              "transition": null
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 1.2,
+              "expires_at": 3.2,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 2,
+              "transition": {
+                "previous": "UNKNOWN",
+                "current": "PRESENT",
+                "cause": "POSITIVE_CONFIRMED"
+              }
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 1.2,
+              "expires_at": 3.2,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 5,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": true,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 6,
+      "t": 1.5,
+      "scenario": "A_feet_hidden_again_cache_then_expiry",
+      "observation": "COMPLIANT",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            15,
+            0,
+            115,
+            200
+          ],
+          "state": "COMPLIANT",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 1.5,
+              "expires_at": 3.5,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 6,
+              "transition": null
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "CACHED",
+              "observed_at": 1.2,
+              "expires_at": 3.2,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 1.5,
+              "expires_at": 3.5,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 6,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": true,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 7,
+      "t": 1.8,
+      "scenario": "A_feet_hidden_again_cache_then_expiry",
+      "observation": "COMPLIANT",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            18,
+            0,
+            118,
+            200
+          ],
+          "state": "COMPLIANT",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 1.8,
+              "expires_at": 3.8,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 7,
+              "transition": null
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "CACHED",
+              "observed_at": 1.2,
+              "expires_at": 3.2,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 1.8,
+              "expires_at": 3.8,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 7,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": true,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 8,
+      "t": 2.1,
+      "scenario": "A_feet_hidden_again_cache_then_expiry",
+      "observation": "COMPLIANT",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            21,
+            0,
+            121,
+            200
+          ],
+          "state": "COMPLIANT",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 2.1,
+              "expires_at": 4.1,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 8,
+              "transition": null
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "CACHED",
+              "observed_at": 1.2,
+              "expires_at": 3.2,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 2.1,
+              "expires_at": 4.1,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 8,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": true,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 9,
+      "t": 2.4,
+      "scenario": "A_feet_hidden_again_cache_then_expiry",
+      "observation": "COMPLIANT",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            24,
+            0,
+            124,
+            200
+          ],
+          "state": "COMPLIANT",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 2.4,
+              "expires_at": 4.4,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 9,
+              "transition": null
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "CACHED",
+              "observed_at": 1.2,
+              "expires_at": 3.2,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 2.4,
+              "expires_at": 4.4,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 9,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": true,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 10,
+      "t": 2.7,
+      "scenario": "A_feet_hidden_again_cache_then_expiry",
+      "observation": "COMPLIANT",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            27,
+            0,
+            127,
+            200
+          ],
+          "state": "COMPLIANT",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 2.7,
+              "expires_at": 4.7,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 10,
+              "transition": null
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "CACHED",
+              "observed_at": 1.2,
+              "expires_at": 3.2,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 2.7,
+              "expires_at": 4.7,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 10,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": true,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 11,
+      "t": 3,
+      "scenario": "A_feet_hidden_again_cache_then_expiry",
+      "observation": "COMPLIANT",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            30,
+            0,
+            130,
+            200
+          ],
+          "state": "COMPLIANT",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 3,
+              "expires_at": 5,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 11,
+              "transition": null
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "CACHED",
+              "observed_at": 1.2,
+              "expires_at": 3.2,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 3,
+              "expires_at": 5,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 11,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": true,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 12,
+      "t": 3.3,
+      "scenario": "A_feet_hidden_again_cache_then_expiry",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            33,
+            0,
+            133,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 3.3,
+              "expires_at": 5.3,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 12,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": {
+                "previous": "PRESENT",
+                "current": "UNKNOWN",
+                "cause": "EVIDENCE_EXPIRED"
+              }
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 3.3,
+              "expires_at": 5.3,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 12,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": null,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 13,
+      "t": 3.6,
+      "scenario": "A_feet_hidden_again_cache_then_expiry",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            36,
+            0,
+            136,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 3.6,
+              "expires_at": 5.6,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 13,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 3.6,
+              "expires_at": 5.6,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 13,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": null,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 14,
+      "t": 3.9,
+      "scenario": "A_visible_explicit_no_shoes_needs_confirmation",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            39,
+            0,
+            139,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 3.9,
+              "expires_at": 5.9,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 14,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "ABSENT",
+              "reason": "EXPLICIT_NEGATIVE_VISIBLE",
+              "visibility": "OBSERVABLE",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "ABSENT",
+              "candidate_samples": 1,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 3.9,
+              "expires_at": 5.9,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 14,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": null,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 15,
+      "t": 4.2,
+      "scenario": "A_visible_explicit_no_shoes_needs_confirmation",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            42,
+            0,
+            142,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 4.2,
+              "expires_at": 6.2,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 15,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "ABSENT",
+              "reason": "EXPLICIT_NEGATIVE_VISIBLE",
+              "visibility": "OBSERVABLE",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "ABSENT",
+              "candidate_samples": 2,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 4.2,
+              "expires_at": 6.2,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 15,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": null,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 16,
+      "t": 4.5,
+      "scenario": "A_visible_explicit_no_shoes_needs_confirmation",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            45,
+            0,
+            145,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 4.5,
+              "expires_at": 6.5,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 16,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "ABSENT",
+              "reason": "EXPLICIT_NEGATIVE_VISIBLE",
+              "visibility": "OBSERVABLE",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "ABSENT",
+              "candidate_samples": 3,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 4.5,
+              "expires_at": 6.5,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 16,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": null,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 17,
+      "t": 4.8,
+      "scenario": "A_visible_explicit_no_shoes_needs_confirmation",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            48,
+            0,
+            148,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 4.8,
+              "expires_at": 6.8,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 17,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "ABSENT",
+              "reason": "EXPLICIT_NEGATIVE_VISIBLE",
+              "visibility": "OBSERVABLE",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "ABSENT",
+              "candidate_samples": 4,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 4.8,
+              "expires_at": 6.8,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 17,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": null,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 18,
+      "t": 5.1,
+      "scenario": "A_visible_explicit_no_shoes_needs_confirmation",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            51,
+            0,
+            151,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 5.1,
+              "expires_at": 7.1,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 18,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "ABSENT",
+              "reason": "EXPLICIT_NEGATIVE_VISIBLE",
+              "visibility": "OBSERVABLE",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "ABSENT",
+              "candidate_samples": 5,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 5.1,
+              "expires_at": 7.1,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 18,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": null,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 19,
+      "t": 5.4,
+      "scenario": "A_visible_explicit_no_shoes_needs_confirmation",
+      "observation": "VIOLATION",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            54,
+            0,
+            154,
+            200
+          ],
+          "state": "VIOLATION",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 5.4,
+              "expires_at": 7.4,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 19,
+              "transition": null
+            },
+            "shoes": {
+              "state": "ABSENT",
+              "observation": "ABSENT",
+              "reason": "EXPLICIT_NEGATIVE_VISIBLE",
+              "visibility": "OBSERVABLE",
+              "source": "FRESH",
+              "observed_at": 5.4,
+              "expires_at": 7.4,
+              "confidence": 0.9,
+              "candidate": "ABSENT",
+              "candidate_samples": 6,
+              "transition": {
+                "previous": "UNKNOWN",
+                "current": "ABSENT",
+                "cause": "NEGATIVE_CONFIRMED"
+              }
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 5.4,
+              "expires_at": 7.4,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 19,
+              "transition": null
+            }
+          },
+          "alarm_candidate": true
+        }
+      ],
+      "alarm_candidate": true,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": false,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 20,
+      "t": 5.7,
+      "scenario": "A_visible_explicit_no_shoes_needs_confirmation",
+      "observation": "VIOLATION",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            57,
+            0,
+            157,
+            200
+          ],
+          "state": "VIOLATION",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 5.7,
+              "expires_at": 7.7,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 20,
+              "transition": null
+            },
+            "shoes": {
+              "state": "ABSENT",
+              "observation": "ABSENT",
+              "reason": "EXPLICIT_NEGATIVE_VISIBLE",
+              "visibility": "OBSERVABLE",
+              "source": "FRESH",
+              "observed_at": 5.7,
+              "expires_at": 7.7,
+              "confidence": 0.9,
+              "candidate": "ABSENT",
+              "candidate_samples": 7,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 5.7,
+              "expires_at": 7.7,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 20,
+              "transition": null
+            }
+          },
+          "alarm_candidate": true
+        }
+      ],
+      "alarm_candidate": true,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": false,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 21,
+      "t": 6,
+      "scenario": "A_negative_is_now_only_cached_no_alarm",
+      "observation": "VIOLATION",
+      "people": [
+        {
+          "track_id": 1,
+          "box": [
+            60,
+            0,
+            160,
+            200
+          ],
+          "state": "VIOLATION",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 6,
+              "expires_at": 8,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 21,
+              "transition": null
+            },
+            "shoes": {
+              "state": "ABSENT",
+              "observation": "UNKNOWN",
+              "reason": "NOT_VISIBLE",
+              "visibility": "NOT_VISIBLE",
+              "source": "CACHED",
+              "observed_at": 5.7,
+              "expires_at": 7.7,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 6,
+              "expires_at": 8,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 21,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 1,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": false,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 22,
+      "t": 6.3,
+      "scenario": "A_exits",
+      "observation": "NO_PERSON",
+      "people": [],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "NO_PERSON",
+        "track_id": null,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": null,
+          "shoes": null,
+          "helmet": null
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    },
+    {
+      "frame_id": 23,
+      "t": 6.6,
+      "scenario": "B_enters_new_track_complete_PPE",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 2,
+          "box": [
+            250,
+            0,
+            350,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            },
+            "helmet": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 2,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": null,
+          "shoes": null,
+          "helmet": null
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 2
+    },
+    {
+      "frame_id": 24,
+      "t": 6.9,
+      "scenario": "B_enters_new_track_complete_PPE",
+      "observation": "COMPLIANT",
+      "people": [
+        {
+          "track_id": 2,
+          "box": [
+            253,
+            0,
+            353,
+            200
+          ],
+          "state": "COMPLIANT",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 6.9,
+              "expires_at": 8.9,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 2,
+              "transition": {
+                "previous": "UNKNOWN",
+                "current": "PRESENT",
+                "cause": "POSITIVE_CONFIRMED"
+              }
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 6.9,
+              "expires_at": 8.9,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 2,
+              "transition": {
+                "previous": "UNKNOWN",
+                "current": "PRESENT",
+                "cause": "POSITIVE_CONFIRMED"
+              }
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 6.9,
+              "expires_at": 8.9,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 2,
+              "transition": {
+                "previous": "UNKNOWN",
+                "current": "PRESENT",
+                "cause": "POSITIVE_CONFIRMED"
+              }
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 2,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": true,
+          "shoes": true,
+          "helmet": true
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 2
+    },
+    {
+      "frame_id": 25,
+      "t": 7.2,
+      "scenario": "B_and_C_have_separate_evidence",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 2,
+          "box": [
+            250,
+            0,
+            350,
+            200
+          ],
+          "state": "COMPLIANT",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 7.2,
+              "expires_at": 9.2,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 3,
+              "transition": null
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "UNKNOWN",
+              "reason": "NO_EVIDENCE",
+              "visibility": "UNKNOWN",
+              "source": "CACHED",
+              "observed_at": 6.9,
+              "expires_at": 8.9,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "UNKNOWN",
+              "reason": "NO_EVIDENCE",
+              "visibility": "UNKNOWN",
+              "source": "CACHED",
+              "observed_at": 6.9,
+              "expires_at": 8.9,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        },
+        {
+          "track_id": 3,
+          "box": [
+            450,
+            0,
+            550,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "NO_EVIDENCE",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            },
+            "helmet": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "MULTIPLE_PEOPLE",
+        "track_id": null,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": null,
+          "shoes": null,
+          "helmet": null
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 2
+    },
+    {
+      "frame_id": 26,
+      "t": 7.5,
+      "scenario": "B_and_C_have_separate_evidence",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 2,
+          "box": [
+            250,
+            0,
+            350,
+            200
+          ],
+          "state": "COMPLIANT",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 7.5,
+              "expires_at": 9.5,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 4,
+              "transition": null
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "UNKNOWN",
+              "reason": "NO_EVIDENCE",
+              "visibility": "UNKNOWN",
+              "source": "CACHED",
+              "observed_at": 6.9,
+              "expires_at": 8.9,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "UNKNOWN",
+              "reason": "NO_EVIDENCE",
+              "visibility": "UNKNOWN",
+              "source": "CACHED",
+              "observed_at": 6.9,
+              "expires_at": 8.9,
+              "confidence": 0.9,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        },
+        {
+          "track_id": 3,
+          "box": [
+            450,
+            0,
+            550,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "NO_EVIDENCE",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "shoes": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 7.5,
+              "expires_at": 9.5,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 2,
+              "transition": {
+                "previous": "UNKNOWN",
+                "current": "PRESENT",
+                "cause": "POSITIVE_CONFIRMED"
+              }
+            },
+            "helmet": {
+              "state": "PRESENT",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "FRESH",
+              "observed_at": 7.5,
+              "expires_at": 9.5,
+              "confidence": 0.9,
+              "candidate": "PRESENT",
+              "candidate_samples": 2,
+              "transition": {
+                "previous": "UNKNOWN",
+                "current": "PRESENT",
+                "cause": "POSITIVE_CONFIRMED"
+              }
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "MULTIPLE_PEOPLE",
+        "track_id": null,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": null,
+          "shoes": null,
+          "helmet": null
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 2
+    },
+    {
+      "frame_id": 27,
+      "t": 7.8,
+      "scenario": "B_and_C_cross_identity_ambiguous",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 4,
+          "box": [
+            300,
+            0,
+            400,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": true,
+          "items": {
+            "vest": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "IDENTITY_AMBIGUOUS",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "IDENTITY_AMBIGUOUS",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "IDENTITY_AMBIGUOUS",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        },
+        {
+          "track_id": 5,
+          "box": [
+            350,
+            0,
+            450,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": true,
+          "items": {
+            "vest": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "IDENTITY_AMBIGUOUS",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "IDENTITY_AMBIGUOUS",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            },
+            "helmet": {
+              "state": "UNKNOWN",
+              "observation": "UNKNOWN",
+              "reason": "IDENTITY_AMBIGUOUS",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": null,
+              "candidate_samples": 0,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "MULTIPLE_PEOPLE",
+        "track_id": null,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": null,
+          "shoes": null,
+          "helmet": null
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 6,
+      "retained_track_count": 3
+    },
+    {
+      "frame_id": 28,
+      "t": 8.1,
+      "scenario": "Camera_fault_flushes_all_tracks",
+      "observation": "CAMERA_LOST",
+      "people": [],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "NO_PERSON",
+        "track_id": null,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": null,
+          "shoes": null,
+          "helmet": null
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false
+    },
+    {
+      "frame_id": 29,
+      "t": 8.4,
+      "scenario": "Recovered_first_frame_not_confirmed",
+      "observation": "UNKNOWN",
+      "people": [
+        {
+          "track_id": 6,
+          "box": [
+            300,
+            0,
+            400,
+            200
+          ],
+          "state": "UNKNOWN",
+          "identity_ambiguous": false,
+          "items": {
+            "vest": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            },
+            "shoes": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            },
+            "helmet": {
+              "state": "UNKNOWN",
+              "observation": "PRESENT",
+              "reason": "POSITIVE_DETECTION",
+              "visibility": "UNKNOWN",
+              "source": "NONE",
+              "observed_at": null,
+              "expires_at": null,
+              "confidence": null,
+              "candidate": "PRESENT",
+              "candidate_samples": 1,
+              "transition": null
+            }
+          },
+          "alarm_candidate": false
+        }
+      ],
+      "alarm_candidate": false,
+      "indicators": {
+        "mode": "SINGLE_PERSON",
+        "track_id": 6,
+        "colors": {
+          "vest": "green",
+          "shoes": "yellow",
+          "helmet": "red"
+        },
+        "lights": {
+          "vest": null,
+          "shoes": null,
+          "helmet": null
+        },
+        "physical_behavior_finalized": false
+      },
+      "hardware_outputs_enabled": false,
+      "unassigned_equipment": 0,
+      "retained_track_count": 1
+    }
+  ],
+  "hardware_outputs_enabled": false,
+  "deployment_ready": false
+}

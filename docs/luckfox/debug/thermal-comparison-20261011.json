@@ -1,0 +1,170 @@
+[
+  {
+    "condition": "builtin_demo_baseline",
+    "evidence_directory": "20261010T231947909423Z",
+    "report": {
+      "read_only": true,
+      "changes_applied": false,
+      "serial": "2be53eb6debe9106",
+      "backup_sha256": "09db1d2191d1eedd7f6ed7a5012ee37c2102bf8ce42bfbf269cff25a5b83e7c3",
+      "requested_duration_seconds": 120,
+      "cutoff_c": 70.0,
+      "stopped_reason": null,
+      "disk_note": "Empty disk counters are NOT proof of no I/O; raw MTD/flash may not expose block statistics.",
+      "summary": {
+        "samples": 18,
+        "temperature_min_c": 51.138,
+        "temperature_max_c": 53.514,
+        "temperature_mean_c": 52.359,
+        "cpu_busy_mean_percent": 69.71812778826366,
+        "thermal_safety_verified": false,
+        "measured_camera_fps": null,
+        "measured_inference_fps": null
+      }
+    },
+    "observed_span_seconds": 118.93,
+    "last_60s_temperature_mean_c": 51.996,
+    "last_60s_cpu_mean_percent": 67.53691323546803,
+    "valid_equilibrium_comparison": false
+  },
+  {
+    "condition": "camera_stopped_idle",
+    "evidence_directory": "20261010T232207027615Z",
+    "report": {
+      "read_only": true,
+      "changes_applied": false,
+      "serial": "2be53eb6debe9106",
+      "backup_sha256": "6fc97439c19cef39a54bcee14b5fa648e1a93e988974a772908aaddfdcc29d1b",
+      "requested_duration_seconds": 120,
+      "cutoff_c": 70.0,
+      "stopped_reason": null,
+      "disk_note": "Empty disk counters are NOT proof of no I/O; raw MTD/flash may not expose block statistics.",
+      "summary": {
+        "samples": 22,
+        "temperature_min_c": 38.663,
+        "temperature_max_c": 48.762,
+        "temperature_mean_c": 41.120090909090905,
+        "cpu_busy_mean_percent": 11.069012574265003,
+        "thermal_safety_verified": false,
+        "measured_camera_fps": null,
+        "measured_inference_fps": null
+      }
+    },
+    "observed_span_seconds": 119.46999999999997,
+    "last_60s_temperature_mean_c": 39.580999999999996,
+    "last_60s_cpu_mean_percent": 10.1136660043004,
+    "valid_equilibrium_comparison": false
+  },
+  {
+    "condition": "npu_disabled_TRANSITION_CONTAMINATED",
+    "evidence_directory": "20261010T232448174791Z",
+    "report": {
+      "read_only": true,
+      "changes_applied": false,
+      "serial": "2be53eb6debe9106",
+      "backup_sha256": "6fc97439c19cef39a54bcee14b5fa648e1a93e988974a772908aaddfdcc29d1b",
+      "requested_duration_seconds": 120,
+      "cutoff_c": 70.0,
+      "stopped_reason": null,
+      "disk_note": "Empty disk counters are NOT proof of no I/O; raw MTD/flash may not expose block statistics.",
+      "summary": {
+        "samples": 23,
+        "temperature_min_c": 43.415,
+        "temperature_max_c": 52.92,
+        "temperature_mean_c": 50.62143478260869,
+        "cpu_busy_mean_percent": 50.05107998904996,
+        "thermal_safety_verified": false,
+        "measured_camera_fps": null,
+        "measured_inference_fps": null
+      }
+    },
+    "observed_span_seconds": 119.97999999999996,
+    "last_60s_temperature_mean_c": 51.93,
+    "last_60s_cpu_mean_percent": 48.96470719256158,
+    "valid_equilibrium_comparison": false
+  },
+  {
+    "condition": "main_only_requested_encoder_5_actual_25",
+    "evidence_directory": "20261010T232715584150Z",
+    "report": {
+      "read_only": true,
+      "changes_applied": false,
+      "serial": "2be53eb6debe9106",
+      "backup_sha256": "bb251ea86fa635e2a28e9330d19fecc17278a32e6f939b2d793be2173230185e",
+      "requested_duration_seconds": 120,
+      "cutoff_c": 70.0,
+      "stopped_reason": null,
+      "disk_note": "Empty disk counters are NOT proof of no I/O; raw MTD/flash may not expose block statistics.",
+      "summary": {
+        "samples": 23,
+        "temperature_min_c": 49.356,
+        "temperature_max_c": 51.138,
+        "temperature_mean_c": 50.28573913043478,
+        "cpu_busy_mean_percent": 33.723779210004245,
+        "thermal_safety_verified": false,
+        "measured_camera_fps": null,
+        "measured_inference_fps": null
+      }
+    },
+    "observed_span_seconds": 119.72000000000003,
+    "last_60s_temperature_mean_c": 50.2965,
+    "last_60s_cpu_mean_percent": 35.25858362778363,
+    "valid_equilibrium_comparison": false
+  },
+  {
+    "condition": "main_only_requested_isp_5_actual_10",
+    "evidence_directory": "20261010T232933167355Z",
+    "report": {
+      "read_only": true,
+      "changes_applied": false,
+      "serial": "2be53eb6debe9106",
+      "backup_sha256": "77c9ca72f55a354df6c805e8557f009ef083d91bbfb48d1c666c4088a6a69021",
+      "requested_duration_seconds": 120,
+      "cutoff_c": 70.0,
+      "stopped_reason": null,
+      "disk_note": "Empty disk counters are NOT proof of no I/O; raw MTD/flash may not expose block statistics.",
+      "summary": {
+        "samples": 24,
+        "temperature_min_c": 42.821,
+        "temperature_max_c": 48.168,
+        "temperature_mean_c": 45.12320833333334,
+        "cpu_busy_mean_percent": 17.646780189137704,
+        "thermal_safety_verified": false,
+        "measured_camera_fps": null,
+        "measured_inference_fps": null
+      }
+    },
+    "observed_span_seconds": 119.9799999999999,
+    "last_60s_temperature_mean_c": 44.157583333333335,
+    "last_60s_cpu_mean_percent": 16.832827054417788,
+    "valid_equilibrium_comparison": false
+  },
+  {
+    "condition": "main_only_requested_isp_3_actual_10_INTERRUPTED",
+    "evidence_directory": "20261010T233202704957Z",
+    "report": {
+      "read_only": true,
+      "changes_applied": false,
+      "serial": "2be53eb6debe9106",
+      "backup_sha256": "26ba959165389d384b4fa1e62a4283adb7a68f4d88e399e661483d942c993f47",
+      "requested_duration_seconds": 120,
+      "cutoff_c": 70.0,
+      "stopped_reason": "adb.exe: device '2be53eb6debe9106' not found",
+      "disk_note": "Empty disk counters are NOT proof of no I/O; raw MTD/flash may not expose block statistics.",
+      "summary": {
+        "samples": 8,
+        "temperature_min_c": 42.227,
+        "temperature_max_c": 44.009,
+        "temperature_mean_c": 43.34075,
+        "cpu_busy_mean_percent": 21.757057018689093,
+        "thermal_safety_verified": false,
+        "measured_camera_fps": null,
+        "measured_inference_fps": null
+      }
+    },
+    "observed_span_seconds": 37.319999999999936,
+    "last_60s_temperature_mean_c": 43.34075,
+    "last_60s_cpu_mean_percent": 21.757057018689093,
+    "valid_equilibrium_comparison": false
+  }
+]
