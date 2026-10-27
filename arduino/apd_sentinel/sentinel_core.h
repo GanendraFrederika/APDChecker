@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-#define SC_VERSION "3.1.0"
+#define SC_VERSION "3.2.0"
 #define SC_BODY_MAX 80
 #define SC_MAX_FIELDS 16
 #define SC_LINK_TIMEOUT_MS 1500UL
@@ -39,6 +39,7 @@ typedef struct {
   int16_t tmin0, tmin1, thome, tmax;  /* tilt floor at pmin / at pmax, home, top */
   int16_t pvmax, tvmax;               /* deg/s */
   int16_t pacc, tacc;                 /* deg/s^2 */
+  int16_t tmaxr;                      /* tilt ceiling at pmin, rising to tmax at phome */
 } sc_limits;
 
 typedef struct {
@@ -116,6 +117,8 @@ void sc_limits_default(sc_limits *l);
 bool sc_limits_valid(const sc_limits *l);
 int16_t sc_tilt_floor_i(const sc_limits *l, int16_t pan);  /* integer ceil (spec 5) */
 float sc_tilt_floor_f(const sc_limits *l, float pan);      /* exact linear, <= _i */
+int16_t sc_tilt_ceil_i(const sc_limits *l, int16_t pan);   /* integer floor (spec 5) */
+float sc_tilt_ceil_f(const sc_limits *l, float pan);       /* exact, >= _i */
 bool sc_in_zone(const sc_limits *l, float pan, float tilt);
 void sc_clamp(const sc_limits *l, int16_t *pan, int16_t *tilt, bool *clamped);
 uint16_t sc_dd_to_us(float dd);

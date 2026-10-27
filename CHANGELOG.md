@@ -1,5 +1,48 @@
 # Changelog
 
+## [3.2.0] — 2026-10-27
+
+### Diperbaiki (diuji di rig asli)
+- **Arduino reset terus tiap beberapa detik.** Penyebabnya: gangguan USB sesaat saat servo
+  menarik arus (tegangan turun ke ~4,3 V) membuat program PC menutup lalu membuka ulang
+  port serial, dan membuka port Uno = reset (DTR). Sekarang port dibuka dengan DTR mati
+  (tidak mereset Arduino), gangguan sesaat dicoba ulang tanpa menutup port, dan reboot
+  Arduino ditangani tanpa membuka ulang port. Tes rig: 0 reboot dari 48 gangguan USB.
+- **Servo pan "patah-patah / tretet".** Setiap reset membuat servo meloncat ke pose lama
+  dan meluncur lagi. Ditambah: pose servo terakhir disimpan di RAM yang tidak dihapus saat
+  reset, jadi setelah reset servo mulai tepat di posisinya. Akselerasi dibuat lebih lembut
+  (pan 300, tilt 200 °/s²): puncak arus servo lebih kecil.
+- **Alarm berisik / noise.** Pengatur volume lama memutus nada 100 kali per detik (dengung
+  100 Hz). Nada sekarang dibuat interrupt Timer2 dengan duty-cycle (tanpa dengung),
+  envelope lembut (attack, decay, release) dan kurva volume audio. Alarm diganti nada
+  minor C-Eb-G yang tenang seperti monitor rumah sakit, plus satu pengumuman suara
+  "Mohon lengkapi APD" dari laptop. Volume default 50 %.
+- **"LINK AI PUTUS" berkedip.** Bug jam: frame diberi cap waktu sesudah `millis()` loop,
+  selisih unsigned membungkus ke ±49 hari. Loop kini membaca jam sesudah memproses frame
+  dan perbandingan waktu memakai aritmetika bertanda.
+- PC sleep mematikan USB: aplikasi kini menahan PC agar tidak sleep selama berjalan.
+- Aplikasi tidak lagi keluar bila Pico belum tersambung: menunggu dan menyalakan kamera
+  begitu Pico muncul; dashboard dan preview LCD tetap hidup tanpa kamera.
+
+### Ditambahkan
+- **Batas tilt 170° saat menoleh kanan** (atap tilt ikut pan, `MAXR`), dijaga firmware
+  termasuk saat animasi; jalur "turunkan dulu, baru putar". EEPROM versi 4.
+- **Preview LCD 16x2 di dashboard**: Arduino mengirim teks LCD-nya (`LCD,...`).
+- **Kalibrasi kamera otomatis dari gerakan servo** (tombol "Kalibrasi kamera" /
+  `--calibrate`): servo bergerak ±5°, pergeseran gambar diukur, lalu rotasi 90°-an,
+  kemiringan tabung (roll) dan FOV dihitung serta disimpan ke config. Tidak perlu orang.
+- **Rotasi otomatis dari orang tegak** + tombol "Putar kamera 90°".
+- Kipas tanpa DS18B20 = **mati** (sensor masih dipesan). Begitu sensor dicolok, firmware
+  mendeteksinya sendiri dan kipas jadi otomatis tanpa upload ulang. Kipas Pico ikut suhu
+  SoC Pico.
+- `scripts/sentinel_hil.py`: tes hardware-in-the-loop (patroli, lock, ikuti, grup,
+  pelanggaran + alarm, animasi, cari, kipas, LCD, reboot, kehalusan) di rig asli, atau
+  `--sim` dengan firmware core yang sama dikompilasi untuk PC. Rig asli: 24/24 lulus.
+
+### Catatan
+- Firmware 31.182 / 32.256 byte.
+- Pico masih hilang dari USB beberapa menit setelah kamera menyala: dugaan daya/kabel USB.
+
 ## [3.1.0] — 2026-10-26
 
 ### Ditambahkan

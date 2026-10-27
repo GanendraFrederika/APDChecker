@@ -91,8 +91,9 @@ int sc_framer_feed(sc_framer *f, char ch, uint32_t now_ms, char *body_out) {
 void sc_limits_default(sc_limits *l) {
   /* Measured by the user on 24-10-2026 (PROTOCOL.md section 5). */
   l->pmin = 0; l->phome = 900; l->pmax = 1450;
-  l->tmin0 = 1450; l->tmin1 = 1000; l->thome = 1250; l->tmax = 1800;  /* home: slight downward look */
-  l->pvmax = 120; l->tvmax = 90; l->pacc = 400; l->tacc = 300;
+  l->tmin0 = 1450; l->tmin1 = 1000; l->thome = 1800; l->tmax = 1800;  /* home: level (development rig) */
+  l->pvmax = 120; l->tvmax = 90; l->pacc = 300; l->tacc = 200;   /* 27-10: softer starts */
+  l->tmaxr = 1700;                 /* 26-10-2026: looking hard right, 170 deg is the top */
 }
 
 static int32_t ceil_div(int32_t a, int32_t b) { return a >= 0 ? (a + b - 1) / b : -((-a) / b); }
@@ -104,12 +105,25 @@ int16_t sc_tilt_floor_i(const sc_limits *l, int16_t pan) {
                                       (int32_t)(l->pmax - l->pmin)));
 }
 
-float sc_tilt_floor_f(const sc_limits *l, float pan) {
-  if (pan < l->pmin) pan = l->pmin;
-  if (pan > l->pmax) pan = l->pmax;
-  return (float)l->tmin0 +
-         (float)(l->tmin1 - l->tmin0) * (pan - (float)l->pmin) / (float)(l->pmax - l->pmin);
+/* y at x on the segment (x0,y0)-(x1,y1), x0 < x1, held flat outside it. Shared by the
+ * floor, the ceiling and their inverses (the zone walls) to save flash. */
+SC_NOINLINE static float seg(float x, int16_t x0, int16_t x1, int16_t y0, int16_t y1) {
+  if (x >= x1) return y1;
+  if (x <= x0) return y0;
+  return (float)y0 + (float)(y1 - y0) * (x - (float)x0) / (float)(x1 - x0);
 }
+
+float sc_tilt_floor_f(const sc_limits *l, float pan) { return seg(pan, l->pmin, l->pmax, l->tmin0, l->tmin1); }
+
+/* Ceiling: tmaxr at pmin rising linearly to tmax at phome, flat tmax beyond. A concave
+ * ceiling over a linear floor keeps the zone convex (see smooth_axis). */
+int16_t sc_tilt_ceil_i(const sc_limits *l, int16_t pan) {
+  if (pan < l->pmin) pan = l->pmin;
+  if (pan >= l->phome) return l->tmax;     /* also covers phome == pmin (no division by 0) */
+  return (int16_t)(l->tmaxr + (int32_t)(l->tmax - l->tmaxr) * (pan - l->pmin) / (l->phome - l->pmin));
+}
+
+float sc_tilt_ceil_f(const sc_limits *l, float pan) { return seg(pan, l->pmin, l->phome, l->tmaxr, l->tmax); }
 
 static bool in_dd(int16_t v) { return v >= 0 && v <= 1800; }
 
@@ -117,7 +131,7 @@ bool sc_limits_valid(const sc_limits *l) {
   if (!in_dd(l->pmin) || !in_dd(l->phome) || !in_dd(l->pmax) || !in_dd(l->tmin0) ||
       !in_dd(l->tmin1) || !in_dd(l->thome) || !in_dd(l->tmax)) return false;
   if (l->pmin >= l->pmax || l->phome < l->pmin || l->phome > l->pmax) return false;
-  if (l->tmin0 >= l->tmax || l->tmin1 >= l->tmax) return false;
+  if (l->tmin0 >= l->tmaxr || l->tmaxr > l->tmax || l->tmin1 >= l->tmax) return false;
   if (l->thome < sc_tilt_floor_i(l, l->phome) || l->thome > l->tmax) return false;
   if (l->pvmax < 10 || l->pvmax > 600 || l->tvmax < 10 || l->tvmax > 600) return false;
   if (l->pacc < 50 || l->pacc > 3000 || l->tacc < 50 || l->tacc > 3000) return false;
@@ -126,16 +140,16 @@ bool sc_limits_valid(const sc_limits *l) {
 
 bool sc_in_zone(const sc_limits *l, float pan, float tilt) {
   return pan >= l->pmin - EPS && pan <= l->pmax + EPS &&
-         tilt >= sc_tilt_floor_f(l, pan) - EPS && tilt <= l->tmax + EPS;
+         tilt >= sc_tilt_floor_f(l, pan) - EPS && tilt <= sc_tilt_ceil_f(l, pan) + EPS;
 }
 
 void sc_clamp(const sc_limits *l, int16_t *pan, int16_t *tilt, bool *clamped) {
   int16_t p = *pan, t = *tilt;
   if (p < l->pmin) p = l->pmin;
   if (p > l->pmax) p = l->pmax;
-  int16_t floor_i = sc_tilt_floor_i(l, p);
+  int16_t floor_i = sc_tilt_floor_i(l, p), ceil_i = sc_tilt_ceil_i(l, p);
   if (t < floor_i) t = floor_i;
-  if (t > l->tmax) t = l->tmax;
+  if (t > ceil_i) t = ceil_i;
   *clamped = (p != *pan) || (t != *tilt);
   *pan = p;
   *tilt = t;
@@ -197,9 +211,9 @@ void sc_emit_ready(sc_ctx *c) {
 void sc_emit_lim(sc_ctx *c) {
   const sc_limits *l = &c->lim;
   char b[96];
-  sc_snprintf(b, sizeof(b), SC_P("LIM,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d"),
+  sc_snprintf(b, sizeof(b), SC_P("LIM,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d"),
               l->pmin, l->phome, l->pmax, l->tmin0, l->tmin1, l->thome, l->tmax,
-              l->pvmax, l->tvmax, l->pacc, l->tacc, c->calibrated ? 1 : 0);
+              l->pvmax, l->tvmax, l->pacc, l->tacc, l->tmaxr, c->calibrated ? 1 : 0);
   emit(c, b);
 }
 
@@ -466,6 +480,7 @@ SC_NOINLINE static void handle_set(sc_ctx *c, char **f, uint8_t n, uint32_t now_
     if (eq_p(k, SC_P("MIN0"))) slot = &t.tmin0;
     else if (eq_p(k, SC_P("MIN1"))) slot = &t.tmin1;
     else if (eq_p(k, SC_P("MAX"))) slot = &t.tmax;
+    else if (eq_p(k, SC_P("MAXR"))) slot = &t.tmaxr;
     else if (eq_p(k, SC_P("HOME"))) slot = &t.thome;
     else if (eq_p(k, SC_P("VMAX"))) slot = &t.tvmax;
     else if (eq_p(k, SC_P("ACC"))) slot = &t.tacc;
@@ -588,7 +603,9 @@ void sc_handle(sc_ctx *c, char *body, uint32_t now_ms) {
 /* ------------------------------------------------------------ supervision */
 
 void sc_tick(sc_ctx *c, uint32_t now_ms) {
-  if (c->session && !c->lost && (uint32_t)(now_ms - c->last_s_ms) > SC_LINK_TIMEOUT_MS) {
+  /* Signed: a frame stamped a moment AFTER now_ms must read as "fresh", not as a
+   * 49-day-old frame (that wrap flashed "LINK AI PUTUS" on the rig, 26-10-2026). */
+  if (c->session && !c->lost && (int32_t)(now_ms - c->last_s_ms) > (int32_t)SC_LINK_TIMEOUT_MS) {
     /* Brain went silent: stop the alarm at once, hold the view, home later. */
     c->link_ok = false;
     c->lost = true;
@@ -604,9 +621,9 @@ void sc_tick(sc_ctx *c, uint32_t now_ms) {
     go_home(c, SC_CAL_SPEED);
   }
   for (uint8_t i = 0; i < 2; ++i) {
-    if (c->fan_manual[i] >= 0 && (uint32_t)(now_ms - c->fan_manual_ms[i]) >= 60000UL) c->fan_manual[i] = -1;
+    if (c->fan_manual[i] >= 0 && (int32_t)(now_ms - c->fan_manual_ms[i]) >= 60000L) c->fan_manual[i] = -1;
   }
-  if (c->soc_valid && (uint32_t)(now_ms - c->soc_ms) > 10000UL) c->soc_valid = false;
+  if (c->soc_valid && (int32_t)(now_ms - c->soc_ms) > 10000L) c->soc_valid = false;
 }
 
 /* ------------------------------------------------------------ motion */
@@ -644,8 +661,24 @@ SC_NOINLINE static void smooth_axis(sc_axis *a, float k) {
   a->out += k * (a->f1 - a->out);
 }
 
-static bool pan_allowed(const sc_limits *l, float pan, float tilt) {
-  return tilt >= sc_tilt_floor_f(l, pan) - EPS;
+/* Keep an axis inside [lo, hi]. When it is already outside (boot pose, after CAL) it may
+ * only move back toward the band, never further out. Empty band (lo > hi): hold. */
+SC_NOINLINE static void bound_axis(sc_axis *a, float old, float lo, float hi) {
+  float mn = fmin_(lo, old), mx = fmax_(hi, old);
+  if (a->pos < mn || a->pos > mx) { a->pos = a->pos < mn ? mn : mx; a->vel = 0; }
+}
+
+/* Pan interval [lo, hi] inside the zone at this tilt. The zone is convex, so every
+ * horizontal slice is one interval; lo > hi means tilt has to move first. */
+static void pan_slice(const sc_limits *l, float tilt, float *lo, float *hi) {
+  float a = l->pmin, b = l->pmax;
+  /* where the floor meets this tilt */
+  if (l->tmin1 < l->tmin0) a = seg(tilt, l->tmin1, l->tmin0, l->pmax, l->pmin);
+  else if (l->tmin1 > l->tmin0) b = seg(tilt, l->tmin0, l->tmin1, l->pmin, l->pmax);
+  /* where the ceiling meets this tilt (only right of home) */
+  if (l->tmax > l->tmaxr) a = fmax_(a, seg(tilt, l->tmaxr, l->tmax, l->pmin, l->phome));
+  *lo = a;
+  *hi = b;
 }
 
 SC_NOINLINE static void zone_step(sc_ctx *c, float dt) {
@@ -658,46 +691,19 @@ SC_NOINLINE static void zone_step(sc_ctx *c, float dt) {
     pv = fmin_(pv, 10.0f * SC_CAL_SPEED);
     tv = fmin_(tv, 10.0f * SC_CAL_SPEED);
   }
-  /* Tilt first, never below the floor at the CURRENT pan ("lift, then turn"). */
-  float floor_now = sc_tilt_floor_f(l, c->pan.pos);
-  float old_t = c->tilt.pos;
-  float t_eff = fmin_(fmax_(c->tilt.target, floor_now), (float)l->tmax);
-  axis_step(&c->tilt, t_eff, tv, tacc, dt);
-  if (old_t >= floor_now - EPS) {
-    if (c->tilt.pos < floor_now) { c->tilt.pos = floor_now; c->tilt.vel = 0; c->tilt.acc = 0; }
-  } else if (c->tilt.pos < old_t) { c->tilt.pos = old_t; c->tilt.vel = 0; c->tilt.acc = 0; }
-  if (old_t <= l->tmax + EPS) {
-    if (c->tilt.pos > l->tmax) { c->tilt.pos = l->tmax; c->tilt.vel = 0; c->tilt.acc = 0; }
-  } else if (c->tilt.pos > old_t) { c->tilt.pos = old_t; c->tilt.vel = 0; c->tilt.acc = 0; }
-  /* Pan second. When the target lies beyond the "wall" (where the floor meets the
-   * current tilt) pan aims at the wall instead: it brakes smoothly while tilt rises
-   * and the wall recedes, instead of being stopped dead by the safety clamp below. */
-  float old_p = c->pan.pos;
-  float ptarget = c->pan.target;
-  if (l->tmin1 != l->tmin0) {
-    float pstar = (float)l->pmin + (c->tilt.pos - (float)l->tmin0) *
-                  (float)(l->pmax - l->pmin) / (float)(l->tmin1 - l->tmin0);
-    if (l->tmin1 < l->tmin0) { if (ptarget < pstar) ptarget = pstar; }   /* floor falls as pan grows */
-    else if (ptarget > pstar) ptarget = pstar;                           /* floor rises as pan grows */
-  }
-  axis_step(&c->pan, ptarget, pv, pacc, dt);
-  float np = c->pan.pos;
-  if (old_p >= l->pmin - EPS && old_p <= l->pmax + EPS) {
-    if (np < l->pmin) { np = l->pmin; c->pan.vel = 0; c->pan.acc = 0; }
-    if (np > l->pmax) { np = l->pmax; c->pan.vel = 0; c->pan.acc = 0; }
-  }
-  if (!pan_allowed(l, np, c->tilt.pos)) {
-    if (!pan_allowed(l, old_p, c->tilt.pos) || l->tmin1 == l->tmin0) {
-      np = old_p;                                      /* wait for tilt to rise */
-    } else {
-      float pstar = (float)l->pmin + (c->tilt.pos - (float)l->tmin0) *
-                    (float)(l->pmax - l->pmin) / (float)(l->tmin1 - l->tmin0);
-      np = (np > old_p) ? fmin_(np, fmax_(pstar, old_p)) : fmax_(np, fmin_(pstar, old_p));
-    }
-    c->pan.vel = 0;
-    c->pan.acc = 0;
-  }
-  c->pan.pos = np;
+  /* Tilt first, between floor and ceiling at the CURRENT pan: "lift, then turn" at the
+   * low corners and "lower, then turn" toward the hard-right top corner. */
+  float lo = sc_tilt_floor_f(l, c->pan.pos), hi = sc_tilt_ceil_f(l, c->pan.pos);
+  float old = c->tilt.pos;
+  axis_step(&c->tilt, fmin_(fmax_(c->tilt.target, lo), hi), tv, tacc, dt);
+  bound_axis(&c->tilt, old, lo, hi);
+  /* Pan second, inside the slice at the NEW tilt. A target beyond the slice edge ("wall")
+   * is replaced by the wall: pan brakes smoothly while tilt moves and the wall recedes,
+   * instead of being stopped dead by bound_axis. */
+  pan_slice(l, c->tilt.pos, &lo, &hi);
+  old = c->pan.pos;
+  axis_step(&c->pan, lo <= hi ? fmin_(fmax_(c->pan.target, lo), hi) : old, pv, pacc, dt);
+  bound_axis(&c->pan, old, lo, hi);
 }
 
 /* ------------------------------------------------------------ gesture animations */
@@ -821,7 +827,9 @@ uint8_t sc_fan_duty(sc_ctx *c, uint8_t idx, int16_t temp_dc, uint32_t now_ms) {
     int16_t soc = (int16_t)(c->soc_dc - 100);
     if (t == SC_TEMP_NA || soc > t) t = soc;
   }
-  if (t == SC_TEMP_NA) return 160;          /* no sensor: fail-safe medium cooling */
+  /* No DS18B20 fitted yet (26-10-2026: on order) and no SoC report: fan OFF. A sensor
+   * plugged in later is found by the 2 s presence probe and takes over automatically. */
+  if (t == SC_TEMP_NA) { c->fan_on[idx] = false; return 0; }
   if (c->fan_on[idx]) { if (t < 340) c->fan_on[idx] = false; }
   else if (t >= 380) c->fan_on[idx] = true;
   if (!c->fan_on[idx]) return 0;
@@ -863,7 +871,7 @@ void sc_display(const sc_ctx *c, uint32_t now_ms, char row0[17], char row1[17],
   *level = SC_LCD_NORMAL;
   row0[0] = row1[0] = '\0';
   if (up < SC_BOOT_SCREEN_MS) {
-    sc_snprintf(row0, 17, SC_P("APD SENTINEL 3.1"));
+    sc_snprintf(row0, 17, SC_P("APD SENTINEL 3.2"));
     sc_snprintf(row1, 17, SC_P("Tes lampu..."));
     *leds = (uint8_t)(1u << ((up / 300) % 4));  /* sweep red, green, yellow, alarm */
     *level = SC_LCD_URGENT;
@@ -894,7 +902,7 @@ void sc_display(const sc_ctx *c, uint32_t now_ms, char row0[17], char row1[17],
     sc_snprintf(row1, 17, SC_P("Krg:%s"), miss);
     item_leds(c, fast, tick, leds);
     *level = SC_LCD_URGENT;
-  } else if (c->fx_text && (uint32_t)(now_ms - c->fx_text_ms) < SC_LCD_HOLD_MS) {
+  } else if (c->fx_text && (int32_t)(now_ms - c->fx_text_ms) < (int32_t)SC_LCD_HOLD_MS) {
     switch (c->fx_text) {
       case 'N':
         sc_snprintf(row0, 17, SC_P("Jempol diterima"));

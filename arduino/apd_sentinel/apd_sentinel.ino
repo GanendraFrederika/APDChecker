@@ -1,5 +1,5 @@
 /*
- * APD SENTINEL v3.1 - Arduino Uno R3 "muscle" for the person-lock PPE camera.
+ * APD SENTINEL v3.2 - Arduino Uno R3 "muscle" for the person-lock PPE camera.
  *
  * The brain (PC now, Luckfox later) sends SLP/1 frames over USB serial at 115200.
  * All protocol, safe-zone and motion logic lives in sentinel_core.c (unit tested
@@ -78,7 +78,7 @@ static void emitf(const __FlashStringHelper *fmt, ...) {
 
 // ---------------------------------------------------------------- EEPROM
 const int EE_ADDR = 0;
-const uint8_t EE_MAGIC0 = 'S', EE_MAGIC1 = 'N', EE_VER = 3;
+const uint8_t EE_MAGIC0 = 'S', EE_MAGIC1 = 'N', EE_VER = 4;   // 4: + tmaxr (pan-dependent ceiling)
 
 static bool eeSave(void *, const sc_limits *lim) {
   const uint8_t *p = (const uint8_t *)lim;
@@ -147,6 +147,31 @@ static void poseSave(int16_t pan, int16_t tilt) {
   poseNext = (poseNext + 1) % POSE_SLOTS;
   ++poseSeq;
   posePan = pan; poseTilt = tilt;
+}
+
+// The last servo output is also kept in RAM that is NOT cleared at startup (.noinit).
+// After a brown-out or USB reset in the middle of a move, the next boot starts exactly
+// where the servos really were, instead of snapping back to an older EEPROM pose.
+struct LivePose { uint16_t magic; int16_t pan, tilt; uint16_t check; };
+static LivePose livePose __attribute__((section(".noinit")));
+const uint16_t LIVE_MAGIC = 0x5E47;
+
+static uint16_t liveCheck() { return (uint16_t)(livePose.pan ^ livePose.tilt ^ 0xA5C3); }
+
+static void liveSave(int16_t pan, int16_t tilt) {
+  livePose.magic = 0;                       // invalid while half written
+  livePose.pan = pan;
+  livePose.tilt = tilt;
+  livePose.check = liveCheck();
+  livePose.magic = LIVE_MAGIC;
+}
+
+static bool liveLoad(int16_t &pan, int16_t &tilt) {
+  bool ok = livePose.magic == LIVE_MAGIC && livePose.check == liveCheck() &&
+            livePose.pan >= 0 && livePose.pan <= 1800 && livePose.tilt >= 0 && livePose.tilt <= 1800;
+  if (ok) { pan = livePose.pan; tilt = livePose.tilt; }
+  livePose.magic = 0;
+  return ok;
 }
 
 // Save only when the camera rests: >= 2 s still, moved >= 1 degree, max every 20 s.
@@ -370,107 +395,119 @@ static uint16_t readVccMv() {
 }
 
 // ---------------------------------------------------------------- audio
-// Timer2 drives D9? No: D9 is OC1A (Timer1) which Servo owns, so tone() runs on
-// Timer2 and toggles D9 in software. Loudness comes from the duty cycle instead:
-// a 50 % square wave is full volume, shorter pulses carry less energy. We emulate
-// the duty by gating the tone in short bursts (10 ms frames) - simple and
-// timer-free. The relay powers the amplifier only while sound is wanted, so servo
-// noise never reaches the speaker the rest of the time.
-static const ToneStep SIREN[] = {{1050, 230}, {760, 230}, {1050, 230}, {760, 230},
-                                 {1050, 230}, {760, 230}, {0, 520}};
-const uint8_t SIREN_STEPS = sizeof(SIREN) / sizeof(SIREN[0]);
-// Friendly chimes, short and soft (played once per animation event).
-static const ToneStep CHIME_YES[] = {{880, 90}, {0, 40}, {1320, 160}};                    // nod
-static const ToneStep CHIME_NO[] = {{520, 160}, {0, 60}, {390, 220}};                     // shake
-static const ToneStep CHIME_HI[] = {{988, 90}, {1319, 90}, {1568, 90}, {0, 30}, {2093, 170}};  // greet
-static const ToneStep CHIME_HMM[] = {{700, 80}, {0, 60}, {820, 80}};                      // curious
+// D9 is OC1A, but Timer1 belongs to the Servo library, so the tone is made by a Timer2
+// interrupt that toggles D9 itself. Loudness = duty cycle of that square wave: its
+// fundamental scales with sin(pi * duty), so 50 % duty is full volume and narrow pulses
+// are quieter WITHOUT any buzz (the old 10 ms on/off gate added a harsh 100 Hz rattle).
+// Every note gets a soft attack, a bell-like decay and a release, so nothing clicks.
+// Notes stay >= 500 Hz: the 8-bit timer runs at 8 us per tick.
+// Alarm: calm minor triad C5-Eb5-G5 then a pause (like a hospital monitor), not a siren.
+static const ToneStep ALARM[] = {{523, 170}, {0, 60}, {622, 170}, {0, 60}, {784, 300}, {0, 1200}};
+const uint8_t ALARM_STEPS = sizeof(ALARM) / sizeof(ALARM[0]);
+// Short friendly chimes, played once per animation event.
+static const ToneStep CHIME_YES[] = {{659, 110}, {0, 30}, {880, 240}};                 // nod: E5 A5
+static const ToneStep CHIME_NO[] = {{784, 150}, {0, 40}, {622, 280}};                  // shake: G5 Eb5
+static const ToneStep CHIME_HI[] = {{523, 90}, {659, 90}, {784, 90}, {1047, 260}};     // greet: C E G C
+static const ToneStep CHIME_HMM[] = {{698, 100}, {0, 60}, {880, 140}};                 // curious: F5 A5
 
-static bool audioWanted, audioActive;
+static bool audioActive;
 static uint8_t audioStep, audioLen;
 static const ToneStep *audioSeq;
 static bool audioLoop;
-static uint32_t audioStepAt, relayOnAt, relayOffAt, gateAt;
-static uint16_t audioHz;
-static bool gateOn;
+static uint32_t audioStepAt, relayOnAt, soundAt;
+static uint8_t tonePeriod;                 // carrier period in 8 us ticks, 0 = silent
+static volatile uint8_t toneHi, toneLo;    // high / low time of one period (ticks)
+static volatile bool toneUp;
+
+ISR(TIMER2_COMPA_vect) {
+  if (toneUp || !toneHi) { PORTB &= ~_BV(1); OCR2A = toneLo - 1; toneUp = false; }   // D9 = PB1
+  else { PORTB |= _BV(1); OCR2A = toneHi - 1; toneUp = true; }
+}
+
+static void toneOut(uint16_t hz) {
+  TIMSK2 = 0;
+  PORTB &= ~_BV(1);
+  toneUp = false;
+  if (!hz) { TCCR2B = 0; tonePeriod = 0; return; }
+  uint32_t p = 125000UL / hz;
+  tonePeriod = p > 255 ? 255 : (uint8_t)p;
+  toneHi = 0;
+  toneLo = tonePeriod;
+  TCCR2A = _BV(WGM21);                     // CTC; OC2A/OC2B pins stay disconnected (D11 = pan servo!)
+  TCCR2B = _BV(CS22) | _BV(CS20);          // clk/128 = 8 us per tick
+  TCNT2 = 0;
+  OCR2A = 50;
+  TIFR2 = _BV(OCF2A);
+  TIMSK2 = _BV(OCIE2A);
+}
+
+// Envelope x volume -> duty cycle. Volume uses an audio taper (v^2): 50 % is clearly softer.
+static void toneLevel(uint16_t t, uint16_t len) {
+  if (!tonePeriod) return;
+  if (t >= len) t = len - 1;
+  uint32_t e = 255 - 150UL * t / len;      // decays to ~40 % like a small bell
+  if (t < 6) e = e * t / 6;                // 6 ms attack
+  if (len - t < 12) e = e * (len - t) / 12;   // 12 ms release
+  uint16_t amp = e * core.volume * core.volume / 10000;   // 0..255
+  uint8_t hi = (uint16_t)tonePeriod * amp / 512;           // 255 -> ~50 % duty
+  if (amp && hi < 4) hi = 4;               // both half-periods >= 32 us: no missed compare
+  if (!amp) hi = 0;
+  noInterrupts();
+  toneHi = hi;
+  toneLo = tonePeriod - hi;
+  interrupts();
+}
 
 static void startSeq(const ToneStep *seq, uint8_t len, bool loop) {
   audioSeq = seq; audioLen = len; audioLoop = loop;
   audioStep = 0xFF;
-  audioStepAt = 0;
-}
-
-static void playTone(uint16_t hz) {
-  audioHz = hz;
-  if (hz) tone(PIN_AUDIO, hz); else noTone(PIN_AUDIO);
-  gateOn = hz != 0;
-}
-
-// Volume gate: in each 10 ms frame the tone is on for volume% of the time.
-static void gateService(uint32_t now) {
-  if (!audioHz || core.volume >= 100) return;
-  uint32_t phase = (now - gateAt) % 10;
-  bool want = phase < (uint32_t)core.volume / 10;
-  if (want != gateOn) {
-    if (want) tone(PIN_AUDIO, audioHz); else noTone(PIN_AUDIO);
-    gateOn = want;
-  }
 }
 
 static void audioService(uint32_t now) {
   bool alarm = core.alarm && core.link_ok && !core.cal_mode && core.vox;
-  // A new animation chooses a one-shot chime; the siren has priority.
+  // A new animation chooses a one-shot chime; the alarm has priority.
   if (core.fx_started) {
     char fx = core.fx_started;
     core.fx_started = 0;
     if (!alarm && core.vox && core.link_ok) {
       if (fx == 'N') startSeq(CHIME_YES, 3, false);
       else if (fx == 'H') startSeq(CHIME_NO, 3, false);
-      else if (fx == 'W') startSeq(CHIME_HI, 5, false);
+      else if (fx == 'W') startSeq(CHIME_HI, 4, false);
       else startSeq(CHIME_HMM, 3, false);
     }
   }
-  if (alarm && (audioSeq != SIREN)) startSeq(SIREN, SIREN_STEPS, true);
-  if (!alarm && audioSeq == SIREN) audioSeq = nullptr;
-  bool want = audioSeq != nullptr;
-  if (want && !audioWanted) {
-    digitalWrite(PIN_RELAY, RELAY_ON);
-    hw.relay = true;
-    relayOnAt = now;
-    audioActive = false;
-  }
-  if (!want && audioWanted) {
-    playTone(0);
-    digitalWrite(PIN_LED_ALARM, LOW);
-    audioActive = false;
-    relayOffAt = now;
-  }
-  audioWanted = want;
-  if (!want) {
-    if (hw.relay && (uint32_t)(now - relayOffAt) >= 150UL) {   // let the tone decay first
-      digitalWrite(PIN_RELAY, RELAY_OFF);
-      hw.relay = false;
-    }
+  if (alarm && audioSeq != ALARM) startSeq(ALARM, ALARM_STEPS, true);
+  if (!alarm && audioSeq == ALARM) audioSeq = nullptr;
+  if (!audioSeq) {
+    if (audioActive) { toneOut(0); digitalWrite(PIN_LED_ALARM, LOW); audioActive = false; }
+    // The amplifier stays powered 2 s after the last note: back-to-back chimes do not pop.
+    if (hw.relay && (int32_t)(now - soundAt) >= 2000) { digitalWrite(PIN_RELAY, RELAY_OFF); hw.relay = false; }
     hw.sounding = false;
     return;
   }
-  if (!audioActive) {
-    if ((uint32_t)(now - relayOnAt) < 150UL) return;          // amplifier power-up time
-    audioActive = true;
-    gateAt = now;
+  soundAt = now;
+  if (!hw.relay) {
+    digitalWrite(PIN_RELAY, RELAY_ON);
+    hw.relay = true;
+    relayOnAt = now;
   }
-  if (audioStep == 0xFF || (uint32_t)(now - audioStepAt) >= audioSeq[audioStep].ms) {
+  if ((int32_t)(now - relayOnAt) < 150) return;   // amplifier power-up time
+  audioActive = true;
+  uint16_t t = (uint16_t)(now - audioStepAt);
+  if (audioStep == 0xFF || t >= audioSeq[audioStep].ms) {
     uint8_t next = audioStep == 0xFF ? 0 : audioStep + 1;
     if (next >= audioLen) {
-      if (!audioLoop) { audioSeq = nullptr; playTone(0); return; }
+      if (!audioLoop) { audioSeq = nullptr; return; }
       next = 0;
     }
     audioStep = next;
     audioStepAt = now;
-    playTone(audioSeq[audioStep].hz);
-    if (audioSeq == SIREN) digitalWrite(PIN_LED_ALARM, SIREN[audioStep].hz > 900 ? HIGH : LOW);
+    t = 0;
+    toneOut(audioSeq[audioStep].hz);
+    if (audioSeq == ALARM) digitalWrite(PIN_LED_ALARM, ALARM[audioStep].hz ? HIGH : LOW);
   }
-  gateService(now);
-  hw.sounding = audioSeq == SIREN;
+  toneLevel(t, audioSeq[audioStep].ms);
+  hw.sounding = audioSeq == ALARM;
 }
 
 // ---------------------------------------------------------------- console
@@ -495,7 +532,7 @@ static void console(char *line) {
 
 // ---------------------------------------------------------------- setup / loop
 static uint32_t lastMotionUs, lastTelemetry, lastDisplay, lastFan, lastVcc, vccWindowAt;
-static uint32_t tempAt, lastVccEvt;
+static uint32_t tempAt, lastVccEvt, lcdEchoAt;
 static uint8_t tempPhase;
 static uint16_t vccMin = 0xFFFF;
 
@@ -511,13 +548,15 @@ void setup() {
   pinMode(PIN_LED_HELM, OUTPUT); pinMode(PIN_LED_ROMPI, OUTPUT);
   pinMode(PIN_LED_SEPATU, OUTPUT); pinMode(PIN_LED_ALARM, OUTPUT);
   pinMode(PIN_FAN_A, OUTPUT); pinMode(PIN_FAN_P, OUTPUT);
-  analogWrite(PIN_FAN_A, 160); analogWrite(PIN_FAN_P, 160);         // cool until sensors read
+  analogWrite(PIN_FAN_A, 0); analogWrite(PIN_FAN_P, 0);             // on only with a temperature
   Serial.begin(115200);
   sc_hooks hooks = {emitBody, eeSave, eeLoad, nullptr};
   sc_framer_init(&framer);
   sc_init(&core, &hooks, millis());
-  int16_t bootPan, bootTilt;
-  bool havePose = poseLoad(bootPan, bootTilt);
+  int16_t bootPan, bootTilt, ramPan, ramTilt;
+  bool havePose = poseLoad(bootPan, bootTilt);    // also positions the EEPROM ring
+  bool ramPose = liveLoad(ramPan, ramTilt);       // warm reset: the true last output
+  if (ramPose) { bootPan = ramPan; bootTilt = ramTilt; havePose = true; }
   if (havePose) sc_set_boot_pose(&core, bootPan, bootTilt);
   // The first pulse equals the remembered pose, so attach() causes no lurch;
   // the motion profile then glides home at the slow calibration speed.
@@ -525,20 +564,19 @@ void setup() {
   servoPan.attach(PIN_SERVO_PAN, 544, 2400);
   servoTilt.attach(PIN_SERVO_TILT, 544, 2400);
   emitf(F("EVT,BOOT,%02X"), bootCause & 0x0F);
-  if (havePose) emitf(F("EVT,POSE,%d,%d"), bootPan, bootTilt);
+  if (havePose) emitf(F("EVT,POSE,%d,%d,%s"), bootPan, bootTilt, ramPose ? "RAM" : "EE");
   else emitf(F("EVT,POSE,NONE"));
   lcdInit();
   owSetup(owA, PIN_TEMP_A);
   owSetup(owP, PIN_TEMP_P);
   hw.temp_a = hw.temp_p = SC_TEMP_NA;
-  hw.fan_a = hw.fan_p = 160;
+  hw.fan_a = hw.fan_p = 0;
   lastMotionUs = micros();
   wdt_enable(WDTO_2S);
 }
 
 void loop() {
   wdt_reset();
-  uint32_t now = millis();
 
   // 1. UART: bounded work per pass so motion and display keep their cadence.
   for (uint8_t n = 0; n < 96 && Serial.available() > 0; ++n) {
@@ -547,6 +585,9 @@ void loop() {
     else if (r == SC_CONSOLE) console(rxBody);
     else if (r < 0) sc_frame_error(&core, r, millis());
   }
+  // Read the clock AFTER the frames: a frame stamped later than a stale `now` made
+  // (now - last_s_ms) wrap to ~4e9 and declared the link lost for one frame.
+  uint32_t now = millis();
   sc_tick(&core, now);
 
   // 2. Motion at 50 Hz (servo frame rate), dt from micros() for smooth profiles.
@@ -555,6 +596,7 @@ void loop() {
     sc_motion_step(&core, (us - lastMotionUs) * 1e-6f);
     lastMotionUs = us;
     writeServos();
+    liveSave((int16_t)(core.pan.out + 0.5f), (int16_t)(core.tilt.out + 0.5f));
     poseService(millis());
   }
 
@@ -567,9 +609,22 @@ void loop() {
     char r0[17], r1[17];
     uint8_t leds, level;
     sc_display(&core, now, r0, r1, &leds, &level);
-    if (sc_lcd_update(&core, now, r0, r1, level)) {   // normal text: max 1 change / 3 s
+    bool changed = sc_lcd_update(&core, now, r0, r1, level);   // normal text: max 1 change / 3 s
+    if (changed) {
       memcpy(lcdWant[0], core.lcd_rows[0], 16);
       memcpy(lcdWant[1], core.lcd_rows[1], 16);
+    }
+    // Mirror the LCD for the dashboard preview ("LCD,<row0>|<row1>"): on every change
+    // and every 2 s, so a brain that connects later still gets the current text.
+    if (changed || (uint32_t)(now - lcdEchoAt) >= 2000UL) {
+      lcdEchoAt = now;
+      char b[38];
+      memcpy(b, "LCD,", 4);
+      memcpy(b + 4, core.lcd_rows[0], 16);
+      b[20] = '|';
+      memcpy(b + 21, core.lcd_rows[1], 16);
+      b[37] = '\0';
+      emitBody(nullptr, b);
     }
     digitalWrite(PIN_LED_HELM, (leds & SC_LED_HELM) ? HIGH : LOW);
     digitalWrite(PIN_LED_ROMPI, (leds & SC_LED_ROMPI) ? HIGH : LOW);

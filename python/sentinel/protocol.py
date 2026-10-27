@@ -67,7 +67,7 @@ def env(token, soc_dc):
 
 
 def simple(*fields):
-    """PING/GETLIM/CAL/JOG/SET/SAVE/LOAD/DEFAULTS/FAN."""
+    """PING/GETLIM/CAL/JOG/SET/SAVE/DEFAULTS/FAN/VOL."""
     return frame(",".join(str(f) for f in fields))
 
 
@@ -123,6 +123,7 @@ class Limits:
     tvmax: int
     pacc: int
     tacc: int
+    tmaxr: int = 1800
     calibrated: bool = False
 
     def tilt_floor(self, pan):
@@ -133,13 +134,23 @@ class Limits:
         step = (num + den - 1) // den if num >= 0 else -((-num) // den)
         return self.tmin0 + step
 
+    def tilt_ceiling(self, pan):
+        """tmaxr at pmin rising to tmax at phome, flat beyond (firmware sc_tilt_ceil_i)."""
+        pan = max(int(pan), self.pmin)
+        if pan >= self.phome:
+            return self.tmax
+        # C integer division truncates toward zero; the numerator is never negative here.
+        return self.tmaxr + (self.tmax - self.tmaxr) * (pan - self.pmin) // (self.phome - self.pmin)
+
     def clamp(self, pan, tilt):
         pan = min(max(int(round(pan)), self.pmin), self.pmax)
-        tilt = min(max(int(round(tilt)), self.tilt_floor(pan)), self.tmax)
+        tilt = min(max(int(round(tilt)), self.tilt_floor(pan)), self.tilt_ceiling(pan))
         return pan, tilt
 
 
-DEFAULT_LIMITS = Limits(0, 900, 1450, 1450, 1000, 1800, 1800, 120, 90, 400, 300)
+# Measured on the rig: pan 0 = hard right, 1450 = hard left; tilt 1800 = level (top).
+# Looking hard right the top is 1700 (26-10-2026).
+DEFAULT_LIMITS = Limits(0, 900, 1450, 1450, 1000, 1800, 1800, 120, 90, 300, 200, 1700)
 
 
 @dataclass(frozen=True)
@@ -179,9 +190,11 @@ def parse(body: str):
             return "T", Telemetry(int(f[1]), int(f[2]), int(f[3]), int(f[4]), int(f[5]),
                                   int(f[6], 16), _temp(f[7]), _temp(f[8]), int(f[9]),
                                   int(f[10]), int(f[11]), int(f[12]))
-        if f[0] == "LIM" and len(f) == 13:
+        if f[0] == "LIM" and len(f) in (13, 14):
             v = [int(x) for x in f[1:]]
-            return "LIM", Limits(*v[:11], calibrated=bool(v[11]))
+            if len(v) == 12:            # firmware <= 3.1.0 had no pan-dependent ceiling
+                return "LIM", Limits(*v[:11], tmaxr=v[6], calibrated=bool(v[11]))
+            return "LIM", Limits(*v[:12], calibrated=bool(v[12]))
         if f[0] == "READY" and len(f) == 5 and f[1] == "SENTINEL":
             return "READY", dict(version=f[2], token=f[3], calibrated=f[4] == "1")
         if f[0] == "PONG" and len(f) == 3:
@@ -192,6 +205,11 @@ def parse(body: str):
             return "ERR", f[1]
         if f[0] == "EVT" and len(f) >= 2:
             return "EVT", f[1:]
+        if f[0] == "LCD":
+            # The text itself may contain commas: split on the first comma only.
+            rows = body[4:].split("|", 1)
+            if len(rows) == 2 and len(rows[0]) == 16 and len(rows[1]) == 16:
+                return "LCD", (rows[0], rows[1])
     except ValueError:
         pass
     return "UNKNOWN", body

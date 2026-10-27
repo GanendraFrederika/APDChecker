@@ -39,10 +39,11 @@ Dashboard web live: **http://127.0.0.1:8080** (video beranotasi, status tiap ora
 | **Prioritas pelanggar** | Pelanggar terkonfirmasi tetap dikunci walau ada orang lain masuk frame. |
 | **Patroli** | Tiap 60 detik tanpa orang: kiri, kanan, kiri, kanan, kiri, lalu tengah, halus. Langsung berhenti begitu ada orang. |
 | **Gestur** | Jempol + sarung tangan → **angguk** (cooldown 5 detik) + salam. Jempol tanpa sarung tangan → **geleng sekali** lalu alarm. Telapak terbuka/melambai → **sapa** + suara. |
-| **Suara** | Salam bahasa Indonesia (Halo, Hai, Selamat pagi/siang/sore/malam, Hati-hati ya) di speaker laptop, plus nada/sirine di speaker rig. Volume default **50%** (slider di dashboard). |
+| **Suara** | Salam bahasa Indonesia (Halo, Hai, Selamat pagi/siang/sore/malam, Hati-hati ya) di speaker laptop. Speaker rig: nada lembut tanpa dengung, alarm minor C-Eb-G yang tenang + pengumuman "Mohon lengkapi APD". Volume default **50%** (slider di dashboard). |
 | **Robot celingak-celinguk** | Saat target hilang: menengok ke arah jalannya, lalu melirik balik, sebelum kembali ke patroli. |
-| **LCD tenang** | Teks normal berganti maksimal tiap 3 detik; alarm/putus link langsung menimpa. |
-| **Kipas pintar** | Kipas Arduino dan kipas Pico dikendalikan MOSFET berdasarkan DS18B20 (dan suhu SoC Pico). Tanpa sensor: kipas 63% (fail-safe). |
+| **LCD tenang** | Teks normal berganti maksimal tiap 3 detik; alarm/putus link langsung menimpa. Teks LCD juga tampil di dashboard (preview 16x2). |
+| **Kipas pintar** | Kipas Arduino dan kipas Pico dikendalikan MOSFET berdasarkan DS18B20 dan suhu SoC Pico. Tanpa sensor: kipas mati; DS18B20 yang dicolok belakangan langsung terdeteksi tanpa upload ulang. |
+| **Kalibrasi kamera otomatis** | Tombol "Kalibrasi kamera": servo bergerak ±5°, sistem mengukur rotasi, kemiringan tabung dan FOV dari pergeseran gambar, lalu menyimpannya. Plus rotasi otomatis dari orang tegak. |
 | **Zona aman servo** | Batas hasil ukur rig ini (lihat di bawah) dijaga di firmware **di setiap langkah 20 ms**, juga di tengah gerakan dan animasi. |
 
 ## Menjalankan (Windows)
@@ -81,7 +82,7 @@ ekstrak ke `APDChecker/platform-tools/`.
 
 ## Firmware Arduino
 
-Sketch: `arduino/apd_sentinel/` (v3.1, 32.110 / 32.256 byte flash).
+Sketch: `arduino/apd_sentinel/` (v3.2, 31.182 / 32.256 byte flash).
 Logika inti (`sentinel_core.c`) adalah C murni dan **diuji di PC dengan file yang sama persis**.
 
 ```powershell
@@ -106,9 +107,10 @@ Library: `Servo` (bawaan). LCD (PCF8574, 0x27, A4/A5) dan DS18B20 ditulis langsu
 ### Zona aman servo (diukur pemilik, 24-10-2026)
 
 Sudut = angka `Servo.write()`. Pan: 0° = mentok kanan, 145° = mentok kiri, 90° = depan.
-Tilt: 180° = lurus depan (paling atas). Batas bawah tilt ikut pan: 145° saat pan 0°, 100° saat
-pan 145° (garis lurus di antaranya). Firmware menjamin "angkat dulu, baru putar" saat pindah
-antar pojok bawah. Ubah lewat console serial: `#CAL,1`, `#SET,T,MIN0,1450`, `#SAVE`, `#CAL,0`.
+Tilt: 180° = lurus depan (paling atas), **kecuali saat menoleh kanan: maks 170°** di pan 0°
+(naik lurus ke 180° di pan 90°). Batas bawah tilt ikut pan: 145° saat pan 0°, 100° saat
+pan 145°. Firmware menjamin "angkat dulu, baru putar" di pojok bawah dan "turunkan dulu,
+baru putar" ke pojok kanan atas. Ubah lewat console serial: `#CAL,1`, `#SET,T,MIN0,1450`, `#SET,T,MAXR,1700`, `#SAVE`, `#CAL,0`.
 
 ### Console serial (Serial Monitor 115200, newline)
 
@@ -125,7 +127,9 @@ Selama Arduino memakai USB, kabel ke D0 harus dilepas.
 
 ```powershell
 .venv\Scripts\python.exe scripts\test_apd_offline.py          # 320 tes (termasuk firmware native)
-.venv\Scripts\python.exe -m unittest tests.test_sentinel -v    # 15 tes Sentinel v3.1
+.venv\Scripts\python.exe -m unittest tests.test_sentinel -v    # 20 tes Sentinel v3.2 (+ skenario MCU simulasi)
+.venv\Scripts\python.exe scripts\sentinel_hil.py --port COM6   # tes di rig asli (servo BERGERAK, alarm bunyi)
+.venv\Scripts\python.exe scripts\sentinel_hil.py --sim         # skenario sama tanpa hardware
 ```
 
 Tes native firmware memeriksa antara lain 2.400 gerakan acak yang tidak pernah keluar zona,
@@ -156,5 +160,8 @@ APDChecker/
 * Model APD lama **tidak punya kelas rompi**. Rompi dan helm (cadangan) dideteksi lewat warna;
   ditandai `COLOR` di dashboard. Dataset sendiri + training ulang akan jauh lebih akurat.
 * Deteksi sarung tangan dari model + warna kulit; ada toggle debug untuk demo.
-* Tegangan 5 V turun saat dua MG996R bergerak bersamaan bila suplai lemah: pakai SMPS
-  terpisah untuk servo (sudah ada SMPS1 11,3 V → step-down 5–6 V untuk servo).
+* **Daya servo**: saat servo bergerak, 5 V Arduino turun ke ±4,3 V (terukur 27-10-2026) dan
+  USB sesekali tersendat. Software sudah tahan (tanpa reset), tapi servo sebaiknya punya
+  step-down sendiri 5–6 V ≥ 3 A dengan GND disatukan ke Arduino.
+* **Pico hilang dari USB** beberapa menit setelah kamera menyala (berulang). Dugaan: daya /
+  kabel USB. Aplikasi menunggu dan menyalakan kamera lagi begitu Pico muncul.

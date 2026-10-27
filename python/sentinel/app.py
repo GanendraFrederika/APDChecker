@@ -15,7 +15,7 @@ import time
 
 from . import VERSION
 from .brain import Brain, BrainConfig
-from .camera import LatestFrame
+from .camera import LatestFrame, roll_zoom, zoomed_fov
 from .geometry import CameraModel
 from .luckfox import RTSP_URL, Luckfox
 from .protocol import DEFAULT_LIMITS
@@ -79,6 +79,17 @@ def draw(frame, tracks, decision, link_snap, fps, geom_info, lock_id):
     return frame
 
 
+def keep_awake(on=True):
+    """Windows: stop the PC from sleeping while the sentinel runs. Sleep cuts USB power,
+    so the Pico and the Arduino vanish (seen 26-10-2026). The display may still turn off."""
+    if os.name != "nt":
+        return False
+    import ctypes
+    ES_CONTINUOUS, ES_SYSTEM_REQUIRED = 0x80000000, 0x00000001
+    flags = ES_CONTINUOUS | (ES_SYSTEM_REQUIRED if on else 0)
+    return bool(ctypes.windll.kernel32.SetThreadExecutionState(flags))
+
+
 # ---------------------------------------------------------------- main loop
 class Runtime:
     def __init__(self, args):
@@ -88,6 +99,8 @@ class Runtime:
         self.link = None
         self.geom = CameraModel(hfov_deg=args.hfov, vfov_deg=args.vfov,
                                 pan_sign=args.pan_sign, tilt_sign=args.tilt_sign)
+        self.base_fov = (args.hfov, args.vfov)   # upright picture, before roll-leveling zoom
+        self._apply_fov()
         self.sound = args.sound
         self.tracker = Tracker()
         self.brain = Brain(DEFAULT_LIMITS, BrainConfig(patrol_interval=args.patrol,
@@ -104,10 +117,93 @@ class Runtime:
         self.gestures = None
         self.interaction = None
         self.hands = []
+        self.orient = None                 # AutoOrient when --auto-rotate is on
+        self.calibrating = False
+        self.calib_result = None
 
     def event(self, text):
         self.events.append((time.strftime("%H:%M:%S"), text))
         del self.events[:-40]
+
+    def _apply_fov(self):
+        """Servo aiming uses the field of view of the picture AS ANALYSED: leveling a
+        tilted tube zooms in, which narrows it. A wrong FOV makes the servo overshoot."""
+        portrait = self.args.rotate in (90, 270)
+        w, h = (9, 16) if portrait else (16, 9)              # SC3336: 2304x1296
+        z = roll_zoom(getattr(self.args, "roll", 0.0), w, h)
+        self.geom.hfov_deg = zoomed_fov(self.base_fov[0], z)
+        self.geom.vfov_deg = zoomed_fov(self.base_fov[1], z)
+
+    def set_rotate(self, degrees, why, roll=None, hfov=None, vfov=None):
+        """Apply a new camera rotation now and remember it in config/sentinel.json.
+        hfov/vfov (from calibration) are BASE values without the leveling zoom."""
+        degrees %= 360
+        if (degrees - self.args.rotate) % 180:
+            # Portrait <-> landscape: the horizontal and vertical field of view swap.
+            # (An upright picture keeps world-right on the right, so pan/tilt signs stay.)
+            self.base_fov = (self.base_fov[1], self.base_fov[0])
+        if hfov and vfov:
+            self.base_fov = (hfov, vfov)
+        if roll is not None:
+            self.args.roll = float(roll)
+        self.camera.set_rotate(degrees, self.args.roll)
+        self.args.rotate = degrees
+        self._apply_fov()
+        self.tracker = Tracker()            # pixel geometry changed: start tracks afresh
+        self.event(f"Rotasi kamera -> {degrees} derajat ({why})")
+        try:
+            path = Path(self.args.config)
+            cfg = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+            cam = cfg.setdefault("camera", {})
+            cam["rotate"] = degrees
+            cam["roll_deg"] = round(self.args.roll, 1)
+            cam["hfov_deg"], cam["vfov_deg"] = round(self.base_fov[0], 1), round(self.base_fov[1], 1)
+            path.write_text(json.dumps(cfg, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        except (OSError, ValueError) as exc:
+            self.event("Gagal simpan rotasi ke config: " + str(exc)[:60])
+
+    def calibrate(self):
+        """Measure rotation, tilt and field of view by moving the servos (no person needed)."""
+        from . import calib
+        if self.calibrating:
+            return
+        self.calibrating = True
+        self.event("Kalibrasi kamera: servo bergerak +-5 derajat...")
+        try:
+            res = calib.run(self, log=lambda m: None)
+            self.calib_result = res
+            if res.get("ok"):
+                self.set_rotate(res["rotate"], "kalibrasi servo", roll=res["roll"],
+                                hfov=res["hfov"], vfov=res["vfov"])
+                self.event(f"Kalibrasi OK: rotasi {res['rotate']}, miring {res['roll']:+.1f}, "
+                           f"FOV {res['hfov']}x{res['vfov']} (setelah zoom "
+                           f"{self.geom.hfov_deg:.0f}x{self.geom.vfov_deg:.0f}) derajat")
+                if self.orient is not None:
+                    self.orient.confirmed = 3      # measured: no need for frequent re-votes
+            else:
+                self.event("Kalibrasi gagal: " + res.get("why", "?"))
+        except Exception as exc:
+            self.calib_result = dict(ok=False, why=str(exc))
+            self.event("Kalibrasi error: " + str(exc)[:80])
+        finally:
+            self.manual = None
+            self.calibrating = False
+
+    def _auto_orient(self, frame, now):
+        """Every few seconds with people in view: vote for the upright rotation."""
+        import cv2
+        from .orient import upright_score
+        codes = {90: cv2.ROTATE_90_CLOCKWISE, 180: cv2.ROTATE_180, 270: cv2.ROTATE_90_COUNTERCLOCKWISE}
+        scores = {}
+        for extra in (0, 90, 180, 270):
+            img = frame if extra == 0 else cv2.rotate(frame, codes[extra])
+            people = self.perception.people(img)
+            scores[extra] = upright_score([p.kps for p in people if p.kps is not None])
+        extra = self.orient.observe(now, scores)
+        if extra:
+            self.set_rotate(self.args.rotate + extra, "otomatis: orang tegak")
+            return True
+        return False
 
     def pose(self):
         """Commanded servo pose at (roughly) capture time, from MCU telemetry."""
@@ -133,7 +229,11 @@ class Runtime:
         if self.args.voice:
             from .voice import Voice
             self.voice = Voice(volume=self.volume / 100.0)
+        if self.args.auto_rotate:
+            from .orient import AutoOrient
+            self.orient = AutoOrient()
         last_seq, fps, n, t0 = -1, 0.0, 0, time.monotonic()
+        idle_publish = 0.0
         prev_alarm, prev_mode = False, None
         while not self.stop.is_set():
             seq, stamp, frame = self.camera.read()
@@ -145,6 +245,19 @@ class Runtime:
                 if fault and self.link is not None:
                     cmd, info = self.brain.step(now, [], fault=fault)
                     self.link.set_command(cmd)
+                    # No picture: keep the dashboard (MCU, LCD preview, events) alive anyway.
+                    if now - idle_publish >= 1.0:
+                        idle_publish = now
+                        decision = dict(mode=cmd.mode, alarm=False, sound=self.sound, volume=self.volume,
+                                        assume_gloves=self.args.assume_gloves, rotate=self.args.rotate,
+                                        auto_rotate=self.orient is not None, roll=self.args.roll,
+                                        calibrating=self.calibrating, calib=self.calib_result,
+                                        pan=cmd.pan, tilt=cmd.tilt, items=cmd.items, lock=0, people=0,
+                                        violators=0, info=dict(info, camera=self.camera_state or fault),
+                                        gestures=[])
+                        with self.shared.lock:
+                            jpeg = self.shared.jpeg
+                        self.shared.publish(jpeg, self.status(decision, [], 0.0, self.pose()))
                 time.sleep(0.01)
                 continue
             last_seq = seq
@@ -154,6 +267,10 @@ class Runtime:
                 frame = cv2.resize(frame, (ANALYSIS_WIDTH, int(frame.shape[0] * scale)), interpolation=cv2.INTER_AREA)
             fh, fw = frame.shape[:2]
             people = self.perception.people(frame)
+            # Somebody partly seen in ANY orientation is enough to check the rotation
+            # (a sideways person is often not detected at all in the wrong rotation).
+            if self.orient is not None and self.orient.due(now) and self._auto_orient(frame, now):
+                continue                    # this frame was taken in the old orientation
             ppe = self.perception.equipment(frame, people)
             dets = []
             for p in people:
@@ -213,6 +330,9 @@ class Runtime:
             if alarm_now and not prev_alarm:
                 self.event(f"ALARM: orang #{cmd.trk} APD tidak lengkap ({cmd.items})"
                            + ("" if self.sound else " [suara mati]"))
+                # One calm spoken announcement instead of a long siren ("Mohon lengkapi APD").
+                if self.sound and self.voice is not None:
+                    self.voice.say("apd_kurang")
             if cmd.mode != prev_mode:
                 self.event(f"Mode {prev_mode} -> {cmd.mode}")
             prev_alarm, prev_mode = alarm_now, cmd.mode
@@ -220,7 +340,9 @@ class Runtime:
             if now - t0 >= 2:
                 fps, n, t0 = n / (now - t0), 0, now
             decision = dict(mode=cmd.mode, alarm=alarm_now, sound=self.sound, volume=self.volume,
-                            assume_gloves=self.args.assume_gloves, pan=cmd.pan, tilt=cmd.tilt,
+                            assume_gloves=self.args.assume_gloves, rotate=self.args.rotate,
+                            auto_rotate=self.orient is not None, roll=self.args.roll,
+                            calibrating=self.calibrating, calib=self.calib_result, pan=cmd.pan, tilt=cmd.tilt,
                             items=cmd.items, lock=cmd.trk, people=cmd.ppl, violators=cmd.viol, info=info,
                             gestures=[dict(g=h.gesture, glove=h.glove) for h in self.hands])
             view = draw(frame.copy(), tracks, decision, None, fps, None, cmd.trk)
@@ -249,7 +371,7 @@ class Runtime:
                     pose=dict(pan=pose[0], tilt=pose[1]), people=people,
                     mcu=None if link is None else dict(
                         connected=link["connected"], status=link["status"], version=link["version"],
-                        limits=link["limits"].__dict__ if link["limits"] else None,
+                        limits=link["limits"].__dict__ if link["limits"] else None, lcd=link["lcd"],
                         telemetry=None if tele is None else dict(
                             pan=tele.pan, tilt=tele.tilt, moving=tele.moving, alarm=tele.sounding,
                             relay=tele.relay, lcd=tele.lcd_ok, clamped=tele.clamped, temp_a=tele.temp_a,
@@ -329,6 +451,14 @@ def make_handler(rt):
                 if rt.interaction is not None:
                     rt.interaction.cfg.assume_gloves = rt.args.assume_gloves
                 rt.event("Debug sarung tangan: " + ("anggap DIPAKAI" if rt.args.assume_gloves else "deteksi asli"))
+            elif action == "calibrate":
+                threading.Thread(target=rt.calibrate, name="calibrate", daemon=True).start()
+            elif action == "rotate":
+                rt.set_rotate(rt.args.rotate + 90, "tombol dashboard")
+            elif action == "auto_rotate":
+                from .orient import AutoOrient
+                rt.orient = AutoOrient() if body.get("value") else None
+                rt.event("Rotasi otomatis " + ("ON" if rt.orient else "OFF"))
             elif action == "patrol":
                 rt.brain.idle_since = rt.brain.last_people_at = -1e9
             elif action == "home":
@@ -352,6 +482,12 @@ def main(argv=None):
     ap.add_argument("--hfov", type=float, default=None)
     ap.add_argument("--vfov", type=float, default=None)
     ap.add_argument("--rotate", type=int, default=None, choices=(0, 90, 180, 270))
+    ap.add_argument("--roll", type=float, default=None, help="extra CW tilt correction of the tube (degrees)")
+    ap.add_argument("--calibrate", action="store_true",
+                    help="measure camera rotation/tilt/FOV by moving the servos at start-up")
+    ap.add_argument("--auto-rotate", dest="auto_rotate", action="store_true", default=None,
+                    help="find the upright camera rotation from people in view (default from config: ON)")
+    ap.add_argument("--no-auto-rotate", dest="auto_rotate", action="store_false")
     ap.add_argument("--pan-sign", type=int, default=None, choices=(-1, 1))
     ap.add_argument("--tilt-sign", type=int, default=None, choices=(-1, 1))
     ap.add_argument("--sound", dest="sound", action="store_true", default=None,
@@ -370,28 +506,43 @@ def main(argv=None):
     cam, srv, brn = cfg.get("camera", {}), cfg.get("servo", {}), cfg.get("brain", {})
     defaults = dict(patrol=brn.get("patrol_interval", 60.0), alarm_delay=brn.get("alarm_delay", 1.0),
                     hfov=cam.get("hfov_deg", 88.0), vfov=cam.get("vfov_deg", 52.0),
-                    rotate=cam.get("rotate", 0), pan_sign=srv.get("pan_sign", -1),
+                    rotate=cam.get("rotate", 0), roll=cam.get("roll_deg", 0.0),
+                    auto_rotate=cam.get("auto_rotate", True),
+                    pan_sign=srv.get("pan_sign", -1),
                     tilt_sign=srv.get("tilt_sign", 1), sound=cfg.get("alarm_sound", False),
                     volume=cfg.get("volume", 50), assume_gloves=cfg.get("debug_assume_gloves", False))
     for key, value in defaults.items():
         if getattr(args, key, None) is None:
             setattr(args, key, value)
-    print(f"Setelan: rotate={args.rotate} pan_sign={args.pan_sign} tilt_sign={args.tilt_sign} "
+    # The SC3336 sensor is landscape (wide horizontally). Rotated 90/270 the upright view
+    # is portrait: keep the field of view consistent with the rotation.
+    if (args.rotate in (90, 270)) == (args.hfov > args.vfov):
+        args.hfov, args.vfov = args.vfov, args.hfov
+    print(f"Setelan: rotate={args.rotate}{' (otomatis)' if args.auto_rotate else ''} "
+          f"pan_sign={args.pan_sign} tilt_sign={args.tilt_sign} "
           f"suara={'ON' if args.sound else 'MATI'} volume={args.volume}% patroli={args.patrol:.0f}s "
           f"debug_sarung={'ON' if args.assume_gloves else 'off'}", flush=True)
 
     rt = Runtime(args)
+    if keep_awake(True):
+        print("PC tidak akan sleep selama Sentinel berjalan (layar boleh mati).", flush=True)
     source = args.camera
     fox = None
     if args.camera == "luckfox":
         fox = Luckfox(args.serial)
-        if not fox.present():
-            print("Luckfox tidak terdeteksi lewat ADB. Colok USB lalu jalankan ulang.", flush=True)
-            return 2
-        for line in fox.prepare():
-            print("Luckfox:", line, flush=True)
+        # A missing Pico is not fatal: the watchdog below starts the camera as soon as
+        # it appears (USB replug, slow boot), so the servo/LCD side keeps running.
+        if fox.present():
+            try:
+                for line in fox.prepare():
+                    print("Luckfox:", line, flush=True)
+            except Exception as exc:
+                print("Luckfox belum siap:", str(exc)[:100], flush=True)
+        else:
+            print("Luckfox belum terdeteksi lewat ADB - menunggu (colok USB Pico).", flush=True)
+            rt.camera_state = "Menunggu Pico (USB)"
         source = RTSP_URL
-    rt.camera = LatestFrame(source, rotate=args.rotate).start()
+    rt.camera = LatestFrame(source, rotate=args.rotate, roll=args.roll).start()
     if args.port != "none":
         port = args.port
         if port == "auto":
@@ -441,6 +592,15 @@ def main(argv=None):
         threading.Thread(target=camera_watchdog, name="luckfox-watchdog", daemon=True).start()
     worker = threading.Thread(target=rt.run, daemon=True)
     worker.start()
+    if args.calibrate and rt.link is not None:
+        def delayed_calibration():
+            t_end = time.monotonic() + 60
+            while time.monotonic() < t_end and not (rt.link.connected and rt.camera.read()[2] is not None
+                                                    and rt.perception is not None):
+                time.sleep(0.5)
+            time.sleep(2)
+            rt.calibrate()
+        threading.Thread(target=delayed_calibration, daemon=True).start()
     try:
         while worker.is_alive():
             worker.join(0.5)
@@ -458,6 +618,7 @@ def main(argv=None):
             rt.gestures.close()
         rt.camera.stop()
         server.shutdown()
+        keep_awake(False)
     return 0
 
 

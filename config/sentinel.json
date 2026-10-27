@@ -2,8 +2,9 @@
   "_comment": "Setelan rig APD Sentinel. Ubah di sini, bukan di kode. CLI flag menimpa nilai ini.",
   "camera": {
     "rotate": 90,
-    "hfov_deg": 52.0,
-    "vfov_deg": 88.0
+    "hfov_deg": 53.9,
+    "vfov_deg": 75.7,
+    "roll_deg": -40.8
   },
   "servo": {
     "pan_sign": -1,

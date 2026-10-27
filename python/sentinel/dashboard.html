@@ -42,6 +42,13 @@
   button:hover { border-color: var(--accent); }
   .row { display: flex; gap: 6px; flex-wrap: wrap; }
   .log { font: 12px/1.5 ui-monospace, Consolas, monospace; color: var(--muted); max-height: 180px; overflow: auto; }
+  /* 16x2 character LCD look-alike (mirrors the real LCD text from the Arduino) */
+  .lcd { background: #1d3b8f; border: 6px solid #0b1020; border-radius: 6px; padding: 8px 10px; display: inline-block;
+         box-shadow: inset 0 0 12px rgba(0,0,0,.55); }
+  .lcd div { font: 600 18px/1.25 ui-monospace, Consolas, "Courier New", monospace; color: #dfe9ff; white-space: pre;
+             letter-spacing: 1px; text-shadow: 0 0 4px rgba(200,220,255,.45); }
+  .lcd.off { background: #2a2f38; }
+  .lcd.off div { color: #59616d; text-shadow: none; }
   .muted { color: var(--muted); }
 </style>
 </head>
@@ -83,6 +90,9 @@
         <button id="pause" onclick="togglePause()">Jeda servo</button>
         <button id="sound" onclick="toggleSound()">Suara: MATI</button>
         <button id="gloves" onclick="toggleGloves()">Debug sarung: off</button>
+        <button id="cal" onclick="act({action:'calibrate'})" title="Servo bergerak sedikit untuk mengukur rotasi, kemiringan dan FOV kamera">Kalibrasi kamera</button>
+        <button id="rot" onclick="act({action:'rotate'})" title="Putar gambar kamera 90 derajat">Putar kamera 90°</button>
+        <button id="autorot" onclick="toggleAutoRot()">Rotasi otomatis: ON</button>
       </div>
       <div class="row" style="margin-top:8px;align-items:center">
         <span class="k">Volume</span>
@@ -90,6 +100,10 @@
                onchange="act({action:'volume', value: +this.value}); el('volv').textContent = this.value + '%'">
         <span id="volv">50%</span>
       </div>
+    </div>
+    <div class="panel">
+      <h2>Layar LCD 16x2 (langsung dari Arduino)</h2>
+      <div class="lcd off" id="lcd"><div id="lcd0">                </div><div id="lcd1">  belum ada data  </div></div>
     </div>
     <div class="panel">
       <h2>Hardware</h2>
@@ -109,6 +123,12 @@ const WORD = {PRESENT: "PAKAI", ABSENT: "TIDAK", UNKNOWN: "BELUM PASTI"};
 let paused = false;
 let sound = false;
 let gloves = false;
+let autorot = true;
+function toggleAutoRot() {
+  autorot = !autorot;
+  act({action: "auto_rotate", value: autorot});
+  el("autorot").textContent = "Rotasi otomatis: " + (autorot ? "ON" : "off");
+}
 function toggleGloves() {
   gloves = !gloves;
   act({action: "gloves", value: gloves});
@@ -145,6 +165,13 @@ async function refresh() {
     gloves = d.assume_gloves;
     el("gloves").textContent = "Debug sarung: " + (gloves ? "ON" : "off");
   }
+  if (typeof d.rotate === "number") el("rot").textContent = "Putar kamera 90° (sekarang " + d.rotate + "°" +
+      (d.roll ? ", miring " + d.roll.toFixed(1) + "°" : "") + ")";
+  el("cal").textContent = d.calibrating ? "Kalibrasi berjalan..." : "Kalibrasi kamera";
+  if (typeof d.auto_rotate === "boolean" && d.auto_rotate !== autorot) {
+    autorot = d.auto_rotate;
+    el("autorot").textContent = "Rotasi otomatis: " + (autorot ? "ON" : "off");
+  }
   if (typeof d.volume === "number" && document.activeElement !== el("vol")) {
     el("vol").value = d.volume; el("volv").textContent = d.volume + "%";
   }
@@ -169,6 +196,11 @@ async function refresh() {
         <div class="item ${v.state}"><b>${ITEM[k]}</b>${WORD[v.state]}
           <small>${v.visibility === "OBSERVABLE" ? (v.method || "") : "tidak terlihat"}</small></div>`).join("")}</div>
     </div>`).join("") : '<span class="muted">Belum ada orang.</span>';
+
+  const lcd = s.mcu && s.mcu.connected && s.mcu.lcd;
+  el("lcd").className = "lcd" + (lcd ? "" : " off");
+  el("lcd0").textContent = lcd ? lcd[0] : "                ";
+  el("lcd1").textContent = lcd ? lcd[1] : (s.mcu ? "  Arduino putus  " : " tanpa Arduino  ").slice(0, 16);
 
   const t = s.mcu && s.mcu.telemetry;
   el("hw").innerHTML = t ? [

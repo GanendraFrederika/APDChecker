@@ -79,6 +79,20 @@ static void test_zone(void) {
   p = 900; t = 1800;
   sc_clamp(&l, &p, &t, &cl);
   CHECK(!cl);
+  /* pan-dependent ceiling (26-10-2026): 170 deg at hard right, 180 deg from the front on */
+  CHECK(sc_tilt_ceil_i(&l, 0) == 1700 && sc_tilt_ceil_i(&l, 450) == 1750);
+  CHECK(sc_tilt_ceil_i(&l, 900) == 1800 && sc_tilt_ceil_i(&l, 1450) == 1800);
+  for (int q = 0; q <= 1450; ++q)
+    CHECK(sc_tilt_ceil_f(&l, (float)q) >= sc_tilt_ceil_i(&l, (int16_t)q) - 0.001f);
+  p = 0; t = 1800;
+  sc_clamp(&l, &p, &t, &cl);
+  CHECK(cl && p == 0 && t == 1700);
+  CHECK(!sc_in_zone(&l, 0, 1750) && sc_in_zone(&l, 0, 1700) && sc_in_zone(&l, 1450, 1800));
+  /* the ceiling must stay above the floor at hard right */
+  l.tmaxr = 1450;
+  CHECK(!sc_limits_valid(&l));
+  l.tmaxr = 1801;
+  CHECK(!sc_limits_valid(&l));
   CHECK(sc_dd_to_us(0) == 544 && sc_dd_to_us(1800) == 2400 && sc_dd_to_us(900) == 1472);
 }
 
@@ -87,12 +101,12 @@ static void test_session(void) {
   sc_hooks h = {cap, save_hook, load_hook, 0};
   clear();
   sc_init(&c, &h, 0);
-  CHECK(has("READY,SENTINEL,3.1.0,00000000,0") && has("LIM,0,900,1450,1450,1000,1250,1800,"));
-  CHECK(c.pan.pos == 900 && c.tilt.pos == 1250);
+  CHECK(has("READY,SENTINEL,3.2.0,00000000,0") && has("LIM,0,900,1450,1450,1000,1800,1800,120,90,300,200,1700,0"));
+  CHECK(c.pan.pos == 900 && c.tilt.pos == 1800);
   clear(); send(&c, "S,1A2B3C4D,1,T,900,1700,60,PPP,0,1,0,3", 10);
   CHECK(has("ERR,TOKEN"));
   clear(); send(&c, "HELLO,1A2B3C4D", 20);
-  CHECK(has("READY,SENTINEL,3.1.0,1A2B3C4D,0") && c.session);
+  CHECK(has("READY,SENTINEL,3.2.0,1A2B3C4D,0") && c.session);
   clear(); send(&c, "S,1A2B3C4D,1,T,600,1700,60,PAU,0,1,0,3", 30);
   CHECK(nout == 1 && has("EVT,LINK,OK") && c.link_ok && c.trk == 3 && !strncmp(c.items, "PAU", 3));
   clear(); send(&c, "S,1A2B3C4D,1,T,600,1700,60,PAU,0,1,0,3", 40);
@@ -109,19 +123,24 @@ static void test_session(void) {
   clear(); send(&c, "S,1A2B3C4D,1,T,900,1800,60,PPP,0,1,0,3", 80);  /* sequence wrap */
   CHECK(nout == 0);
 
+  /* a frame stamped after the loop's clock reading is fresh, not 49 days old */
+  sc_tick(&c, 79);
+  CHECK(c.link_ok && !c.lost);
   /* link loss: alarm off at once, hold, then home after 5 s */
   sc_tick(&c, 80 + 1400);
   CHECK(c.link_ok);
   clear(); sc_tick(&c, 80 + 1600);
   CHECK(!c.link_ok && !c.alarm && has("EVT,LINK,LOST"));
   sc_tick(&c, 80 + 1600 + 5100);
-  CHECK(c.lost_homing && c.pan.target == 900 && c.tilt.target == 1250);
+  CHECK(c.lost_homing && c.pan.target == 900 && c.tilt.target == 1800);
 
   /* calibration */
   clear(); send(&c, "SET,P,MIN,100", 9000);   CHECK(has("ACK,SET,ERR,MODE"));
   clear(); send(&c, "CAL,1", 9000);           CHECK(has("ACK,CAL,OK,1") && c.cal_mode && !c.session);
   clear(); send(&c, "SET,P,MIN,1500", 9000);  CHECK(has("ACK,SET,ERR,RANGE") && c.lim.pmin == 0);
   clear(); send(&c, "SET,T,MIN1,1050", 9000); CHECK(has("ACK,SET,OK,TMIN1") && c.lim.tmin1 == 1050);
+  clear(); send(&c, "SET,T,MAXR,1650", 9000); CHECK(has("ACK,SET,OK,TMAXR") && c.lim.tmaxr == 1650);
+  clear(); send(&c, "SET,T,MAXR,1400", 9000); CHECK(has("ACK,SET,ERR,RANGE") && c.lim.tmaxr == 1650);
   clear(); send(&c, "SET,T,FOO,1", 9000);     CHECK(has("ACK,SET,ERR,KEY"));
   clear(); send(&c, "JOG,P,200", 9000);       CHECK(has("ACK,JOG,OK,200") && c.pan.target == 200);
   clear(); send(&c, "SAVE", 9000);            CHECK(has("ACK,SAVE,OK,0") && c.calibrated && saved.tmin1 == 1050);
@@ -182,6 +201,45 @@ static void test_motion(void) {
     if (mg < min_margin) min_margin = mg;
   }
   CHECK(min_margin > -0.02f && fabsf(m.pan.out) < 0.6f && fabsf(m.tilt.out - 1450) < 0.6f);
+
+  /* "lower, then turn": top-left -> top-right must dip under the 170 deg ceiling first */
+  sc_init(&m, 0, 0);
+  m.pan.pos = m.pan.f1 = m.pan.out = 1450;
+  m.tilt.pos = m.tilt.f1 = m.tilt.out = 1800;
+  {
+    int16_t tp = 0, tt = 1800;      /* the brain asks for 180 deg: S frames clamp it to 170 */
+    bool cl;
+    sc_clamp(&m.lim, &tp, &tt, &cl);
+    CHECK(cl && tt == 1700);
+    m.pan.target = tp; m.tilt.target = tt; m.vlimit = 120;
+  }
+  float max_over = -1e9f;
+  for (int s = 0; s < 1000; ++s) {
+    sc_motion_step(&m, 0.02f);
+    float ov = m.tilt.out - sc_tilt_ceil_f(&m.lim, m.pan.out);
+    if (ov > max_over) max_over = ov;
+  }
+  CHECK(max_over < 0.02f && fabsf(m.pan.out) < 0.6f && fabsf(m.tilt.out - 1700) < 0.6f);
+
+  /* and back: hard right top -> front top rises with the ceiling, never above it */
+  m.pan.target = 900; m.tilt.target = 1800;
+  max_over = -1e9f;
+  for (int s = 0; s < 1000; ++s) {
+    sc_motion_step(&m, 0.02f);
+    float ov = m.tilt.out - sc_tilt_ceil_f(&m.lim, m.pan.out);
+    if (ov > max_over) max_over = ov;
+  }
+  CHECK(max_over < 0.02f && fabsf(m.pan.out - 900) < 0.6f && fabsf(m.tilt.out - 1800) < 0.6f);
+
+  /* a remembered boot pose from the old zone (0, 180 deg) glides back inside slowly */
+  sc_init(&m, 0, 0);
+  sc_set_boot_pose(&m, 0, 1800);
+  for (int s = 0; s < 1500; ++s) {
+    sc_motion_step(&m, 0.02f);
+    CHECK(m.tilt.out <= 1800.01f && m.pan.out >= -0.01f);
+  }
+  CHECK(sc_in_zone(&m.lim, m.pan.out, m.tilt.out) && fabsf(m.pan.out - 900) < 0.6f &&
+        fabsf(m.tilt.out - 1800) < 0.6f);
 
   /* escape from outside the zone (after CAL) is slow and ends inside */
   sc_init(&m, 0, 0);
@@ -251,12 +309,23 @@ static void test_display_and_fans(void) {
   CHECK(changes <= 4);                                              /* 12 s -> <= 4 changes */
   sc_ctx z;
   sc_init(&z, 0, 0);
-  CHECK(sc_fan_duty(&z, 0, SC_TEMP_NA, 0) == 160);
+  CHECK(sc_fan_duty(&z, 0, SC_TEMP_NA, 0) == 0);    /* no sensor fitted: fan off */
+  CHECK(sc_fan_duty(&z, 1, SC_TEMP_NA, 0) == 0);
   CHECK(sc_fan_duty(&z, 0, 300, 0) == 0);
   CHECK(sc_fan_duty(&z, 0, 400, 0) > 90);
   CHECK(sc_fan_duty(&z, 0, 360, 0) > 0);     /* hysteresis keeps it on */
   CHECK(sc_fan_duty(&z, 0, 330, 0) == 0);
   CHECK(sc_fan_duty(&z, 0, 600, 0) == 255);
+  /* ENV / FAN stamped a moment after the loop clock must not expire at once */
+  sc_ctx q;
+  sc_hooks hq = {cap, save_hook, load_hook, 0};
+  sc_init(&q, &hq, 0);
+  send(&q, "HELLO,1A2B3C4D", 1000);
+  send(&q, "ENV,1A2B3C4D,700", 1001);
+  send(&q, "FAN,A,255", 1001);
+  sc_tick(&q, 1000);
+  CHECK(q.soc_valid && q.fan_manual[0] == 255);
+  CHECK(sc_fan_duty(&q, 1, SC_TEMP_NA, 1000) == 255 && sc_fan_duty(&q, 0, SC_TEMP_NA, 1000) == 255);
 }
 
 static void test_v11_and_fx(void) {
@@ -283,9 +352,9 @@ static void test_v11_and_fx(void) {
 
   /* every animation stays inside the safe zone, even started at the zone corners */
   const char fxs[4] = {'N', 'H', 'C', 'W'};
-  const int16_t poses[5][2] = {{900, 1800}, {0, 1450}, {1450, 1000}, {0, 1800}, {700, 1300}};
+  const int16_t poses[6][2] = {{900, 1800}, {0, 1450}, {1450, 1000}, {0, 1700}, {700, 1300}, {1450, 1800}};
   for (int f = 0; f < 4; ++f) {
-    for (int k = 0; k < 5; ++k) {
+    for (int k = 0; k < 6; ++k) {
       sc_ctx m;
       sc_init(&m, 0, 0);
       m.pan.pos = m.pan.target = m.pan.f1 = m.pan.out = poses[k][0];
@@ -310,9 +379,9 @@ static void test_v11_and_fx(void) {
   }
 
   /* Eased output: the servo pulse sequence has no velocity jumps (no "patah-patah"). */
-  const int16_t moves[4][2] = {{200, 1800}, {1450, 1000}, {0, 1450}, {900, 1250}};
+  const int16_t moves[5][2] = {{200, 1800}, {1450, 1000}, {0, 1450}, {900, 1250}, {0, 1800}};
   float worst_jump = 0;
-  for (int k = 0; k < 4; ++k) {
+  for (int k = 0; k < 5; ++k) {
     sc_ctx m;
     sc_init(&m, 0, 0);
     if (k == 2) { m.pan.pos = m.pan.f1 = m.pan.out = 1450; m.tilt.pos = m.tilt.f1 = m.tilt.out = 1000; }
