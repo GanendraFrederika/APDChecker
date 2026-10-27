@@ -14,8 +14,8 @@ Per item state machine (debounced, conservative):
 from dataclasses import dataclass, field
 import math
 
-ITEMS = ("helmet", "vest", "shoes", "glove")
-REQUIRED = ("helmet", "vest", "shoes")        # glove is optional: shown, never alarmed
+ITEMS = ("helmet", "vest", "shoes")
+REQUIRED = ITEMS
 
 
 @dataclass

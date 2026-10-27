@@ -334,9 +334,9 @@ static void test_v11_and_fx(void) {
   clear();
   sc_init(&c, &h, 0);
   send(&c, "HELLO,1A2B3C4D", 10);
-  /* SLP/1.1: items with glove, fx, fx_id, vox */
+  /* SLP/1.1: 4 item chars (4th reserved), fx, fx_id, vox */
   clear(); send(&c, "S,1A2B3C4D,1,T,900,1500,60,PPPA,0,1,0,3,N,7,1", 20);
-  CHECK(nout == 1 && has("EVT,LINK,OK") && c.items[3] == 'A' && c.vox && c.fx == 'N');
+  CHECK(nout == 1 && has("EVT,LINK,OK") && !strncmp(c.items, "PPP", 3) && c.vox && c.fx == 'N');
   CHECK(c.fx_started == 'N');
   c.fx_started = 0;
   /* same fx_id repeated at 10 Hz does not restart the animation */

@@ -366,7 +366,7 @@ SC_NOINLINE static void handle_s(sc_ctx *c, char **f, uint8_t n, uint32_t now_ms
   uint32_t tok;
   uint8_t r;
   if (c->cal_mode) { err_p(c, SC_P("MODE"), now_ms); return; }
-  /* SLP/1.0 = 12 fields; SLP/1.1 adds glove (in items), fx, fx_id and vox = 15. */
+  /* SLP/1.0 = 12 fields; SLP/1.1 adds a reserved 4th item char, fx, fx_id and vox = 15. */
   if ((n != 12 && n != 15) || !parse_token(f[1], &tok)) { err_p(c, SC_P("FMT"), now_ms); return; }
   if (!c->session || tok != c->token) { err_p(c, SC_P("TOKEN"), now_ms); return; }
   /* Validate every field before applying anything: a frame is atomic. */
@@ -897,7 +897,6 @@ void sc_display(const sc_ctx *c, uint32_t now_ms, char row0[17], char row1[17],
         strcat(miss, names[i]);
       }
     }
-    if (c->items[3] == 'A') strcat(miss, miss[0] ? " SRT" : "SRT");
     sc_snprintf(row0, 17, SC_P("!! ALARM APD !!"));
     sc_snprintf(row1, 17, SC_P("Krg:%s"), miss);
     item_leds(c, fast, tick, leds);
@@ -909,8 +908,8 @@ void sc_display(const sc_ctx *c, uint32_t now_ms, char row0[17], char row1[17],
         sc_snprintf(row1, 17, SC_P("Iya! Mantap :)"));
         break;
       case 'H':
-        sc_snprintf(row0, 17, SC_P("Tanpa sarung"));
-        sc_snprintf(row1, 17, SC_P("tangan! Tidak."));
+        sc_snprintf(row0, 17, SC_P("Lengkapi APD"));
+        sc_snprintf(row1, 17, SC_P("dulu ya! Tidak."));
         break;
       case 'W':
         sc_snprintf(row0, 17, SC_P("Halo juga! :)"));

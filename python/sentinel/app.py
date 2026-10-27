@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[2]
 ANALYSIS_WIDTH = 1152
 COLORS = {"PRESENT": (60, 200, 60), "ABSENT": (40, 40, 235), "UNKNOWN": (0, 200, 255)}
 STATE_COLORS = {"COMPLIANT": (60, 200, 60), "VIOLATION": (40, 40, 235), "CHECKING": (0, 200, 255)}
-NAMES = {"helmet": "Helm", "vest": "Rompi", "shoes": "Sepatu", "glove": "Sarung"}
+NAMES = {"helmet": "Helm", "vest": "Rompi", "shoes": "Sepatu"}
 
 
 class Shared:
@@ -215,10 +215,10 @@ class Runtime:
 
     def run(self):
         import cv2
-        from .interact import Interaction, InteractConfig
+        from .interact import Interaction
         from .vision import Perception, evidence, regions
         self.perception = Perception(imgsz=self.args.imgsz)
-        self.interaction = Interaction(InteractConfig(assume_gloves=self.args.assume_gloves))
+        self.interaction = Interaction()
         try:
             from .gesture import GestureReader
             self.gestures = GestureReader()
@@ -249,7 +249,7 @@ class Runtime:
                     if now - idle_publish >= 1.0:
                         idle_publish = now
                         decision = dict(mode=cmd.mode, alarm=False, sound=self.sound, volume=self.volume,
-                                        assume_gloves=self.args.assume_gloves, rotate=self.args.rotate,
+                                        rotate=self.args.rotate,
                                         auto_rotate=self.orient is not None, roll=self.args.roll,
                                         calibrating=self.calibrating, calib=self.calib_result,
                                         pan=cmd.pan, tilt=cmd.tilt, items=cmd.items, lock=0, people=0,
@@ -283,7 +283,7 @@ class Runtime:
             self.hands = []
             if people and self.gestures is not None:
                 try:
-                    self.hands = self.gestures.hands(frame, ppe)
+                    self.hands = self.gestures.hands(frame)
                 except Exception as exc:
                     self.event("Gestur error: " + str(exc)[:60])
                     self.hands = []
@@ -299,11 +299,6 @@ class Runtime:
                     if t is None:
                         continue
                     hands_by_track.setdefault(t.tid, []).append(hnd)
-                    glove = "PRESENT" if self.args.assume_gloves else hnd.glove
-                    if glove != "UNKNOWN":
-                        t.items["glove"].update(glove, 0.9, "DEBUG" if self.args.assume_gloves else hnd.glove_method,
-                                                now, self.tracker.present_frames, self.tracker.absent_frames,
-                                                self.tracker.evidence_ttl)
             fx, fx_id = self.interaction.update(now, tracks, hands_by_track,
                                                 self.voice if self.sound else None)
             for note in self.interaction.events:
@@ -314,19 +309,17 @@ class Runtime:
                 cmd, info = Command("T", self.manual[0], self.manual[1], 60), dict(manual=True)
             else:
                 cmd, info = self.brain.step(now, tracks, pose=pose)
-            # A bare-hand thumbs-up starts the alarm for that person (after the "no" shake).
-            glove_alarm = cmd.trk and self.interaction.glove_alarm(cmd.trk) and cmd.mode in ("T", "G", "A", "V")
             locked = self.tracker.get(cmd.trk) if cmd.trk else None
             items = locked.item_code() if locked is not None else cmd.items
-            alarm = cmd.alarm or bool(glove_alarm)
-            mode = "V" if alarm else cmd.mode
+            alarm = cmd.alarm
+            mode = cmd.mode
             if alarm and not self.sound:
                 info = dict(info, sound="MUTE")     # lock + LEDs/LCD stay, siren and relay stay OFF
-            cmd = Command(mode, cmd.pan, cmd.tilt, cmd.spd, (items + "----")[:4], alarm and self.sound,
+            cmd = Command(mode, cmd.pan, cmd.tilt, cmd.spd, (items + "---")[:3], alarm and self.sound,
                           cmd.ppl, cmd.viol, cmd.trk, fx, fx_id, self.sound)
             if self.link is not None:
                 self.link.set_command(cmd)
-            alarm_now = (self.brain.alarm and cmd.mode == "V") or bool(glove_alarm)
+            alarm_now = self.brain.alarm and cmd.mode == "V"
             if alarm_now and not prev_alarm:
                 self.event(f"ALARM: orang #{cmd.trk} APD tidak lengkap ({cmd.items})"
                            + ("" if self.sound else " [suara mati]"))
@@ -340,16 +333,16 @@ class Runtime:
             if now - t0 >= 2:
                 fps, n, t0 = n / (now - t0), 0, now
             decision = dict(mode=cmd.mode, alarm=alarm_now, sound=self.sound, volume=self.volume,
-                            assume_gloves=self.args.assume_gloves, rotate=self.args.rotate,
+                            rotate=self.args.rotate,
                             auto_rotate=self.orient is not None, roll=self.args.roll,
                             calibrating=self.calibrating, calib=self.calib_result, pan=cmd.pan, tilt=cmd.tilt,
                             items=cmd.items, lock=cmd.trk, people=cmd.ppl, violators=cmd.viol, info=info,
-                            gestures=[dict(g=h.gesture, glove=h.glove) for h in self.hands])
+                            gestures=[h.gesture for h in self.hands])
             view = draw(frame.copy(), tracks, decision, None, fps, None, cmd.trk)
             for hnd in self.hands:
                 x1, y1, x2, y2 = map(int, hnd.box)
                 cv2.rectangle(view, (x1, y1), (x2, y2), (255, 160, 0), 2)
-                cv2.putText(view, f"{hnd.gesture} sarung:{hnd.glove}", (x1, max(14, y1 - 6)),
+                cv2.putText(view, hnd.gesture, (x1, max(14, y1 - 6)),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 160, 0), 1)
             ok, jpeg = cv2.imencode(".jpg", view, [cv2.IMWRITE_JPEG_QUALITY, 72])
             self.shared.publish(jpeg.tobytes() if ok else None, self.status(decision, tracks, fps, pose))
@@ -446,11 +439,6 @@ def make_handler(rt):
                 if rt.voice is not None:
                     rt.voice.volume = rt.volume / 100.0
                 rt.event(f"Volume {rt.volume}%")
-            elif action == "gloves":
-                rt.args.assume_gloves = bool(body.get("value"))
-                if rt.interaction is not None:
-                    rt.interaction.cfg.assume_gloves = rt.args.assume_gloves
-                rt.event("Debug sarung tangan: " + ("anggap DIPAKAI" if rt.args.assume_gloves else "deteksi asli"))
             elif action == "calibrate":
                 threading.Thread(target=rt.calibrate, name="calibrate", daemon=True).start()
             elif action == "rotate":
@@ -496,8 +484,6 @@ def main(argv=None):
     ap.add_argument("--volume", type=int, default=None, help="speaker loudness 0..100 %%")
     ap.add_argument("--no-voice", dest="voice", action="store_false", default=True,
                     help="no greeting voice from the PC speaker")
-    ap.add_argument("--assume-gloves", action="store_true", default=None,
-                    help="DEBUG: treat every hand as gloved (test thumbs-up without gloves)")
     args = ap.parse_args(argv)
     cfg = {}
     if os.path.exists(args.config):
@@ -510,7 +496,7 @@ def main(argv=None):
                     auto_rotate=cam.get("auto_rotate", True),
                     pan_sign=srv.get("pan_sign", -1),
                     tilt_sign=srv.get("tilt_sign", 1), sound=cfg.get("alarm_sound", False),
-                    volume=cfg.get("volume", 50), assume_gloves=cfg.get("debug_assume_gloves", False))
+                    volume=cfg.get("volume", 50))
     for key, value in defaults.items():
         if getattr(args, key, None) is None:
             setattr(args, key, value)
@@ -520,8 +506,7 @@ def main(argv=None):
         args.hfov, args.vfov = args.vfov, args.hfov
     print(f"Setelan: rotate={args.rotate}{' (otomatis)' if args.auto_rotate else ''} "
           f"pan_sign={args.pan_sign} tilt_sign={args.tilt_sign} "
-          f"suara={'ON' if args.sound else 'MATI'} volume={args.volume}% patroli={args.patrol:.0f}s "
-          f"debug_sarung={'ON' if args.assume_gloves else 'off'}", flush=True)
+          f"suara={'ON' if args.sound else 'MATI'} volume={args.volume}% patroli={args.patrol:.0f}s", flush=True)
 
     rt = Runtime(args)
     if keep_awake(True):

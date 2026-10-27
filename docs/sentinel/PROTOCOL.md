@@ -149,7 +149,7 @@ S,<tok>,<seq>,<mode>,<pan>,<tilt>,<spd>,<items4>,<alarm>,<ppl>,<viol>,<trk>,<fx>
 
 | Field | Arti |
 |---|---|
-| items4 | 4 char `P A U -`: HELM, ROMPI, SEPATU, SARUNG TANGAN |
+| items4 | 4 char `P A U -`: HELM, ROMPI, SEPATU, lalu 1 char cadangan (selalu `-` sejak 3.2; dulu sarung tangan) |
 | fx | `-` tidak ada, `N` angguk (iya), `H` geleng (tidak), `C` celingak-celinguk, `W` sapa |
 | fx_id | 0..255; animasi diputar sekali setiap nilai ini berubah (frame diulang 10 Hz) |
 | vox | 1 = suara diizinkan (sirine + nada), 0 = senyap. Frame 12 field = 1 |

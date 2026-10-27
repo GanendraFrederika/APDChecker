@@ -27,3 +27,8 @@ docs/luckfox/debug/rkipc-backups/
 Thumbs.db
 .DS_Store
 *.swp
+
+# Local datasets and downloaded model candidates (large; re-creatable)
+datasets/
+models/candidates/
+runs/

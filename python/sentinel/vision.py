@@ -3,7 +3,7 @@ visible, so a hidden region is UNKNOWN, never "missing".
 
 Models (local files only, no downloads):
   models/yolo11n-pose.pt  person boxes + 17 COCO keypoints
-  models/ppe_yolov8n.pt   helmet/no_helmet/shoes/no_shoes (+ glove/goggles/mask)
+  models/ppe_yolov8n.pt   helmet/no_helmet/shoes/no_shoes (other classes ignored)
 The PPE model has NO vest class: vest uses a hi-vis colour check on the torso,
 clearly reported as method=COLOR (heuristic, not a trained detector).
 """
@@ -247,5 +247,4 @@ def evidence(person, regs, ppe, frame):
     else:
         state, score = vest_color(frame, reg.box)
         out["vest"] = (state, score, "COLOR")
-    out["glove"] = ("UNKNOWN", 0.0, "NO_HAND")
     return out

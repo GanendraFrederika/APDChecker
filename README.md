@@ -1,9 +1,9 @@
 # APD Sentinel — Kamera Pengecek APD yang Mengunci Orang
 
 Prototipe CCTV pintar untuk bengkel. Kamera **mencari orang, mengunci dan mengikuti orang itu
-dengan servo, lalu mengecek APD-nya** (helm, rompi, sepatu, plus sarung tangan). Kalau ada
+dengan servo, lalu mengecek APD-nya** (helm, rompi, sepatu). Kalau ada
 APD yang kurang, kamera **tetap mengunci orang tersebut** dan alarm berbunyi. Robot juga bisa
-diajak berinteraksi: angguk saat diberi jempol, geleng kalau tanpa sarung tangan, dan menyapa
+diajak berinteraksi: angguk saat diberi jempol, geleng kalau APD-nya masih kurang, dan menyapa
 saat orang melambai.
 
 > Status: **prototipe pengembangan** (Oktober 2026). Bukan sistem keselamatan bersertifikat;
@@ -14,7 +14,7 @@ saat orang melambai.
 ```text
  Kamera SC3336 ──► Luckfox Pico Mini B ──RTSP lewat USB──► Laptop ("otak" AI)
    (dalam tabung,      (rkipc 10 fps,                       │  YOLO11n-pose  : orang + 17 titik tubuh
-    diputar 90°)        profil ringan)                      │  PPE YOLOv8n   : helm, sepatu, sarung tangan
+    diputar 90°)        profil ringan)                      │  PPE YOLOv8n   : helm, sepatu
                                                             │  warna hi-vis   : rompi (model belum punya kelas rompi)
                                                             │  MediaPipe      : gestur jempol / telapak terbuka
                                                             │  tracker + brain: lock, grup, pelanggar, patroli
@@ -38,7 +38,7 @@ Dashboard web live: **http://127.0.0.1:8080** (video beranotasi, status tiap ora
 | **Bagian tertutup = BELUM PASTI** | Visibilitas helm/badan/kaki ditentukan dari titik pose. Bagian yang tidak terlihat tidak pernah dianggap "tidak pakai". |
 | **Prioritas pelanggar** | Pelanggar terkonfirmasi tetap dikunci walau ada orang lain masuk frame. |
 | **Patroli** | Tiap 60 detik tanpa orang: kiri, kanan, kiri, kanan, kiri, lalu tengah, halus. Langsung berhenti begitu ada orang. |
-| **Gestur** | Jempol + sarung tangan → **angguk** (cooldown 5 detik) + salam. Jempol tanpa sarung tangan → **geleng sekali** lalu alarm. Telapak terbuka/melambai → **sapa** + suara. |
+| **Gestur** | Jempol → **angguk** (cooldown 5 detik) + salam. Jempol saat APD kurang → **geleng sekali** + "Mohon lengkapi APD". Telapak terbuka/melambai → **sapa** + suara. |
 | **Suara** | Salam bahasa Indonesia (Halo, Hai, Selamat pagi/siang/sore/malam, Hati-hati ya) di speaker laptop. Speaker rig: nada lembut tanpa dengung, alarm minor C-Eb-G yang tenang + pengumuman "Mohon lengkapi APD". Volume default **50%** (slider di dashboard). |
 | **Robot celingak-celinguk** | Saat target hilang: menengok ke arah jalannya, lalu melirik balik, sebelum kembali ke patroli. |
 | **LCD tenang** | Teks normal berganti maksimal tiap 3 detik; alarm/putus link langsung menimpa. Teks LCD juga tampil di dashboard (preview 16x2). |
@@ -62,7 +62,6 @@ Opsi penting:
 | `--port none` | tanpa Arduino (AI + dashboard saja) |
 | `--mute` / `--sound` | matikan / nyalakan suara |
 | `--volume 50` | volume 0..100 % |
-| `--assume-gloves` | **debug**: anggap semua tangan bersarung tangan (tes jempol tanpa sarung tangan) |
 | `--no-voice` | tanpa suara salam dari laptop |
 
 Setelan rig ada di **`config/sentinel.json`** (rotasi kamera, arah servo, interval patroli,
@@ -159,7 +158,6 @@ APDChecker/
   butuh model RKNN (konversi di Linux) dan program C; lihat `docs/luckfox/RV1103_BACKEND.md`.
 * Model APD lama **tidak punya kelas rompi**. Rompi dan helm (cadangan) dideteksi lewat warna;
   ditandai `COLOR` di dashboard. Dataset sendiri + training ulang akan jauh lebih akurat.
-* Deteksi sarung tangan dari model + warna kulit; ada toggle debug untuk demo.
 * **Daya servo**: saat servo bergerak, 5 V Arduino turun ke ±4,3 V (terukur 27-10-2026) dan
   USB sesekali tersendat. Software sudah tahan (tanpa reset), tapi servo sebaiknya punya
   step-down sendiri 5–6 V ≥ 3 A dengan GND disatukan ke Arduino.

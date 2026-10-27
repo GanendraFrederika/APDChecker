@@ -71,7 +71,7 @@ typedef struct {
   uint32_t last_s_ms, lost_ms;
   /* last accepted S frame */
   char mode;
-  char items[5];                      /* helmet, vest, shoes, glove */
+  char items[5];                      /* helmet, vest, shoes, reserved ('-') */
   bool alarm, clamped, vox;          /* vox: brain allows sound (siren + chimes) */
   uint8_t volume;                     /* 0..100 % loudness (duty-cycle shaped tone) */
   uint8_t ppl, viol;

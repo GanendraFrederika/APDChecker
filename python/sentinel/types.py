@@ -2,7 +2,7 @@
 (rotated) analysis frame; keypoints follow the 17-point COCO order."""
 from dataclasses import dataclass
 
-ITEMS = ("helmet", "vest", "shoes", "glove")  # wire order H, V, S, G (SLP/1.1)
+ITEMS = ("helmet", "vest", "shoes")  # wire order H, V, S (+ "-" reserved 4th char, SLP/1.1)
 MODES = frozenset("IPATGVSF")
 KP = dict(nose=0, l_eye=1, r_eye=2, l_ear=3, r_ear=4, l_shoulder=5, r_shoulder=6,
           l_elbow=7, r_elbow=8, l_wrist=9, r_wrist=10, l_hip=11, r_hip=12,
@@ -58,7 +58,7 @@ class Command:
     pan: int
     tilt: int
     spd: int
-    items: str = "----"           # helmet, vest, shoes, glove
+    items: str = "---"            # helmet, vest, shoes
     alarm: bool = False
     ppl: int = 0
     viol: int = 0

@@ -82,8 +82,7 @@ HFOV_DD, VFOV_DD = 520, 880          # upright camera view (portrait sensor), de
 class Person:
     pan: float                       # world angle of the body centre (servo dd)
     tilt: float
-    items: dict = field(default_factory=lambda: dict(helmet="PRESENT", vest="PRESENT",
-                                                     shoes="PRESENT", glove="UNKNOWN"))
+    items: dict = field(default_factory=lambda: dict(helmet="PRESENT", vest="PRESENT", shoes="PRESENT"))
     width: float = 110.0
     height: float = 380.0
 
@@ -138,7 +137,7 @@ class Rig:
             cmd, _ = self.brain.step(now, tracks, pose=self.pose())
         locked = self.tracker.get(cmd.trk) if cmd.trk else None
         items = locked.item_code() if locked is not None else cmd.items
-        cmd = Command(cmd.mode, cmd.pan, cmd.tilt, cmd.spd, (items + "----")[:4], cmd.alarm and self.sound,
+        cmd = Command(cmd.mode, cmd.pan, cmd.tilt, cmd.spd, (items + "---")[:3], cmd.alarm and self.sound,
                       cmd.ppl, cmd.viol, cmd.trk, self.fx, self.fx_id, self.sound)
         self.link.set_command(cmd)
         if not self.mode_log or self.mode_log[-1][1] != cmd.mode:
@@ -292,7 +291,7 @@ def main():
     rig.check("helm dipakai lagi -> alarm berhenti, kembali cek", back)
     rig.section_end()
 
-    print("\n== 7. Jempol + sarung tangan -> animasi angguk + nada")
+    print("\n== 7. Jempol -> animasi angguk + nada")
     rig.fx, rig.fx_id = "N", 1
     rig.run(3)
     rig.fx = "-"
@@ -330,7 +329,7 @@ def main():
     # Urgent and event screens may replace text at once; a NORMAL screen may only
     # replace a non-urgent screen after it has been shown for 3 s.
     urgent = ("LINK AI PUTUS", "!! ALARM", "MODE KALIBRASI", "GANGGUAN", "APD SENTINEL 3")
-    event = ("Jempol diterima", "Tanpa sarung", "Halo juga", "Hmm... mencari")
+    event = ("Jempol diterima", "Lengkapi APD", "Halo juga", "Hmm... mencari")
     kind = lambda row: "U" if row.startswith(urgent) else "E" if row.startswith(event) else "N"
     spam = [(b[0], b[1][0]) for a, b in zip(rig.lcd_log, rig.lcd_log[1:])
             if kind(b[1][0]) == "N" and kind(a[1][0]) != "U" and b[0] - a[0] < 2.8]

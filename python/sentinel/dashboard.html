@@ -31,7 +31,7 @@
   .person { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin-bottom: 8px; }
   .person.locked { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
   .person .top { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 6px; }
-  .items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
   .item { border-radius: 6px; padding: 6px; text-align: center; font-size: 12px; background: var(--line); }
   .item b { display: block; font-size: 13px; }
   .item.PRESENT { background: rgba(63,185,80,.18); color: var(--ok); }
@@ -89,7 +89,6 @@
         <button onclick="act({action:'home'})">Ke home</button>
         <button id="pause" onclick="togglePause()">Jeda servo</button>
         <button id="sound" onclick="toggleSound()">Suara: MATI</button>
-        <button id="gloves" onclick="toggleGloves()">Debug sarung: off</button>
         <button id="cal" onclick="act({action:'calibrate'})" title="Servo bergerak sedikit untuk mengukur rotasi, kemiringan dan FOV kamera">Kalibrasi kamera</button>
         <button id="rot" onclick="act({action:'rotate'})" title="Putar gambar kamera 90 derajat">Putar kamera 90°</button>
         <button id="autorot" onclick="toggleAutoRot()">Rotasi otomatis: ON</button>
@@ -118,21 +117,15 @@
 <script>
 const MODE = {I: "Diam di home", P: "Patroli", A: "Orang terdeteksi - mengunci", T: "Lock & cek APD",
   G: "Memantau grup", V: "PELANGGARAN - lock", S: "Mencari target", F: "Gangguan kamera/AI"};
-const ITEM = {helmet: "Helm", vest: "Rompi", shoes: "Sepatu", glove: "Sarung"};
+const ITEM = {helmet: "Helm", vest: "Rompi", shoes: "Sepatu"};
 const WORD = {PRESENT: "PAKAI", ABSENT: "TIDAK", UNKNOWN: "BELUM PASTI"};
 let paused = false;
 let sound = false;
-let gloves = false;
 let autorot = true;
 function toggleAutoRot() {
   autorot = !autorot;
   act({action: "auto_rotate", value: autorot});
   el("autorot").textContent = "Rotasi otomatis: " + (autorot ? "ON" : "off");
-}
-function toggleGloves() {
-  gloves = !gloves;
-  act({action: "gloves", value: gloves});
-  el("gloves").textContent = "Debug sarung: " + (gloves ? "ON" : "off");
 }
 function toggleSound() {
   sound = !sound;
@@ -161,10 +154,6 @@ async function refresh() {
   el("mode").textContent = MODE[d.mode] || d.mode;
   el("mode").style.color = d.mode === "V" ? "var(--bad)" : d.mode === "F" ? "var(--warn)" : "var(--text)";
   el("flash").style.display = d.alarm ? "block" : "none";
-  if (typeof d.assume_gloves === "boolean" && d.assume_gloves !== gloves) {
-    gloves = d.assume_gloves;
-    el("gloves").textContent = "Debug sarung: " + (gloves ? "ON" : "off");
-  }
   if (typeof d.rotate === "number") el("rot").textContent = "Putar kamera 90° (sekarang " + d.rotate + "°" +
       (d.roll ? ", miring " + d.roll.toFixed(1) + "°" : "") + ")";
   el("cal").textContent = d.calibrating ? "Kalibrasi berjalan..." : "Kalibrasi kamera";

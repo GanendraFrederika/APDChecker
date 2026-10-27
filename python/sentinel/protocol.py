@@ -43,7 +43,7 @@ def state(token, seq, cmd):
     check_token(token)
     if not 1 <= seq <= 65535:
         raise ValueError("seq 1..65535")
-    items = cmd.items if len(cmd.items) == 4 else cmd.items + "-"
+    items = (cmd.items + "-")[:4] if len(cmd.items) == 3 else cmd.items   # 4th char reserved
     if cmd.mode not in MODES or len(items) != 4 or set(items) - ITEM_CHARS:
         raise ValueError("Invalid mode/items")
     if cmd.fx not in ("-", "N", "H", "C", "W") or type(cmd.fx_id) is not int or not 0 <= cmd.fx_id <= 255:

@@ -16,6 +16,5 @@
   },
   "alarm_sound": true,
   "volume": 50,
-  "debug_assume_gloves": false,
   "_volume": "Volume speaker 0..100 % (sirine, nada, dan suara salam laptop)."
 }

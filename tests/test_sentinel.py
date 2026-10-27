@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT / "python"))
 from sentinel import protocol as P                      # noqa: E402
 from sentinel.brain import Brain                         # noqa: E402
 from sentinel.geometry import CameraModel                # noqa: E402
-from sentinel.interact import Interaction, InteractConfig, NOD_COOLDOWN  # noqa: E402
+from sentinel.interact import Interaction, NOD_COOLDOWN  # noqa: E402
 from sentinel.gesture import Hand                        # noqa: E402
 from sentinel.tracker import Tracker                     # noqa: E402
 from sentinel.types import Command                       # noqa: E402
@@ -30,14 +30,14 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(P.simple("VOL", 50), b"$VOL,50*04\n")
 
     def test_s_frame_v11_fields(self):
-        frame = P.state("1A2B3C4D", 1, Command("T", 900, 1500, 60, "PPPA", False, 1, 0, 3, "N", 7, True))
-        self.assertEqual(frame, b"$S,1A2B3C4D,1,T,900,1500,60,PPPA,0,1,0,3,N,7,1*21\n")
-        # 3-item legacy items are padded with an unknown glove
+        frame = P.state("1A2B3C4D", 1, Command("T", 900, 1500, 60, "PPA", False, 1, 0, 3, "N", 7, True))
+        self.assertEqual(frame, P.frame("S,1A2B3C4D,1,T,900,1500,60,PPA-,0,1,0,3,N,7,1"))
+        # helmet, vest, shoes + the reserved 4th wire character
         self.assertIn(b",PAU-,", P.state("1A2B3C4D", 2, Command("T", 900, 1500, 60, "PAU")))
 
     def test_s_frame_rejects_bad_values(self):
         with self.assertRaises(ValueError):
-            P.state("1A2B3C4D", 1, Command("T", 900, 1500, 60, "PPPA", True))   # alarm without V
+            P.state("1A2B3C4D", 1, Command("T", 900, 1500, 60, "PPA", True))    # alarm without V
         with self.assertRaises(ValueError):
             P.state("1A2B3C4D", 1, Command("T", 900, 1500, 60, fx="X"))
         with self.assertRaises(ValueError):
@@ -121,49 +121,48 @@ class InteractionTests(unittest.TestCase):
         self.tr.update([det((860, 1500, 960, 1100))], 10.0)
         self.track = self.tr.visible(10.0)[0]
 
-    def hand(self, gesture, glove):
-        return Hand(gesture, 0.9, (150, 300, 200, 360), (175, 360), glove, "COLOR")
+    def hand(self, gesture):
+        return Hand(gesture, 0.9, (150, 300, 200, 360), (175, 360))
 
-    def run_frames(self, ix, gesture, glove, start, n=2, step=0.25):
+    def run_frames(self, ix, gesture, start, n=2, step=0.25):
         out = None
         for k in range(n):
-            out = ix.update(start + k * step, [self.track], {self.track.tid: [self.hand(gesture, glove)]})
+            out = ix.update(start + k * step, [self.track], {self.track.tid: [self.hand(gesture)]})
         return out
 
-    def test_gloved_thumbs_up_nods_with_5s_cooldown(self):
+    def test_thumbs_up_nods_with_5s_cooldown(self):
         ix = Interaction()
-        fx, fid = self.run_frames(ix, "Thumb_Up", "PRESENT", 10.0)
+        fx, fid = self.run_frames(ix, "Thumb_Up", 10.0)
         self.assertEqual(fx, "N")
         ix.update(10.6, [self.track], {})                          # hand down
-        fx2, fid2 = self.run_frames(ix, "Thumb_Up", "PRESENT", 11.0)
+        fx2, fid2 = self.run_frames(ix, "Thumb_Up", 11.0)
         self.assertEqual(fid2, fid)                                # cooldown: no second nod
         ix.update(12.0, [self.track], {})
-        fx3, fid3 = self.run_frames(ix, "Thumb_Up", "PRESENT", 10.0 + NOD_COOLDOWN + 0.5)
+        fx3, fid3 = self.run_frames(ix, "Thumb_Up", 10.0 + NOD_COOLDOWN + 0.5)
         self.assertNotEqual(fid3, fid)
 
-    def test_bare_hand_thumbs_up_shakes_once_then_alarms(self):
+    def test_violator_thumbs_up_gets_one_shake(self):
+        for _ in range(5):                                         # helmet confirmed ABSENT
+            self.tr.update([dict(det((860, 1500, 960, 1100)), evidence={"helmet": ("ABSENT", 0.9, "MODEL")})], 10.0)
+        self.track = self.tr.visible(10.0)[0]
+        self.assertEqual(self.track.state(), "VIOLATION")
         ix = Interaction()
-        fx, fid = self.run_frames(ix, "Thumb_Up", "ABSENT", 10.0)
+        fx, fid = self.run_frames(ix, "Thumb_Up", 10.0)
         self.assertEqual(fx, "H")
-        self.assertTrue(ix.glove_alarm(self.track.tid))
         ix.update(11.0, [self.track], {})
-        _, fid2 = self.run_frames(ix, "Thumb_Up", "ABSENT", 12.0)
+        _, fid2 = self.run_frames(ix, "Thumb_Up", 12.0)
         self.assertEqual(fid2, fid)                                # "no" only once
-
-    def test_debug_toggle_treats_bare_hands_as_gloved(self):
-        ix = Interaction(InteractConfig(assume_gloves=True))
-        fx, _ = self.run_frames(ix, "Thumb_Up", "ABSENT", 10.0)
-        self.assertEqual(fx, "N")
-        self.assertFalse(ix.glove_alarm(self.track.tid))
+        _, fid3 = self.run_frames(ix, "Open_Palm", 13.0)
+        self.assertEqual(fid3, fid)                                # no greeting for a violator
 
     def test_open_palm_greets(self):
         ix = Interaction()
-        fx, _ = self.run_frames(ix, "Open_Palm", "UNKNOWN", 10.0)
+        fx, _ = self.run_frames(ix, "Open_Palm", 10.0)
         self.assertEqual(fx, "W")
 
     def test_single_frame_flicker_is_ignored(self):
         ix = Interaction()
-        _, fid = self.run_frames(ix, "Thumb_Up", "PRESENT", 10.0, n=1)
+        _, fid = self.run_frames(ix, "Thumb_Up", 10.0, n=1)
         self.assertEqual(fid, 0)
 
 
