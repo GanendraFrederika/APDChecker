@@ -2,13 +2,18 @@
 visible, so a hidden region is UNKNOWN, never "missing".
 
 Models (local files only, no downloads):
-  models/yolo11n-pose.pt  person boxes + 17 COCO keypoints
-  models/ppe_yolov8n.pt   helmet/no_helmet/shoes/no_shoes (other classes ignored)
-The PPE model has NO vest class: vest uses a hi-vis colour check on the torso,
-clearly reported as method=COLOR (heuristic, not a trained detector).
+  models/yolo11n-pose.pt     person boxes + 17 COCO keypoints
+  models/ppe_helmet_vest.pt  hardhat / no-hardhat / safety vest / no-safety vest
+                             (YOLOv8n, Hansung-Cho, MIT). construction-ppe test set:
+                             helmet AP50 0.78, vest AP50 0.74, ~100 ms @320 on this PC
+  models/ppe_boots.pt        boots / no-boots (YOLOv8s, SafeSight, Apache-2.0),
+                             shoes AP50 0.52; run every few frames (slow, feet move little)
+Colour checks remain only as a fallback when a model sees nothing (method=COLOR).
+Evaluation: scripts/eval_ppe.py, results in docs/sentinel/ppe_model_eval.md.
 """
 import os
 from pathlib import Path
+import time
 
 import numpy as np
 
@@ -16,6 +21,20 @@ from .types import Keypoints, PersonDet, PpeDet, Region
 
 ROOT = Path(__file__).resolve().parents[2]
 KP_CONF = 0.45
+PROJECT_MODEL = ROOT / "models/ppe_project.pt"     # fine-tuned on our workshop (train_ppe.py)
+HELMET_VEST_MODEL = ROOT / "models/ppe_helmet_vest.pt"
+BOOTS_MODEL = ROOT / "models/ppe_boots.pt"
+LEGACY_MODEL = ROOT / "models/ppe_yolov8n.pt"
+
+# Every model names classes its own way; map them to the labels evidence() uses.
+LABELS = {
+    "hardhat": "helmet", "hard_hat": "helmet", "helmet": "helmet",
+    "no_hardhat": "no_helmet", "no_helmet": "no_helmet",
+    "safety_vest": "vest", "vest": "vest",
+    "no_safety_vest": "no_vest", "no_vest": "no_vest",
+    "boots": "shoes", "shoes": "shoes",
+    "no_boots": "no_shoes", "no_shoes": "no_shoes",
+}
 
 
 def _norm(label):
@@ -23,20 +42,31 @@ def _norm(label):
 
 
 class Perception:
-    def __init__(self, pose_path=None, ppe_path=None, imgsz=416, person_conf=0.4, ppe_conf=0.35):
+    def __init__(self, pose_path=None, imgsz=416, ppe_imgsz=320, boots_imgsz=256, boots_every=1.0,
+                 person_conf=0.4, ppe_conf=0.5, boots_conf=0.45):
         os.environ.setdefault("YOLO_OFFLINE", "1")
         os.environ.setdefault("YOLO_AUTOINSTALL", "false")
         import torch
         torch.set_num_threads(max(1, min(4, os.cpu_count() or 2)))
         from ultralytics import YOLO
         self.pose = YOLO(str(pose_path or ROOT / "models/yolo11n-pose.pt"))
-        self.ppe = YOLO(str(ppe_path or ROOT / "models/ppe_yolov8n.pt"))
         if self.pose.task != "pose":
             raise ValueError("Pose model required")
-        self.ppe_names = {i: _norm(n) for i, n in self.ppe.names.items()}
-        self.imgsz = imgsz
-        self.person_conf = person_conf
-        self.ppe_conf = ppe_conf
+        main = next(p for p in (PROJECT_MODEL, HELMET_VEST_MODEL, LEGACY_MODEL) if p.exists())
+        self.ppe = YOLO(str(main))
+        own_shoes = any(LABELS.get(_norm(n)) == "shoes" for n in self.ppe.names.values())
+        # A project model that knows shoes itself does not need the slow boots model.
+        self.boots = YOLO(str(BOOTS_MODEL)) if BOOTS_MODEL.exists() and not own_shoes else None
+        self.ppe_names = {i: LABELS.get(_norm(n)) for i, n in self.ppe.names.items()}
+        self.boots_names = ({i: LABELS.get(_norm(n)) for i, n in self.boots.names.items()}
+                            if self.boots is not None else {})
+        if self.boots is not None:          # the boots model is only trusted for feet
+            self.boots_names = {i: n if n in ("shoes", "no_shoes") else None for i, n in self.boots_names.items()}
+        self.models = [main.name] + ([BOOTS_MODEL.name] if self.boots is not None else [])
+        self.imgsz, self.ppe_imgsz, self.boots_imgsz = imgsz, ppe_imgsz, boots_imgsz
+        self.boots_every = boots_every
+        self.person_conf, self.ppe_conf, self.boots_conf = person_conf, ppe_conf, boots_conf
+        self._boots_at, self._boots_cache = -1e9, []
 
     def people(self, frame):
         r = self.pose.predict(frame, imgsz=self.imgsz, conf=self.person_conf, device="cpu",
@@ -55,6 +85,19 @@ class Perception:
             out.append(PersonDet(tuple(float(v) for v in b), float(confs[i]), kps))
         return out
 
+    @staticmethod
+    def _detect(model, names, crop, x1, y1, imgsz, conf):
+        r = model.predict(crop, imgsz=imgsz, conf=conf, device="cpu", verbose=False, max_det=64)[0]
+        out = []
+        if r.boxes is None:
+            return out
+        for b, c, k in zip(r.boxes.xyxy.cpu().numpy(), r.boxes.conf.cpu().numpy(),
+                           r.boxes.cls.cpu().numpy()):
+            label = names.get(int(k))
+            if label:
+                out.append(PpeDet(label, float(c), (b[0] + x1, b[1] + y1, b[2] + x1, b[3] + y1)))
+        return out
+
     def equipment(self, frame, people):
         """PPE on the union of the person crops (more pixels per item than full frame)."""
         if not people:
@@ -67,15 +110,17 @@ class Perception:
         crop = frame[y1:y2, x1:x2]
         if crop.size == 0:
             return []
-        r = self.ppe.predict(crop, imgsz=self.imgsz, conf=self.ppe_conf, device="cpu",
-                             verbose=False, max_det=64)[0]
-        out = []
-        if r.boxes is None:
-            return out
-        for b, c, k in zip(r.boxes.xyxy.cpu().numpy(), r.boxes.conf.cpu().numpy(),
-                           r.boxes.cls.cpu().numpy()):
-            label = self.ppe_names.get(int(k), "unknown")
-            out.append(PpeDet(label, float(c), (b[0] + x1, b[1] + y1, b[2] + x1, b[3] + y1)))
+        out = self._detect(self.ppe, self.ppe_names, crop, x1, y1, self.ppe_imgsz, self.ppe_conf)
+        if self.boots is not None:
+            now = time.monotonic()
+            if now - self._boots_at >= self.boots_every:
+                # Feet only: the lower 45 % of the people box (more pixels per shoe).
+                fy1 = max(y1, int(y2 - 0.45 * (y2 - y1)))
+                feet = frame[fy1:y2, x1:x2]
+                self._boots_cache = (self._detect(self.boots, self.boots_names, feet, x1, fy1,
+                                                  self.boots_imgsz, self.boots_conf) if feet.size else [])
+                self._boots_at = now
+            out += self._boots_cache
         return out
 
 

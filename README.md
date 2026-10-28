@@ -14,8 +14,8 @@ saat orang melambai.
 ```text
  Kamera SC3336 ──► Luckfox Pico Mini B ──RTSP lewat USB──► Laptop ("otak" AI)
    (dalam tabung,      (rkipc 10 fps,                       │  YOLO11n-pose  : orang + 17 titik tubuh
-    diputar 90°)        profil ringan)                      │  PPE YOLOv8n   : helm, sepatu
-                                                            │  warna hi-vis   : rompi (model belum punya kelas rompi)
+    diputar 90°)        profil ringan)                      │  YOLOv8n APD   : helm + rompi (AP50 0,78 / 0,74)
+                                                            │  YOLOv8s boots : sepatu (AP50 0,52, 1x/detik)
                                                             │  MediaPipe      : gestur jempol / telapak terbuka
                                                             │  tracker + brain: lock, grup, pelanggar, patroli
                                                             ▼
@@ -122,6 +122,16 @@ UART3 Pico: **pin 12 = TX → Arduino D0**, **pin 13 = RX ← Arduino D1 lewat p
 (pin Pico 3,3 V), **pin 21 GND ↔ GND**. Jangan pakai UART2 (pin 4/5): itu console Linux.
 Selama Arduino memakai USB, kabel ke D0 harus dilepas.
 
+## Melatih model APD sendiri
+
+1. Jalankan sistem, lalu `.venv\Scripts\python.exe scripts\collect_workshop.py --minutes 15`
+   sambil orang lalu-lalang dengan dan tanpa helm/rompi/sepatu. Foto disimpan dengan label
+   saran dari AI di `datasets/workshop/`.
+2. Periksa dan perbaiki label (mis. https://www.makesense.ai, format YOLO, kelas
+   `helmet, vest, shoes, person`).
+3. Zip `datasets/workshop` → upload di `training/train_ppe_colab.ipynb` (Colab, GPU gratis).
+4. Taruh hasil `ppe_project.pt` di `models/`, bandingkan: `scripts\eval_ppe.py models\ppe_project.pt`.
+
 ## Tes
 
 ```powershell
@@ -156,8 +166,11 @@ APDChecker/
 
 * AI berjalan **di laptop**. Pico saat ini menjadi kamera. Standalone penuh di NPU Pico
   butuh model RKNN (konversi di Linux) dan program C; lihat `docs/luckfox/RV1103_BACKEND.md`.
-* Model APD lama **tidak punya kelas rompi**. Rompi dan helm (cadangan) dideteksi lewat warna;
-  ditandai `COLOR` di dashboard. Dataset sendiri + training ulang akan jauh lebih akurat.
+* **Model APD** (28-10-2026): model lama ternyata hampir tidak mendeteksi helm/sepatu sama
+  sekali (AP50 0,00 di data uji). Diganti model publik yang sudah dievaluasi, lihat
+  [docs/sentinel/ppe_model_eval.md](docs/sentinel/ppe_model_eval.md). Belum diuji di bengkel
+  kita sendiri: kumpulkan foto dengan `scripts/collect_workshop.py`, lalu latih dengan
+  `training/train_ppe_colab.ipynb` (Google Colab, ±30 menit) atau `scripts/train_ppe.py`.
 * **Daya servo**: saat servo bergerak, 5 V Arduino turun ke ±4,3 V (terukur 27-10-2026) dan
   USB sesekali tersendat. Software sudah tahan (tanpa reset), tapi servo sebaiknya punya
   step-down sendiri 5–6 V ≥ 3 A dengan GND disatukan ke Arduino.

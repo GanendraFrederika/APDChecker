@@ -397,6 +397,14 @@ def make_handler(rt):
                 with rt.shared.lock:
                     data = json.dumps(rt.shared.status, default=str).encode()
                 return self._send(200, "application/json", data)
+            if self.path == "/raw.jpg":
+                # Upright frame WITHOUT annotations (training photo collection).
+                frame = rt.camera.read()[2] if rt.camera is not None else None
+                if frame is None:
+                    return self._send(503, "text/plain", b"no frame")
+                import cv2
+                ok, jpg = cv2.imencode(".jpg", frame, [cv2.IMWRITE_JPEG_QUALITY, 92])
+                return self._send(200, "image/jpeg", jpg.tobytes())
             if self.path == "/stream.mjpg":
                 self.send_response(200)
                 self.send_header("Content-Type", "multipart/x-mixed-replace; boundary=frame")

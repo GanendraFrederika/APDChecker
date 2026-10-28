@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.3.0] — 2026-10-28
+
+### Diubah
+- **Sarung tangan dihapus**: APD = helm, rompi, sepatu. Gestur: jempol → angguk; jempol dari
+  orang yang APD-nya kurang → geleng sekali + "Mohon lengkapi APD"; melambai → sapa.
+- **Model APD diganti** setelah evaluasi di 141 foto uji construction-ppe:
+  helm AP50 0,00 → 0,78, rompi (sebelumnya hanya warna) → 0,74, sepatu 0,00 → 0,52.
+  Detail: `docs/sentinel/ppe_model_eval.md`.
+
+### Ditambahkan
+- `scripts/eval_ppe.py` (bandingkan model), `scripts/scan_pt.py` (tolak file .pt berbahaya),
+  `scripts/collect_workshop.py` (kumpulkan foto bengkel berlabel saran AI),
+  `scripts/train_ppe.py` + `training/train_ppe_colab.ipynb` (fine-tune 4 kelas proyek).
+- Endpoint dashboard `/raw.jpg` (gambar tanpa anotasi untuk data latih).
+
 ## [3.2.0] — 2026-10-27
 
 ### Diperbaiki (diuji di rig asli)
