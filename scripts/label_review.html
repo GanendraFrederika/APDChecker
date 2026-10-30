@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Periksa Label APD</title>
+<style>
+  :root {
+    --bg: #0b0f14; --panel: #121821; --card: #161e29; --line: #243042; --text: #e6edf3; --muted: #8b98a8;
+    --ok: #3fb950; --warn: #e3b341; --accent: #58a6ff; --m: 16px; --panel-w: 290px;
+    --c0: #f0b429; --c1: #ff7a1a; --c2: #3fb8ff; --c3: #b07cff;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { background: var(--bg); color: var(--text); font: 13px/1.45 "Segoe UI", system-ui, sans-serif; overflow: hidden; }
+  .app { height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) var(--panel-w); gap: var(--m); padding: var(--m); }
+  .stage { position: relative; display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 0; }
+  .frame { position: relative; border-radius: 10px; overflow: hidden; background: #000;
+           box-shadow: 0 10px 34px rgba(0,0,0,.55), 0 0 0 1px var(--line); cursor: crosshair; user-select: none; }
+  .frame img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+  .box { position: absolute; border: 2px solid; border-radius: 2px; }
+  .box span { position: absolute; left: -2px; top: -20px; padding: 1px 6px; font-size: 11px; font-weight: 700;
+              color: #0b0f14; border-radius: 3px 3px 3px 0; white-space: nowrap; }
+  .box.sel { box-shadow: 0 0 0 2px #fff, 0 0 18px rgba(255,255,255,.35); }
+  .box .h { position: absolute; width: 10px; height: 10px; background: #fff; border: 1px solid #000; display: none; }
+  .box.sel .h { display: block; }
+  .h.nw { left: -6px; top: -6px; cursor: nwse-resize; } .h.ne { right: -6px; top: -6px; cursor: nesw-resize; }
+  .h.sw { left: -6px; bottom: -6px; cursor: nesw-resize; } .h.se { right: -6px; bottom: -6px; cursor: nwse-resize; }
+  .draft { position: absolute; border: 2px dashed #fff; pointer-events: none; }
+  aside { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px;
+          display: flex; flex-direction: column; gap: 10px; overflow: auto; min-height: 0; }
+  h1 { font-size: 15px; margin: 0; }
+  .sub { color: var(--muted); font-size: 11.5px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 9px; padding: 10px; }
+  .bar { height: 8px; border-radius: 5px; background: #0d141c; overflow: hidden; margin-top: 6px; }
+  .bar i { display: block; height: 100%; background: linear-gradient(90deg, #238636, var(--ok)); width: 0; transition: width .3s; }
+  .row { display: flex; justify-content: space-between; gap: 8px; }
+  .row span { color: var(--muted); }
+  .classes { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .cls { display: flex; align-items: center; gap: 6px; padding: 7px 8px; border-radius: 7px; border: 1px solid #2d3a4d;
+         background: #1c2632; cursor: pointer; font-weight: 600; }
+  .cls.on { border-color: #fff; background: #263245; }
+  .cls i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  .cls kbd { margin-left: auto; }
+  button { width: 100%; font: inherit; font-weight: 600; color: var(--text); background: #1c2632; border: 1px solid #2d3a4d;
+           border-radius: 7px; padding: 7px 9px; cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  button.primary { background: #238636; border-color: #238636; }
+  button.primary:hover { background: #2ea043; }
+  .nav { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .status { font-weight: 700; }
+  .status.ok { color: var(--ok); } .status.todo { color: var(--warn); }
+  ul.rules { margin: 0; padding-left: 16px; color: var(--muted); font-size: 11.5px; }
+  ul.rules li { margin: 2px 0; }
+  ul.rules b { color: var(--text); }
+  kbd { font: 10.5px ui-monospace, Consolas, monospace; border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; color: var(--muted); }
+  .keys { color: var(--muted); font-size: 11px; line-height: 1.7; }
+  .saved { color: var(--muted); font-size: 11px; min-height: 15px; }
+  label.chk { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <main class="stage" id="stage"><div class="frame" id="frame"><img id="img" alt=""></div></main>
+  <aside>
+    <div><h1>Periksa Label APD</h1><div class="sub" id="fname">-</div></div>
+    <div class="card">
+      <div class="row"><span>Sudah diperiksa</span><b id="prog">0 / 0</b></div>
+      <div class="bar"><i id="pbar"></i></div>
+      <div class="row" style="margin-top:8px"><span>Foto ini</span><b class="status" id="st">-</b></div>
+    </div>
+    <div class="classes" id="classes"></div>
+    <div class="nav"><button id="prev">← Sebelumnya</button><button id="next">Berikutnya →</button></div>
+    <button class="primary" id="ok">✓ Benar, lanjut  <kbd>Enter</kbd></button>
+    <label class="chk"><input type="checkbox" id="todoOnly" checked> Lompat ke yang belum diperiksa</label>
+    <div class="saved" id="saved"></div>
+    <div class="card">
+      <ul class="rules">
+        <li><b>Helm</b>: hanya helm, bukan seluruh kepala. Topi biasa tidak dilabeli.</li>
+        <li><b>Rompi</b>: seluruh rompi yang terlihat. Kaus oranye tidak dilabeli.</li>
+        <li><b>Sepatu</b>: satu kotak per sepatu safety. Sandal/sneakers tidak dilabeli.</li>
+        <li><b>Orang</b>: seluruh badan yang terlihat.</li>
+        <li>Tertutup/terpotong lebih dari separuh? Tidak usah dilabeli.</li>
+      </ul>
+    </div>
+    <div class="keys">
+      Seret di area kosong = kotak baru (kelas aktif) · klik kotak = pilih · seret kotak = geser ·
+      sudut putih = ubah ukuran · <kbd>1</kbd>-<kbd>4</kbd> kelas · <kbd>Del</kbd> hapus ·
+      <kbd>←</kbd>/<kbd>→</kbd> pindah foto · <kbd>Ctrl</kbd>+<kbd>Z</kbd> batal
+    </div>
+  </aside>
+</div>
+<script>
+const NAMES = {helmet: "Helm", vest: "Rompi", shoes: "Sepatu", person: "Orang"};
+const COLORS = ["var(--c0)", "var(--c1)", "var(--c2)", "var(--c3)"];
+const el = id => document.getElementById(id);
+let classes = [], items = [], idx = 0, boxes = [], checked = false, sel = -1, cur = 0, history = [];
+let natW = 1, natH = 1, drag = null, saveTimer = null;
+
+function layout() {
+  const st = el("stage"), a = natW / natH;
+  let h = st.clientHeight, w = h * a;
+  if (w > st.clientWidth) { w = st.clientWidth; h = w / a; }
+  el("frame").style.width = Math.floor(w) + "px";
+  el("frame").style.height = Math.floor(h) + "px";
+  draw();
+}
+
+function draw() {
+  const f = el("frame");
+  f.querySelectorAll(".box").forEach(b => b.remove());
+  boxes.forEach((b, i) => {
+    const [c, cx, cy, w, h] = b;
+    const d = document.createElement("div");
+    d.className = "box" + (i === sel ? " sel" : "");
+    d.style.left = (cx - w / 2) * 100 + "%"; d.style.top = (cy - h / 2) * 100 + "%";
+    d.style.width = w * 100 + "%"; d.style.height = h * 100 + "%";
+    d.style.borderColor = COLORS[c];
+    d.innerHTML = `<span style="background:${COLORS[c]}">${NAMES[classes[c]]}</span>` +
+      ["nw", "ne", "sw", "se"].map(k => `<i class="h ${k}" data-k="${k}"></i>`).join("");
+    d.dataset.i = i;
+    f.appendChild(d);
+  });
+  el("st").textContent = checked ? "sudah diperiksa ✓" : "belum diperiksa";
+  el("st").className = "status " + (checked ? "ok" : "todo");
+}
+
+function renderClasses() {
+  el("classes").innerHTML = classes.map((c, i) =>
+    `<div class="cls ${i === cur ? "on" : ""}" data-c="${i}"><i style="background:${COLORS[i]}"></i>${NAMES[c]}<kbd>${i + 1}</kbd></div>`).join("");
+}
+
+function setClass(i) {
+  cur = i;
+  if (sel >= 0) { snapshot(); boxes[sel][0] = i; changed(); }
+  renderClasses(); draw();
+}
+
+function snapshot() { history.push(JSON.stringify(boxes)); if (history.length > 50) history.shift(); }
+
+function changed(mark) {
+  if (mark !== undefined) checked = mark;
+  draw();
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(save, 250);
+}
+
+async function save() {
+  const name = items[idx].name;
+  const r = await fetch("/api/save", {method: "POST", headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({name, boxes, checked})});
+  if (r.ok) {
+    items[idx].checked = checked;
+    el("saved").textContent = "Tersimpan " + new Date().toLocaleTimeString();
+    progress();
+  } else el("saved").textContent = "GAGAL menyimpan!";
+}
+
+function progress() {
+  const done = items.filter(x => x.checked).length;
+  el("prog").textContent = done + " / " + items.length;
+  el("pbar").style.width = (items.length ? 100 * done / items.length : 0) + "%";
+}
+
+async function load(i) {
+  if (saveTimer) { clearTimeout(saveTimer); await save(); saveTimer = null; }
+  idx = Math.max(0, Math.min(items.length - 1, i));
+  const it = items[idx];
+  const d = await (await fetch("/api/labels/" + encodeURIComponent(it.name))).json();
+  boxes = d.boxes; checked = d.checked; sel = -1; history = [];
+  el("fname").textContent = (idx + 1) + ". " + it.name;
+  const img = el("img");
+  img.onload = () => { natW = img.naturalWidth; natH = img.naturalHeight; layout(); };
+  img.src = "/img/" + encodeURIComponent(it.name);
+  draw();
+}
+
+function step(dir) {
+  if (!el("todoOnly").checked) return load(idx + dir);
+  for (let k = idx + dir; k >= 0 && k < items.length; k += dir) if (!items[k].checked) return load(k);
+  load(idx + dir);
+}
+
+function pos(e) {
+  const r = el("frame").getBoundingClientRect();
+  return [Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), Math.min(1, Math.max(0, (e.clientY - r.top) / r.height))];
+}
+
+el("frame").addEventListener("mousedown", e => {
+  const [x, y] = pos(e);
+  const handle = e.target.classList.contains("h") ? e.target.dataset.k : null;
+  const boxEl = e.target.closest(".box");
+  if (boxEl) {
+    sel = +boxEl.dataset.i; cur = boxes[sel][0]; renderClasses(); snapshot();
+    const [, cx, cy, w, h] = boxes[sel];
+    drag = {mode: handle ? "resize" : "move", k: handle, x, y, box: [cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2]};
+  } else {
+    sel = -1;
+    drag = {mode: "new", x, y};
+    const d = document.createElement("div"); d.className = "draft"; d.id = "draft"; el("frame").appendChild(d);
+  }
+  draw(); e.preventDefault();
+});
+
+window.addEventListener("mousemove", e => {
+  if (!drag) return;
+  const [x, y] = pos(e);
+  if (drag.mode === "new") {
+    const d = el("draft");
+    d.style.left = Math.min(x, drag.x) * 100 + "%"; d.style.top = Math.min(y, drag.y) * 100 + "%";
+    d.style.width = Math.abs(x - drag.x) * 100 + "%"; d.style.height = Math.abs(y - drag.y) * 100 + "%";
+    return;
+  }
+  let [x1, y1, x2, y2] = drag.box;
+  const dx = x - drag.x, dy = y - drag.y;
+  if (drag.mode === "move") {
+    const w = x2 - x1, h = y2 - y1;
+    x1 = Math.min(1 - w, Math.max(0, x1 + dx)); y1 = Math.min(1 - h, Math.max(0, y1 + dy)); x2 = x1 + w; y2 = y1 + h;
+  } else {
+    if (drag.k.includes("w")) x1 = Math.min(x2 - 0.005, x1 + dx); else x2 = Math.max(x1 + 0.005, x2 + dx);
+    if (drag.k.includes("n")) y1 = Math.min(y2 - 0.005, y1 + dy); else y2 = Math.max(y1 + 0.005, y2 + dy);
+  }
+  boxes[sel] = [boxes[sel][0], (x1 + x2) / 2, (y1 + y2) / 2, x2 - x1, y2 - y1];
+  draw();
+});
+
+window.addEventListener("mouseup", e => {
+  if (!drag) return;
+  const [x, y] = pos(e);
+  if (drag.mode === "new") {
+    el("draft").remove();
+    const w = Math.abs(x - drag.x), h = Math.abs(y - drag.y);
+    if (w * natW > 6 && h * natH > 6) {
+      snapshot();
+      boxes.push([cur, (x + drag.x) / 2, (y + drag.y) / 2, w, h]);
+      sel = boxes.length - 1; changed();
+    }
+  } else changed();
+  drag = null;
+});
+
+el("classes").addEventListener("click", e => { const c = e.target.closest(".cls"); if (c) setClass(+c.dataset.c); });
+el("prev").onclick = () => step(-1);
+el("next").onclick = () => step(1);
+el("ok").onclick = async () => { checked = true; await save(); step(1); };
+document.addEventListener("keydown", e => {
+  if (e.key >= "1" && e.key <= "4") setClass(+e.key - 1);
+  else if ((e.key === "Delete" || e.key === "Backspace") && sel >= 0) { snapshot(); boxes.splice(sel, 1); sel = -1; changed(); }
+  else if (e.key === "ArrowRight") step(1);
+  else if (e.key === "ArrowLeft") step(-1);
+  else if (e.key === "Enter") el("ok").click();
+  else if (e.key === "Escape") { sel = -1; draw(); }
+  else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z" && history.length) { boxes = JSON.parse(history.pop()); sel = -1; changed(); }
+  else return;
+  e.preventDefault();
+});
+window.addEventListener("resize", layout);
+
+(async () => {
+  const d = await (await fetch("/api/list")).json();
+  classes = d.classes; items = d.items;
+  renderClasses(); progress();
+  const first = items.findIndex(x => !x.checked);
+  load(first >= 0 ? first : 0);
+})();
+</script>
+</body>
+</html>

@@ -466,7 +466,50 @@ def make_handler(rt):
     return Handler
 
 
+class _Tee:
+    """Write to the console AND a log file (crash reasons survive the window closing)."""
+
+    def __init__(self, stream, log):
+        self.stream, self.log = stream, log
+
+    def write(self, data):
+        for target in (self.stream, self.log):
+            try:
+                target.write(data)
+                target.flush()
+            except (OSError, ValueError):
+                pass
+        return len(data)
+
+    def flush(self):
+        pass
+
+    def __getattr__(self, name):
+        return getattr(self.stream, name)
+
+
+def start_run_log(keep=20):
+    """logs/sentinel-<time>.log for this run; only the newest `keep` logs are kept."""
+    import sys
+    folder = ROOT / "logs"
+    folder.mkdir(exist_ok=True)
+    old = sorted(folder.glob("sentinel-*.log"))
+    for p in old[:max(0, len(old) - keep + 1)]:
+        try:
+            p.unlink()
+        except OSError:
+            pass
+    path = folder / time.strftime("sentinel-%Y%m%d-%H%M%S.log")
+    log = open(path, "a", encoding="utf-8", buffering=1)
+    sys.stdout, sys.stderr = _Tee(sys.stdout, log), _Tee(sys.stderr, log)
+    print(f"Log: {path}", flush=True)
+    return path
+
+
 def main(argv=None):
+    import faulthandler
+    log_path = start_run_log()
+    faulthandler.enable(open(log_path.with_suffix(".crash.txt"), "w", encoding="utf-8"), all_threads=True)
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--camera", default="luckfox", help="'luckfox', webcam index, or RTSP URL")
     ap.add_argument("--serial", default=None, help="adb serial of the Luckfox (if several devices)")

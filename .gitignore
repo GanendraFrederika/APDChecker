@@ -32,3 +32,6 @@ Thumbs.db
 datasets/
 models/candidates/
 runs/
+
+# Run logs (python/sentinel/app.py)
+logs/

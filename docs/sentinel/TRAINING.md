@@ -25,21 +25,48 @@ melihat contoh sekecil itu, dari atas, di tempat kita.
 
 ## 2. Perbaiki label (±2-3 jam untuk 400 foto)
 
-Foto sudah punya label saran dari AI di `datasets/workshop/labels/` (format YOLO).
-Kelas: `0 helmet`, `1 vest`, `2 shoes`, `3 person`.
+Setiap foto sudah punya **label saran dari AI** (`datasets/workshop/labels/*.txt`, format YOLO,
+kelas `0 helmet`, `1 vest`, `2 shoes`, `3 person`). Tugasmu hanya **mengoreksi**, bukan menggambar
+semuanya dari nol. Label yang salah lebih merusak model daripada label yang kurang, jadi teliti.
 
-1. Buka https://www.makesense.ai → *Get Started* → *Object Detection*.
-2. Upload semua foto dari `datasets/workshop/images/`.
-3. *Create labels list*: ketik `helmet`, `vest`, `shoes`, `person` (urutan ini persis).
-4. *Actions → Import Annotations → YOLO*: pilih semua file `.txt` dari `datasets/workshop/labels/`
-   dan `classes.txt`.
-5. Periksa setiap foto: hapus kotak salah, tambah yang terlewat. Aturan:
-   - kotak **helm** hanya helm (bukan seluruh kepala); topi biasa **tidak** dilabeli
-   - kotak **rompi** seluruh rompi yang terlihat; kaus oranye **tidak** dilabeli
-   - **sepatu** satu kotak per sepatu safety; sandal/sneakers **tidak** dilabeli
-   - **person** seluruh badan yang terlihat
-6. *Actions → Export Annotations → YOLO* → zip berisi `.txt`. Ganti isi
-   `datasets/workshop/labels/` dengan hasil ekspor ini.
+### Cara A (disarankan): alat bawaan, tanpa upload, tanpa install
+
+1. Klik dua kali **`label-review.bat`**. Jendela "Periksa Label APD" terbuka di tengah layar,
+   langsung di foto pertama yang belum diperiksa.
+2. Untuk setiap foto:
+   - **Kotak benar semua?** Tekan **Enter** (= "Benar, lanjut"). Foto ditandai sudah diperiksa.
+   - **Kotak salah kelas?** Klik kotaknya, tekan **1** Helm / **2** Rompi / **3** Sepatu / **4** Orang.
+   - **Kotak salah tempat/ukuran?** Klik lalu seret untuk geser; seret sudut putih untuk ubah ukuran.
+   - **Kotak tidak perlu?** Klik, tekan **Delete**.
+   - **Ada yang terlewat?** Pilih kelas (1-4), lalu seret kotak baru di area kosong.
+   - Salah langkah: **Ctrl+Z**. Pindah foto: **←** / **→**.
+3. Semua perubahan **langsung tersimpan** ke file label. Bisa ditutup kapan saja dan dilanjutkan
+   nanti; bilah "Sudah diperiksa" menunjukkan progres.
+4. Selesai kalau bilah sudah penuh (semua foto diperiksa).
+
+### Aturan melabeli (sama untuk semua orang yang membantu)
+
+| Kelas | Dilabeli | **Tidak** dilabeli |
+|---|---|---|
+| Helm | kotak pas di helm saja | topi biasa, kepala tanpa helm, helm yang tidak dipakai (di meja) |
+| Rompi | seluruh rompi yang terlihat di badan | kaus/jaket oranye atau kuning biasa |
+| Sepatu | satu kotak per sepatu safety | sandal, sneakers, kaki tanpa sepatu |
+| Orang | seluruh badan yang terlihat | orang yang terlihat kurang dari separuh |
+
+- Objek tertutup/terpotong **lebih dari separuh**: tidak usah dilabeli.
+- Ragu? Lebih baik **tidak** dilabeli daripada dilabeli salah.
+- Orang tanpa helm: **orangnya tetap dilabeli** (kelas Orang), helmnya tidak ada kotak.
+  Dari situlah sistem tahu "orang ini tidak pakai helm".
+
+### Cara B: makesense.ai (kalau mau dikerjakan di laptop lain)
+
+1. https://www.makesense.ai → *Get Started* → upload semua foto `datasets/workshop/images/` →
+   *Object Detection*.
+2. *Create labels list*: `helmet`, `vest`, `shoes`, `person` (urutan ini persis).
+3. *Actions → Import Annotations → YOLO*: pilih semua `.txt` dari `datasets/workshop/labels/`
+   + `classes.txt`.
+4. Koreksi dengan aturan di atas, lalu *Actions → Export Annotations → YOLO* dan ganti isi
+   `datasets/workshop/labels/` dengan hasil ekspor.
 
 ## 3. Latih (pilih satu)
 
