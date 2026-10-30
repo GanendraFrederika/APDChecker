@@ -88,4 +88,4 @@ semuanya dari nol. Label yang salah lebih merusak model daripada label yang kura
 
 ## 5. Untuk standalone
 
-Model yang sama dikonversi ke `.rknn`: lihat `docs/sentinel/STANDALONE_PICO.md`.
+Model yang sama dikonversi ke `.rknn` di VPS: lihat `docs/sentinel/VPS_RKNN.md`, lalu `docs/sentinel/STANDALONE_PICO.md`.

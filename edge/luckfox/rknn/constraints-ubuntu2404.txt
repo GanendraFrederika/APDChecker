@@ -1,0 +1,22 @@
+# Ubuntu 24.04 (Python 3.12), CPU-only. Verified against PyPI / download.pytorch.org metadata 30-10-2026.
+# numpy 1.26.4 is the anchor: rknn-toolkit2 2.3.2 requires numpy<=1.26.4 and protobuf<=4.25.4.
+# onnxruntime must stay <=1.26.0 here: 1.27.0+ requires protobuf>=4.25.8.
+numpy==1.26.4
+protobuf==4.25.4
+torch==2.4.0+cpu
+torchvision==0.19.0+cpu
+opencv-python==4.11.0.86
+onnx==1.17.0
+onnxruntime==1.20.1
+onnxslim==0.1.98
+ml-dtypes==0.5.4
+scipy==1.17.1
+matplotlib==3.11.2
+contourpy==1.3.3
+polars==1.44.2
+fast-histogram==0.14
+ultralytics-thop==2.2.3
+ultralytics-platform==0.1.101
+setuptools==81.0.0
+rknn-toolkit2==2.3.2
+ultralytics==8.4.175
