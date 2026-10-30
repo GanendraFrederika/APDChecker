@@ -217,7 +217,7 @@ class Runtime:
         import cv2
         from .interact import Interaction
         from .vision import Perception, evidence, regions
-        self.perception = Perception(imgsz=self.args.imgsz)
+        self.perception = Perception(imgsz=self.args.imgsz, ppe_imgsz=self.args.ppe_imgsz)
         self.interaction = Interaction()
         try:
             from .gesture import GestureReader
@@ -473,6 +473,8 @@ def main(argv=None):
     ap.add_argument("--port", default="auto", help="Arduino COM port, 'auto' or 'none'")
     ap.add_argument("--http", type=int, default=8080)
     ap.add_argument("--imgsz", type=int, default=416)
+    ap.add_argument("--ppe-imgsz", type=int, default=None,
+                    help="PPE model input px (320 fast; 416 for people 4-6 m away, slower)")
     ap.add_argument("--config", default=str(ROOT / "config/sentinel.json"))
     ap.add_argument("--patrol", type=float, default=None, help="patrol interval seconds")
     ap.add_argument("--hfov", type=float, default=None)
@@ -504,7 +506,7 @@ def main(argv=None):
                     auto_rotate=cam.get("auto_rotate", True),
                     pan_sign=srv.get("pan_sign", -1),
                     tilt_sign=srv.get("tilt_sign", 1), sound=cfg.get("alarm_sound", False),
-                    volume=cfg.get("volume", 50))
+                    volume=cfg.get("volume", 50), ppe_imgsz=cfg.get("vision", {}).get("ppe_imgsz", 320))
     for key, value in defaults.items():
         if getattr(args, key, None) is None:
             setattr(args, key, value)

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview Kamera</title>
+<style>
+  :root {
+    --bg: #0b0f14; --panel: #121821; --card: #161e29; --line: #243042; --text: #e6edf3;
+    --muted: #8b98a8; --ok: #3fb950; --warn: #e3b341; --bad: #f85149; --accent: #58a6ff;
+    --m: 20px; --panel-w: 300px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: radial-gradient(1100px 700px at 25% 15%, #121c29 0%, var(--bg) 62%);
+    color: var(--text); font: 13px/1.45 "Segoe UI", system-ui, sans-serif; overflow: hidden;
+  }
+  .app { height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) var(--panel-w); gap: var(--m); padding: var(--m); }
+
+  /* picture */
+  .stage { position: relative; display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 0; }
+  .frame { position: relative; border-radius: 12px; overflow: hidden; background: #000;
+           box-shadow: 0 12px 40px rgba(0,0,0,.55), 0 0 0 1px var(--line); }
+  .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+  .overlay { position: absolute; inset: 0; pointer-events: none; }
+  .overlay svg { width: 100%; height: 100%; display: block; }
+  .grid line { stroke: rgba(255,255,255,.28); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .grid .axis { stroke: rgba(88,166,255,.75); }
+  .levelline { position: absolute; left: 50%; top: 50%; width: 220%; height: 0;
+               border-top: 2px dashed var(--warn); transform: translate(-50%, -50%) rotate(0deg);
+               transition: transform .35s ease, border-color .35s; display: none; }
+  .levelline.ok { border-top-style: solid; border-color: var(--ok); }
+  .wait { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+          gap: 12px; padding: 24px; text-align: center; color: var(--muted); background: #070a0e; }
+  .wait b { color: var(--text); font-size: 14px; font-weight: 600; }
+  .spinner { width: 34px; height: 34px; border: 3px solid var(--line); border-top-color: var(--accent);
+             border-radius: 50%; animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* panel */
+  aside { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px;
+          display: flex; flex-direction: column; gap: 12px; overflow: auto; min-height: 0; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .logo { width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center;
+          background: linear-gradient(135deg, #1f6feb, #58a6ff); font-size: 16px; }
+  h1 { font-size: 15px; margin: 0; letter-spacing: .2px; }
+  .sub { color: var(--muted); font-size: 11.5px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .row { display: flex; justify-content: space-between; gap: 8px; padding: 2px 0; }
+  .row span { color: var(--muted); }
+  .row b { font-weight: 600; text-align: right; }
+  .dotc { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: var(--muted); }
+  .dotc.ok { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+  .dotc.warn { background: var(--warn); }
+  .dotc.bad { background: var(--bad); }
+  .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .big { font-size: 30px; font-weight: 700; line-height: 1.15; margin: 2px 0 8px; font-variant-numeric: tabular-nums; }
+  .big.ok { color: var(--ok); }
+  .big.warn { color: var(--warn); }
+  .tube { position: relative; height: 18px; border-radius: 9px; background: linear-gradient(#0d141c, #1a2633);
+          border: 1px solid var(--line); overflow: hidden; }
+  .tube .mark { position: absolute; left: 50%; top: 2px; bottom: 2px; width: 26px; transform: translateX(-50%);
+                border-left: 1px solid rgba(255,255,255,.35); border-right: 1px solid rgba(255,255,255,.35); }
+  .tube .bubble { position: absolute; top: 3px; width: 22px; height: 10px; border-radius: 6px; left: 50%;
+                  transform: translateX(-50%); background: radial-gradient(circle at 40% 35%, #d7f5c9, #7bd35f);
+                  transition: left .35s ease; opacity: .25; }
+  .hint { color: var(--muted); font-size: 12px; margin-top: 8px; min-height: 34px; }
+  .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  button { width: 100%; font: inherit; font-weight: 600; color: var(--text); background: #1c2632; border: 1px solid #2d3a4d;
+           border-radius: 8px; padding: 8px 10px; cursor: pointer; transition: border-color .15s, background .15s; }
+  button:hover { border-color: var(--accent); }
+  button:disabled { opacity: .45; cursor: default; border-color: #2d3a4d; }
+  button.on { background: rgba(88,166,255,.14); border-color: rgba(88,166,255,.55); }
+  button.primary { background: #1f6feb; border-color: #1f6feb; }
+  button.primary:hover { background: #2f7bf5; }
+  .stack { display: flex; flex-direction: column; gap: 8px; }
+  .saved { color: var(--ok); font-size: 12px; min-height: 16px; }
+  ol { margin: 0; padding-left: 18px; color: var(--muted); font-size: 12px; }
+  ol li { margin: 2px 0; }
+  .foot { margin-top: auto; color: #5d6b7c; font-size: 11px; text-align: center; }
+  kbd { font: 11px ui-monospace, Consolas, monospace; border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="app">
+  <main class="stage" id="stage">
+    <div class="frame" id="frame">
+      <img id="img" alt="Preview kamera">
+      <div class="overlay" id="gridbox">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="grid">
+          <line x1="33.333" y1="0" x2="33.333" y2="100"/><line x1="66.667" y1="0" x2="66.667" y2="100"/>
+          <line x1="0" y1="33.333" x2="100" y2="33.333"/><line x1="0" y1="66.667" x2="100" y2="66.667"/>
+          <line class="axis" x1="0" y1="50" x2="100" y2="50"/><line class="axis" x1="50" y1="0" x2="50" y2="100"/>
+        </svg>
+      </div>
+      <div class="overlay"><div class="levelline" id="lline"></div></div>
+      <div class="wait" id="wait"><div class="spinner"></div><b id="waitTitle">Menunggu kamera...</b><span id="waitText">Pastikan Pico tercolok USB.</span></div>
+    </div>
+  </main>
+
+  <aside>
+    <div class="brand">
+      <div class="logo">◉</div>
+      <div><h1>Preview Kamera</h1><div class="sub">APD Sentinel · Luckfox SC3336</div></div>
+    </div>
+
+    <div class="card">
+      <div class="row"><span>Pico</span><b><i class="dotc" id="picoDot"></i><span id="pico">-</span></b></div>
+      <div class="row"><span>Kamera</span><b id="cam">-</b></div>
+      <div class="row"><span>Gambar</span><b id="res">-</b></div>
+      <div class="row"><span>Putaran</span><b id="rot">-</b></div>
+    </div>
+
+    <div class="card">
+      <div class="label">Kemiringan gambar</div>
+      <div class="big" id="lvl">–</div>
+      <div class="tube"><div class="mark"></div><div class="bubble" id="bubble"></div></div>
+      <div class="hint" id="hint">Arahkan kamera ke garis lurus: kusen pintu, sudut dinding, lemari.</div>
+    </div>
+
+    <div class="stack">
+      <div class="btns"><button id="rl" title="Putar 90° berlawanan jarum jam">⟲ 90°</button><button id="rr" title="Putar 90° searah jarum jam">90° ⟳</button></div>
+      <button id="grid" class="on">Grid bantu: ON</button>
+      <button id="roll">Koreksi miring software: OFF</button>
+      <button id="save" class="primary">Simpan tampilan ini</button>
+      <div class="saved" id="saved"></div>
+    </div>
+
+    <ol>
+      <li>Putar 90° sampai ruangan tegak.</li>
+      <li>Putar <b>tabung kamera</b> pelan sampai kemiringan ±0°.</li>
+      <li>Klik <b>Simpan</b>, lalu jalankan sistem.</li>
+    </ol>
+    <div class="foot">Tutup jendela ini untuk berhenti · <kbd>R</kbd> putar · <kbd>G</kbd> grid</div>
+  </aside>
+</div>
+<script>
+const M = 20, PANEL = 300;
+const el = id => document.getElementById(id);
+let aspect = 9 / 16, lastRotate = null, fitted = false, grid = true, streamOk = false;
+
+function layout() {
+  const st = el("stage");
+  const aw = st.clientWidth, ah = st.clientHeight;
+  let h = ah, w = h * aspect;
+  if (w > aw) { w = aw; h = w / aspect; }
+  el("frame").style.width = Math.floor(w) + "px";
+  el("frame").style.height = Math.floor(h) + "px";
+}
+
+// Size the window to the picture and centre it on the screen (works in app windows).
+function fitWindow() {
+  const ch = window.outerHeight - window.innerHeight, cw = window.outerWidth - window.innerWidth;
+  const aw = screen.availWidth, ah = screen.availHeight;
+  let innerH = Math.round(ah * 0.86) - ch;
+  let fh = innerH - 2 * M, fw = fh * aspect;
+  let innerW = fw + PANEL + 3 * M;
+  const maxW = Math.round(aw * 0.92) - cw;
+  if (innerW > maxW) { innerW = maxW; fh = (innerW - PANEL - 3 * M) / aspect; innerH = Math.max(fh + 2 * M, 560); }
+  const W = Math.round(innerW + cw), H = Math.round(innerH + ch);
+  try {
+    window.resizeTo(W, H);
+    window.moveTo(Math.round((screen.availLeft || 0) + (aw - W) / 2), Math.round((screen.availTop || 0) + (ah - H) / 2));
+  } catch (e) { /* normal browser tab: the layout still fits */ }
+  setTimeout(layout, 60);
+}
+
+function startStream() {
+  el("img").src = "/stream.mjpg?t=" + Date.now();
+}
+el("img").onload = () => { streamOk = true; };
+el("img").onerror = () => { streamOk = false; setTimeout(startStream, 1500); };
+
+async function post(path, body) {
+  const r = await fetch(path, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body || {})});
+  return r.json();
+}
+
+function render(s) {
+  const [vw, vh] = s.view;
+  const newAspect = vw / vh;
+  if (Math.abs(newAspect - aspect) > 0.01) { aspect = newAspect; layout(); }
+  if (!fitted || s.rotate !== lastRotate) { if (lastRotate !== null || !fitted) fitWindow(); fitted = true; }
+  lastRotate = s.rotate;
+
+  const picoOk = s.pico === "Terhubung" || !s.luckfox;
+  el("pico").textContent = s.luckfox ? s.pico : "tidak dipakai";
+  el("picoDot").className = "dotc " + (picoOk ? "ok" : s.pico.startsWith("Menunggu") ? "bad" : "warn");
+  el("cam").textContent = s.frame_ok ? s.fps.toFixed(1) + " fps" : (s.error ? "belum ada gambar" : "membuka...");
+  el("res").textContent = vw + " × " + vh + (vh > vw ? " (potret)" : vh < vw ? " (lanskap)" : "");
+  el("rot").textContent = s.rotate + "°" + (s.roll_on ? " · miring " + s.roll_cfg.toFixed(1) + "°" : "");
+
+  el("wait").style.display = s.frame_ok ? "none" : "flex";
+  if (!s.frame_ok) {
+    el("waitTitle").textContent = s.luckfox && s.pico !== "Terhubung" ? s.pico : "Menunggu gambar kamera...";
+    el("waitText").textContent = s.luckfox ? "Colok Pico ke USB. Kamera menyala otomatis (±10 detik)." : (s.error || "");
+  }
+
+  const lv = s.level, line = el("lline"), big = el("lvl"), bub = el("bubble");
+  if (lv && lv.sure) {
+    const a = lv.angle, ok = Math.abs(a) < 1.0;
+    big.textContent = (a > 0 ? "+" : "") + a.toFixed(1) + "°";
+    big.className = "big " + (ok ? "ok" : "warn");
+    line.style.display = "block";
+    line.className = "levelline" + (ok ? " ok" : "");
+    line.style.transform = "translate(-50%, -50%) rotate(" + a + "deg)";
+    bub.style.opacity = 1;
+    bub.style.left = (50 + Math.max(-45, Math.min(45, a * 4))) + "%";
+    el("hint").textContent = (ok ? "Lurus ✓ Sekarang klik Simpan." :
+      (a > 0 ? "Sisi kanan gambar lebih rendah." : "Sisi kiri gambar lebih rendah.") +
+      " Putar tabung pelan; angka harus mengecil.") +
+      (lv.family === "tegak" ? "" : " (Diukur dari garis datar: kurang akurat, cari kusen pintu.)");
+  } else {
+    big.textContent = "–"; big.className = "big"; line.style.display = "none";
+    bub.style.opacity = .25; bub.style.left = "50%";
+    el("hint").textContent = s.frame_ok ? "Belum yakin: arahkan ke garis lurus (kusen pintu, sudut dinding, lemari)." :
+      "Menunggu gambar.";
+  }
+
+  const roll = el("roll");
+  roll.disabled = Math.abs(s.roll_cfg) < 0.1;
+  roll.textContent = roll.disabled ? "Koreksi miring software: tidak ada" :
+    "Koreksi miring software: " + (s.roll_on ? "ON (" + s.roll_cfg.toFixed(1) + "°)" : "OFF");
+  roll.className = s.roll_on ? "on" : "";
+  el("saved").textContent = s.saved || "";
+}
+
+async function poll() {
+  try { render(await (await fetch("/api/status")).json()); } catch (e) { /* server restarting */ }
+  setTimeout(poll, 500);
+}
+
+el("rl").onclick = async () => render(await post("/api/rotate", {dir: -1}));
+el("rr").onclick = async () => render(await post("/api/rotate", {dir: 1}));
+el("grid").onclick = () => {
+  grid = !grid;
+  el("gridbox").style.display = grid ? "block" : "none";
+  el("grid").textContent = "Grid bantu: " + (grid ? "ON" : "OFF");
+  el("grid").className = grid ? "on" : "";
+};
+el("roll").onclick = async () => render(await post("/api/roll", {on: !el("roll").classList.contains("on")}));
+el("save").onclick = async () => render(await post("/api/save"));
+document.addEventListener("keydown", e => {
+  if (e.key === "r" || e.key === "R") el("rr").click();
+  if (e.key === "g" || e.key === "G") el("grid").click();
+});
+window.addEventListener("resize", layout);
+layout();
+startStream();
+poll();
+</script>
+</body>
+</html>

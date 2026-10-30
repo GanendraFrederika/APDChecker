@@ -1,0 +1,66 @@
+{
+ "data": "D:\\RUDY\\HAIKAL\\APDChecker\\datasets\\construction-ppe",
+ "split": "test",
+ "imgsz": 256,
+ "conf": 0.5,
+ "images": 141,
+ "results": [
+  {
+   "model": "safesight_v8s.pt",
+   "covered": [
+    "helmet",
+    "no_helmet",
+    "no_shoes",
+    "no_vest",
+    "person",
+    "shoes",
+    "vest"
+   ],
+   "ms": 251.5,
+   "per_class": {
+    "helmet": {
+     "n": 192,
+     "ap50": 0.685,
+     "precision": 0.863,
+     "recall": 0.625
+    },
+    "no_helmet": {
+     "n": 40,
+     "ap50": 0.035,
+     "precision": 0.111,
+     "recall": 0.05
+    },
+    "vest": {
+     "n": 178,
+     "ap50": 0.684,
+     "precision": 0.871,
+     "recall": 0.646
+    },
+    "no_vest": {
+     "n": 0,
+     "ap50": null,
+     "precision": 0.0,
+     "recall": null
+    },
+    "shoes": {
+     "n": 211,
+     "ap50": 0.54,
+     "precision": 0.861,
+     "recall": 0.441
+    },
+    "no_shoes": {
+     "n": 23,
+     "ap50": 0.0,
+     "precision": 0.0,
+     "recall": 0.0
+    },
+    "person": {
+     "n": 236,
+     "ap50": 0.783,
+     "precision": 0.88,
+     "recall": 0.775
+    }
+   }
+  }
+ ]
+}
