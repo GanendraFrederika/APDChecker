@@ -15,7 +15,7 @@ pip install --upgrade pip
 # CPU-only torch keeps the download small; rknn-toolkit2 2.3.2 needs torch <= 2.4 and numpy <= 1.26.4
 pip install "torch==2.4.0" "torchvision==0.19.0" --index-url https://download.pytorch.org/whl/cpu
 pip install "ultralytics==8.4.175" "rknn-toolkit2==2.3.2" "onnx>=1.16.1,<1.19" "numpy<=1.26.4" \
-            "setuptools<82" onnxruntime
+            "setuptools<82" onnxruntime "onnxslim>=0.1.82"
 python - <<'PY'
 from rknn.api import RKNN
 import ultralytics, torch, numpy
